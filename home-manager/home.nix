@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./waybar/waybar.nix
+    ./bashrc/bashrc.nix
+  ];
+
   home.username = "erik";
   home.homeDirectory = "/home/erik";
   home.stateVersion = "24.11";
@@ -25,7 +30,6 @@
     # Packages for Hyprland
     pkgs.hyprpaper
     pkgs.hyprshot
-    pkgs.kitty
     pkgs.wofi
   ];
 
