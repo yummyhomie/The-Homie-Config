@@ -20,6 +20,7 @@ spotify/
 user-dirs.dirs
 user-dirs.locale
 wal/
+waybar/
 xdg-terminals.list
 .bashrc
 .gsd-keyboard.settings-ported
