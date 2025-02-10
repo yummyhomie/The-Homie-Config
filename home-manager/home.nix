@@ -12,7 +12,6 @@
     pkgs.firefox
     pkgs.git
     pkgs.gnome-terminal
-    pkgs.gnome-tweaks
     pkgs.libreoffice-qt6-fresh
     pkgs.lunarvim
     pkgs.networkmanager
@@ -22,11 +21,9 @@
     pkgs.vim
     pkgs.vscode
     pkgs.wofi
-    pkgs.xorg.xrandr
 
     # Packages for Hyprland
     pkgs.hyprpaper
-    pkgs.hyprshot
     pkgs.wofi
   ];
 
@@ -79,7 +76,6 @@
 
   # Waybar 
   programs.waybar.enable = true;
-
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
