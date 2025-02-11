@@ -17,14 +17,19 @@
     pkgs.networkmanager
     pkgs.obsidian
     pkgs.openconnect
-    pkgs.spotify
+    pkgs.spotify # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.vim
     pkgs.vscode
+    pkgs.xwayland
     pkgs.wofi
+    pkgs.xorg.xrandr
 
     # Packages for Hyprland
     pkgs.hyprpaper
     pkgs.wofi
+    #pkgs.xdg-desktop-portal
+    #pkgs.xdg-desktop-portal-gtk
+    #pkgs.dbus
   ];
 
   # bashrc
@@ -64,6 +69,8 @@
       alias hypr='lvim ~/.config/hypr/hyprland.conf'
       alias p='hyprshot -m region --clipboard-only'
       alias way='lvim ~/.config/home-manager/waybar/waybar.nix'
+      alias nixos='sudo lvim /etc/nixos/configuration.nix'
+      alias rebuild='sudo nixos-rebuild switch'
     '';
   };
 
@@ -75,26 +82,39 @@
   };
 
   # Waybar 
-  programs.waybar.enable = true;
-  programs.waybar.settings = {
-    mainBar = {
-      layer = "top";
-      position = "top";
-      height = 25;
-      modules-left = [
-        "hyprland/workspaces"
-      ];
-      modules-center = [
-        "clock"
-      ];
-      modules-right = [
-        "pulseaudio"
-        "memory"
-        "cpu"
-        "battery"
-        "disk"
-      ];
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        margin = "4px, 4px, 0px, 4px";
+        height = 25;
+        modules-left = [
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "memory"
+          "cpu"
+          "battery"
+          "disk"
+        ];
+      };
     };
+    style = ''
+      * {
+        color: white;
+      }
+
+      window#waybar{
+        border-radius: 8;
+        background: rgba(124, 124, 124, 0.6);
+      }
+    '';        
   };
 
   nixpkgs.config.allowUnfree = true;
