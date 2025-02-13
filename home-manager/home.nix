@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [];
+  imports = [
+  ];
 
   home.username = "erik";
   home.homeDirectory = "/home/erik";
@@ -9,11 +10,12 @@
 
   home.packages = [
     pkgs.discord
-    pkgs.firefox
     pkgs.git
     pkgs.gnome-terminal
     pkgs.libreoffice-qt6-fresh
+    pkgs.librewolf
     pkgs.lunarvim
+    pkgs.nautilus
     pkgs.networkmanager
     pkgs.obsidian
     pkgs.openconnect
@@ -73,6 +75,42 @@
       alias rebuild='sudo nixos-rebuild switch'
     '';
   };
+
+  # Firefox
+  programs.firefox = {
+    enable = true;
+    policies = {
+      DefaultDownloadDirectory = "/home/erik/Downloads/";
+    };
+    profiles = {
+      default = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          privacy-badger
+          bitwarden
+          vimium
+          i-dont-care-about-cookies
+          sidebery
+        ];
+        search = {
+          force = true;
+          default = "DuckDuckGo";
+        };
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
+        #userChrome = (builtins.readFile ./userChrome.css);
+        #userContent = (builtins.readFile ./userContent.css);
+      };
+    };
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
+  # This is to allow firefox to install extensions with home-manager
 
   # Git
   programs.git = {
