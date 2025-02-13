@@ -9,6 +9,7 @@
   home.stateVersion = "24.11";
 
   home.packages = [
+    pkgs.bluez # bluetoothctl, devices, connect [mac address]
     pkgs.discord
     pkgs.git
     pkgs.gnome-terminal
@@ -32,6 +33,11 @@
     #pkgs.xdg-desktop-portal
     #pkgs.xdg-desktop-portal-gtk
     #pkgs.dbus
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    font-awesome_5
   ];
 
   # bashrc
@@ -98,9 +104,36 @@
         };
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "uc.tweak.rounded-corners" = true;
+          "browser.newtabpage.pinned" = [
+          {
+            title = "cyscuvu";
+            url = "https://cyscuvu.com";
+          }
+          {
+            title = "nix";
+            url = "https://search.nixos.org/packages";
+          }
+          {
+            title = "github";
+            url = "https://github.com/yummyhomie";
+          }
+          {
+            title = "canvas";
+            url = "https://uvu.instructure.com/";
+          }
+          {
+           title = "tryhackme";
+           url = "https://tryhackme.com/dashboard";
+          }
+          {
+            title = "outlook";
+            url = "https://outlook.office.com/mail/";
+          }
+          ];
         };
-        #userChrome = (builtins.readFile ./userChrome.css);
-        #userContent = (builtins.readFile ./userContent.css);
+        userChrome = (builtins.readFile ./userChrome.css);
+        userContent = (builtins.readFile ./userContent.css);
       };
     };
   };
@@ -110,7 +143,7 @@
       inherit pkgs;
     };
   };
-  # This is to allow firefox to install extensions with home-manager
+  # This is to allow firefox to install extensions with home-manager!
 
   # Git
   programs.git = {
@@ -130,10 +163,15 @@
         height = 25;
         modules-left = [
           "hyprland/workspaces"
+          "hyprland/mode"
         ];
         modules-center = [
           "clock"
         ];
+        "clock" = {
+          interval = 60;
+          format = "{:%A, %b %d - %I:%M %p}";
+        };
         modules-right = [
           "pulseaudio"
           "memory"
@@ -141,16 +179,44 @@
           "battery"
           "disk"
         ];
+        "battery" = {
+          format = "";
+        };
       };
     };
     style = ''
       * {
-        color: white;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        font-family: "Font Awesome 6 Free",san-serif;
       }
 
       window#waybar{
-        border-radius: 8;
-        background: rgba(124, 124, 124, 0.6);
+        background: #292828;
+        color: #ffffff;
+      }
+
+      #workspaces button {
+        margin-right: 10px;
+        color: #ffffff;
+      }
+
+      #workspaces button:hover, #workspaces button:active {
+        background-color: #292828;
+        color: #ffffff;
+      }
+      
+      #workspaces button.focused {
+        background-color: #383737;
+      }
+
+
+      #battery {
+        margin-left: 7px;
+        margin-right: 3px;
       }
     '';        
   };

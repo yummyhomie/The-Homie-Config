@@ -90,11 +90,11 @@
 ╹  ┗━┛╹ ╹ ╹ ┗━┛
 */
 
-*
+/* *
 {
   font-family: "FantasqueSansM Nerd Font" !important;
   font-size: 16px !important;
-}
+} */
 
 /*
 ╻ ╻┏━┓╻  ┏┓ ┏━┓┏━┓
@@ -198,12 +198,12 @@ findbar {
 }
 
 /* Bookmarks bar  */
-.bookmark-item .toolbarbutton-icon {
+/* .bookmark-item .toolbarbutton-icon {
   display: none;
-}
+} 
 .toolbarbutton.bookmark-item:not(.subviewbutton) {
   min-width: 1.6em;
-}
+} */
 
 /* Toolbar  */
 #tracking-protection-icon-container,
