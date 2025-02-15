@@ -11,6 +11,8 @@
   home.packages = [
     pkgs.bluez # bluetoothctl, devices, connect [mac address]
     pkgs.discord
+    pkgs.fastfetch
+    pkgs.font-awesome
     pkgs.git
     pkgs.gnome-terminal
     pkgs.libreoffice-qt6-fresh
@@ -33,11 +35,6 @@
     #pkgs.xdg-desktop-portal
     #pkgs.xdg-desktop-portal-gtk
     #pkgs.dbus
-  ];
-
-  fonts.packages = with pkgs; [
-    font-awesome
-    font-awesome_5
   ];
 
   # bashrc
@@ -168,19 +165,26 @@
         modules-center = [
           "clock"
         ];
-        "clock" = {
+        clock = {
           interval = 60;
           format = "{:%A, %b %d - %I:%M %p}";
         };
         modules-right = [
-          "pulseaudio"
-          "memory"
-          "cpu"
+          #"pulseaudio"
+          #"memory"
+          #"cpu"
           "battery"
-          "disk"
+          #"disk"
         ];
-        "battery" = {
-          format = "";
+        battery = {
+          format.low = "{capacity}% ";
+          format-charging = "{capacity}%";
+          format-icon = [ "" "" "" "" "" ];
+          interval = 30;
+            states = {
+              warning = 30;
+              crticial = 15;
+            };
         };
       };
     };
@@ -191,7 +195,8 @@
         padding: 0;
         margin: 0;
         font-size: 16px;
-        font-family: "Font Awesome 6 Free",san-serif;
+        font-family: monospace;
+        font-weight: bold;
       }
 
       window#waybar{
@@ -214,9 +219,20 @@
       }
 
 
-      #battery {
-        margin-left: 7px;
-        margin-right: 3px;
+      #battery.full {
+        color: white;
+      }
+
+      #battery.good {
+        color: green;
+      }
+
+      #battery.medium {
+        color: yellow;
+      }
+
+      #battery.low {
+        color: red;
       }
     '';        
   };
