@@ -9,32 +9,29 @@
   home.stateVersion = "24.11";
 
   home.packages = [
-    pkgs.bluez # bluetoothctl, devices, connect [mac address]
+    pkgs.bluez                  # bluetoothctl, devices, connect [mac address]
     pkgs.discord
     pkgs.fastfetch
     pkgs.font-awesome
     pkgs.git
+    pkgs.gvfs                   # Support for remote file system management
     pkgs.gnome-terminal
+    pkgs.hyprpaper
     pkgs.libreoffice-qt6-fresh
     pkgs.librewolf
     pkgs.lunarvim
-    pkgs.nautilus
     pkgs.networkmanager
+    pkgs.nnn
     pkgs.obsidian
     pkgs.openconnect
+    pkgs.pavucontrol
     pkgs.spotify # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    pkgs.xfce.thunar
     pkgs.vim
     pkgs.vscode
     pkgs.xwayland
     pkgs.wofi
     pkgs.xorg.xrandr
-
-    # Packages for Hyprland
-    pkgs.hyprpaper
-    pkgs.wofi
-    #pkgs.xdg-desktop-portal
-    #pkgs.xdg-desktop-portal-gtk
-    #pkgs.dbus
   ];
 
   # bashrc
@@ -149,6 +146,67 @@
     userEmail = "eleedee@outlook.com";
   };
 
+  # Hyprpaper *Currently needs more troubleshooting, this breaks the wallpaper :( *
+  #services.hyprpaper = {
+  #  enable = true;
+  #  settings = {
+  #    preload = [" /home/erik/.config/hypr/fall.jpg "];
+  #    wallpaper = [ " , /home/erik/.config/hypr/fall.jpg "];
+  #  };
+  #};
+
+  # Hypridle  *Currently in progress. Service, so it won't work on home-manager. Find alt way to run hypridle/lock*
+  #services.hypridle = {
+  #  enable = true;
+  #  general = {
+  #    lock_cmd = "pidof hyprlock || hyprlock";       # avoid starting multiple hyprlock instances.
+  #    before_sleep_cmd = "loginctl lock-session";    # lock before suspend.
+  #    after_sleep_cmd = "hyprctl dispatch dpms on";  # to avoid having to press a key twice to turn on the display.
+  #  }; 
+  #
+  #  listener = [
+  #    {
+  #      timeout = 150;                                # 2.5min.
+  #      on-timeout = "brightnessctl -s set 10";       # set monitor backlight to minimum, avoid 0 on OLED monitor.
+  #      on-resume = "brightnessctl -r";               # monitor backlight restore.
+  #    }
+  #    {
+  #      timeout = 300;                                 # 5min
+  #      on-timeout = "loginctl lock-session";          # lock screen when timeout has passed
+  #    }
+  #    {
+  #      timeout = 330;                                 # 5.5min
+  #      on-timeout = "hyprctl dispatch dpms off";      # screen off when timeout has passed
+  #      on-resume = "hyprctl dispatch dpms on";        # screen on when activity is detected after timeout has fired.
+  #    }
+  #    {
+  #      timeout = 1800;                                # 30min
+  #      on-timeout = "systemctl suspend";              # suspend pc
+  #    }
+  #  ];
+  #};
+
+  # Hyprlock
+  #programs.hyprlock = {
+  #  enable = true;
+  #};
+
+  # lf 
+  programs.lf = {
+    enable = true;
+    commands = {
+      dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
+    };
+    keybindings = {};
+    settings = {
+      preview = true;
+      hidden = true;
+      drawbox = true;
+      icons = true;
+      ignorecase = true;
+    };
+  };
+  
   # Waybar 
   programs.waybar = {
     enable = true;
@@ -158,28 +216,61 @@
         position = "top";
         margin = "4px, 4px, 0px, 4px";
         height = 25;
-        modules-left = [
-          "hyprland/workspaces"
-          "hyprland/mode"
+        
+        modules-left = [ "hyprland/workspaces" "hyprland/mode" "wlr/taskbar" ];
+        modules-center = [ "clock" ];
+        modules-right = [
+          # "pulseaudio#microphone"
+          "network"
+          "pulseaudio"
+          "battery"
         ];
-        modules-center = [
-          "clock"
-        ];
+
+        "wlr/taskbar" = {
+          icon-size = 18;
+          on-click = "activate";
+          on-click-middle = "close";
+          #workspace-specific = true; *This doesn't work for some reason. Gotta troubleshoot a bit more.*
+        };
+
         clock = {
           interval = 60;
           format = "{:%A, %b %d - %I:%M %p}";
         };
-        modules-right = [
-          #"pulseaudio"
-          #"memory"
-          #"cpu"
-          "battery"
-          #"disk"
-        ];
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-muted = "";
+          format-icons = {
+            default = ["" "" ""];
+            headphone = "";
+          };
+          tooltip-format = "{desc}\nVolume: {volume}%";
+          on-click = "pavucontrol";
+        };
+
+        #"pulseaudio#microphone" = { # Gotta try to get mic mute/unmute functionality working
+        #  format = "";
+        #  format-source-muted = "";
+        #  tooltip-format = "Microphone (Source)\n{source_desc}";
+        #  on-click = "pavucontrol";
+        #};
+        
+
+        network = {
+          format-wifi = "";
+          format-ethernet = "";
+          format-disconnected = "";
+          tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
+          tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
+          tooltip-format-disconnected = "Disconnected";
+          interval = 30;
+        };
+
         battery = {
           format.low = "{capacity}% ";
           format-charging = "{capacity}%";
-          format-icon = [ "" "" "" "" "" ];
+          format-icons = [ "" "" "" "" "" ];
           interval = 30;
             states = {
               warning = 30;
@@ -199,7 +290,7 @@
         font-weight: bold;
       }
 
-      window#waybar{
+      window#waybar {
         background: #292828;
         color: #ffffff;
       }
@@ -209,30 +300,16 @@
         color: #ffffff;
       }
 
-      #workspaces button:hover, #workspaces button:active {
-        background-color: #292828;
-        color: #ffffff;
-      }
-      
-      #workspaces button.focused {
-        background-color: #383737;
+      #pulseaudio {
+        margin-left: 16px;
       }
 
-
-      #battery.full {
-        color: white;
+      #pulseaudio#microphone {
+        margin-left: 16px;
       }
 
-      #battery.good {
-        color: green;
-      }
-
-      #battery.medium {
-        color: yellow;
-      }
-
-      #battery.low {
-        color: red;
+      #network {
+        margin-left: 16px;
       }
     '';        
   };
