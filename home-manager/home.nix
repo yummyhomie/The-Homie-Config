@@ -14,13 +14,15 @@
     pkgs.fastfetch
     pkgs.font-awesome
     pkgs.git
-    pkgs.gvfs                   # Support for remote file system management
+    pkgs.gnome.gvfs                   # Support for remote file system management
     pkgs.gnome-terminal
     pkgs.hyprpaper
     pkgs.libreoffice-qt6-fresh
     pkgs.librewolf
     pkgs.lunarvim
     pkgs.networkmanager
+    pkgs.nautilus
+    pkgs.nemo
     pkgs.nnn
     pkgs.obsidian
     pkgs.openconnect
@@ -217,20 +219,18 @@
         margin = "4px, 4px, 0px, 4px";
         height = 25;
         
-        modules-left = [ "hyprland/workspaces" "hyprland/mode" "wlr/taskbar" ];
-        modules-center = [ "clock" ];
+        modules-left = [ "hyprland/workspaces" ];  
+        modules-center = [];
         modules-right = [
+          "clock"
           # "pulseaudio#microphone"
           "network"
           "pulseaudio"
           "battery"
         ];
 
-        "wlr/taskbar" = {
-          icon-size = 18;
-          on-click = "activate";
-          on-click-middle = "close";
-          #workspace-specific = true; *This doesn't work for some reason. Gotta troubleshoot a bit more.*
+        "hyprland/workspaces" = {
+          "all-outputs" = false;
         };
 
         clock = {
@@ -286,8 +286,7 @@
         padding: 0;
         margin: 0;
         font-size: 16px;
-        font-family: monospace;
-        font-weight: bold;
+        font-family: Trebuchet;
       }
 
       window#waybar {
@@ -312,6 +311,11 @@
         margin-left: 16px;
       }
     '';        
+  };
+
+  # Yazi
+  programs.yazi = {
+    enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;

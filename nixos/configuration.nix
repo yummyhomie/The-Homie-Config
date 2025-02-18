@@ -51,11 +51,23 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [];
+
+  # AMD GPU Drivers
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
   
   # Hyprland
   programs.hyprland.enable = true;
 
   programs.steam.enable = true;
+
+  # VirtualBox
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

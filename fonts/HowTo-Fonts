@@ -1,0 +1,6 @@
+Instructions on installing fonts on this system. 
+  1. Make a symlink of the /fonts folder over to ~/.local/share
+  2. Then run "fc-cache -fv" to update the font cache for system use
+  3. Then to verify the font has been installed, run "fc-list | grep "FontName" "
+
+That's it! The Trebuchet font should be similar to one appearing in Half Life. 
