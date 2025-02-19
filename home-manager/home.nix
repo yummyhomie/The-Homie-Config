@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ~/.config/The-Homie-Config/waybar/waybar.nix
+    ~/.config/waybar/waybar.nix
   ];
 
   home.username = "erik";
@@ -11,6 +11,7 @@
 
   home.packages = [
     pkgs.bluez                  # bluetoothctl, devices, connect [mac address]
+    pkgs.bluetuith
     pkgs.discord
     pkgs.fastfetch
     pkgs.font-awesome
@@ -26,7 +27,7 @@
     pkgs.nemo
     pkgs.obsidian
     pkgs.openconnect
-    pkgs.pavucontrol
+    pkgs.pulsemixer
     pkgs.spotify # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.ungoogled-chromium
     pkgs.vim
@@ -76,7 +77,7 @@
       alias way='lvim ~/.config/home-manager/waybar/waybar.nix'
       alias nixos='sudo lvim /etc/nixos/configuration.nix'
       alias rebuild='sudo nixos-rebuild switch'
-      alias way='lvim ~/.config/The-Homie-Config/waybar/waybar.nix'
+      alias way='lvim ~/.config/waybar/waybar.nix'
     '';
   };
 
