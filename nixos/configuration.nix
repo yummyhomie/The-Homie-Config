@@ -51,10 +51,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [];
-
-  # AMD GPU Drivers
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
   
   # Hyprland
   programs.hyprland.enable = true;

@@ -1,9 +1,12 @@
 Code/
+caja/
+chromium/
 dconf/
 discord/
 Electron/
 environment.d/
 git/
+glib-2.0/
 gnome-session/
 GNOME-xdg-terminals.list
 gtk-3.0/
@@ -20,7 +23,6 @@ spotify/
 user-dirs.dirs
 user-dirs.locale
 wal/
-waybar/
 xdg-terminals.list
 .bashrc
 .gsd-keyboard.settings-ported
