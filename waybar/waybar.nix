@@ -82,6 +82,7 @@
           format-wifi = " {signalStrength}";
           format-ethernet = "";
           format-disconnected = "";
+          on-click = "gnome-terminal -e nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
