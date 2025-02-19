@@ -19,6 +19,7 @@
     pkgs.gnome.gvfs                   # Support for remote file system management
     pkgs.gnome-terminal
     pkgs.hyprpaper
+    pkgs.hyprshot
     pkgs.libreoffice-qt6-fresh
     pkgs.librewolf
     pkgs.lunarvim
