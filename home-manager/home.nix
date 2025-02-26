@@ -18,6 +18,7 @@
     pkgs.font-awesome           # For icon functionality. Peep the waybar!
     pkgs.git      
     pkgs.gnome-terminal
+    pkgs.gnome.gvfs
     pkgs.hyprpaper
     pkgs.hyprshot
     pkgs.libreoffice-qt6-fresh  
