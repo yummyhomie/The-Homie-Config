@@ -52,9 +52,9 @@
     enablePHP = true;
     user = "erik";
     virtualHosts.localhost = {
-      documentRoot = "/home/erik/Documents/The-Destruction-Of-Homework/INFO-3300-Web-Dev/";
+      documentRoot = "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev";
       extraConfig = ''
-        <Directory "/home/erik/Documents/The-Destruction-Of-Homework/INFO-3300-Web-Dev/">
+        <Directory "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev">
           Require all granted
           Options Indexes FollowSymlinks
           AllowOverride All
