@@ -48,13 +48,13 @@
   };
 
   services.httpd = {
-    enable = true;
+    enable = false;
     enablePHP = true;
     user = "erik";
     virtualHosts.localhost = {
-      documentRoot = "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev";
+      documentRoot = "$HOME/Documents/The-Destruction-of-Homework";
       extraConfig = ''
-        <Directory "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev">
+        <Directory "$HOME/Documents/The-Destruction-of-Homework">
           Require all granted
           Options Indexes FollowSymlinks
           AllowOverride All
