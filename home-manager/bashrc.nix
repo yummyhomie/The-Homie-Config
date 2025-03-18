@@ -30,11 +30,11 @@
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias edit='lvim ~/.config/The-Homie-Config/home-manager/home.nix'
+      alias edit='lvim ~/The-Homie-Config/home-manager/home.nix'
       alias switch='home-manager switch'
-      alias hypr='lvim ~/.config/The-Homie-Config/hypr/hyprland.conf'
-      alias way='lvim ~/.config/The-Homie-Config/home-manager/waybar.nix'
-      alias nixos='sudo lvim ~/.config/The-Homie-Config/nixos/configuration.nix'
+      alias hypr='lvim ~/The-Homie-Config/hypr/hyprland.conf'
+      alias way='lvim ~/The-Homie-Config/home-manager/waybar.nix'
+      alias nixos='sudo lvim ~/The-Homie-Config/nixos/configuration.nix'
       alias rebuild='sudo nixos-rebuild switch'
     '';
   };

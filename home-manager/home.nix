@@ -4,7 +4,8 @@
   imports = [
     ../home-manager/bashrc.nix
     ../home-manager/waybar.nix
-    ../home-manager/librewolf.nix
+    ../home-manager/firefox.nix
+    ../home-manager/gtk.nix
   ];
 
   home.username = "erik";
@@ -16,21 +17,19 @@
     pkgs.discord
     pkgs.fastfetch
     pkgs.font-awesome           # For icon functionality. Peep the waybar!
-    pkgs.git      
     pkgs.gnome-terminal
-    pkgs.gnome.gvfs             # To allow me to connect to remote fileshares using a File Manager
     pkgs.hyprpaper
     pkgs.hyprshot
     pkgs.libreoffice-qt6-fresh
     pkgs.lunarvim
     pkgs.nemo
-    pkgs.nautilus
     pkgs.networkmanager         # Gotta double check if I need this.
     pkgs.obs-studio
     pkgs.obsidian
     pkgs.openconnect            # Use instead of cisco anyconnect (sudo openconnect [server] --useragent=AnyConnect)
     pkgs.pulsemixer
     pkgs.r2modman
+    pkgs.rofi-wayland
     pkgs.spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.ungoogled-chromium
     pkgs.unzip                  # To unzip files in the command line (Use "unzip!")
@@ -38,7 +37,6 @@
     pkgs.vscode
     pkgs.waybar
     pkgs.xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
-    pkgs.wofi
   ];
 
   # Git

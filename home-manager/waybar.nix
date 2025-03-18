@@ -135,7 +135,7 @@
         font-size: 16px;
         font-family: Trebuchet;
         font-weight: bold;
-        color: #ffffff;
+        color: #e2daae;
       }
 
       window#waybar {
@@ -146,7 +146,8 @@
       .modules-center,
       .modules-right {
         /* background: #292828; */
-        background: #4a5942;
+        /* background: #4a5942; */
+        background: #282524;
         border-radius: 4;
       }
 
@@ -156,69 +157,22 @@
 
       #workspaces button + button {
         margin-left: 8px;
-        background: #4a5942;
+      }
+
+      #workspaces button {
+        color: #e2daae;
+      }
+
+      #workspaces button.active {
+        color: #fc7c44;
       }
 
       .modules-center {
         background: transparent;
       }
 
-      #cpu,
-      #memory {
-        margin-right: 16px;
-      }
-
-      #cpu.good {
-        color: #00ff7f;
-      }
-
-      #cpu.warning {
-        color: #eed202;
-      }
-
-      #cpu.critical {
-        color: #ff4500;
-      }
-
-      #memory.good {
-        color: #00ff7f;
-      }
-
-      #memory.warning {
-        color: #eed202;
-      }
-
-      #memory.critical {
-        color: #ff4500;
-      }
-
-      #disk.good {
-        color: #00ff7f;
-      }
-
-      #disk.warning {
-        color: #eed202;
-      }
-
-      #disk.critical {
-        color: #ff4500;
-      }
-
-      #temperatureC.good {
-        color: #00ff7f;
-      }
-
-      #temperatureC.warning {
-        color: #eed202;
-      }
-
-      #temperatureC.critical {
-        color: #ff4500;
-      }
-
       .modules-right {
         padding: 0 16px;
-        background: #4a5942;
       }
 
       #bluetooth.connected {

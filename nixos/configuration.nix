@@ -17,13 +17,6 @@
   # Hardware
   hardware.bluetooth.enable = true;
 
-  # Filesystem
- # fileSystems."/mnt/D" = {
- #   device = "/dev/sdb";
- #   fsType = "ext4";
- #   options = [ "default" ];
- # };
-
   users.users.erik = {
      isNormalUser = true;
      extraGroups = [ "wheel" ];
@@ -39,6 +32,19 @@
   programs.hyprland.enable = true;
   
   programs.steam.enable = true;
+
+  services.gvfs.enable = true;
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
  
   virtualisation.virtualbox = {
     host = {
@@ -49,7 +55,7 @@
 
   services.httpd = {
     enable = false;
-    enablePHP = true;
+    enablePHP = false;
     user = "erik";
     virtualHosts.localhost = {
       documentRoot = "$HOME/Documents/The-Destruction-of-Homework";
