@@ -12,12 +12,8 @@
         modules-left = [ 
           "hyprland/workspaces" 
         ];  
-        modules-center = [ # Work in progress. Want smaller icons, aligned to the left.
-          #"cpu"
-          #"memory"
-          #"disk"
-          #"temperature"
-        ];
+        modules-center = [ ];
+
         modules-right = [
           "clock"
           "network"
@@ -30,48 +26,6 @@
           format = "{icon}";
           "on-click" = "activate";
         }; 
-
-        cpu = {
-          interval = 04;
-          format = "";
-          height = 8;
-          #format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
-          states = {
-            "good" = 10;
-            "warning" = 50;
-            "critical" = 90;
-          };
-        };
-
-        memory = {
-          interval = 04;
-          format = "";
-          states = {
-            "good" = 10;
-            "warning" = 50;
-            "critical" = 90;
-          };
-        };
-
-        disk = {
-          interval = 04;
-          format = "";
-          states = {
-            "good" = 10;
-            "warning" = 50;
-            "critical" = 90;
-          };
-        };
-
-        temperature = {
-          interval = 04;
-          format = " {temperatureC}°C";
-          states = {
-            "good" = 35;
-            "warning" = 50;
-            "critical" = 60;
-          };
-        };
 
         clock = {
           interval = 01;
@@ -164,7 +118,7 @@
       }
 
       #workspaces button.active {
-        color: #fc7c44;
+        color: #FC7C44;
       }
 
       .modules-center {

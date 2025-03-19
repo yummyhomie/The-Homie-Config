@@ -47,11 +47,6 @@
     userEmail = "eleedee@outlook.com";
   };
 
-  # Yazi # Work in Progress
-  programs.yazi = {
-    enable = true;
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   home.file = {};
