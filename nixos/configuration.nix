@@ -19,14 +19,18 @@
 
   users.users.erik = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "wireshark" ];
      packages = with pkgs; [
        tree
      ];
   };
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    pkgs.os-prober
+    pkgs.ntfs3g # For NTFS Recognition
+    pkgs.wireshark
+  ];
 
   # Programs On This System
   programs.hyprland.enable = true;
@@ -42,7 +46,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "14d";
     };
   };
  
@@ -54,13 +58,13 @@
   };
 
   services.httpd = {
-    enable = false;
-    enablePHP = false;
+    enable = true;
+    enablePHP = true;
     user = "erik";
     virtualHosts.localhost = {
-      documentRoot = "$HOME/Documents/The-Destruction-of-Homework";
+      documentRoot = "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev/assign11/";
       extraConfig = ''
-        <Directory "$HOME/Documents/The-Destruction-of-Homework">
+        <Directory "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev/assign11/">
           Require all granted
           Options Indexes FollowSymlinks
           AllowOverride All

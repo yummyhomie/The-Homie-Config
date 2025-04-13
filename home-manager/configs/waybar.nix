@@ -7,7 +7,7 @@
         layer = "top";
         position = "top";
         height = 25;
-        margin = "4px 4px 0px 4px";
+        margin = "8px 21px -13px 21px";
         
         modules-left = [ 
           "hyprland/workspaces" 
@@ -102,7 +102,7 @@
         /* background: #292828; */
         /* background: #4a5942; */
         background: #282524;
-        border-radius: 4;
+        border-radius: 0; /* Used to be 4 */
       }
 
       .modules-left {

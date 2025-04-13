@@ -2,10 +2,14 @@
 
 {
   imports = [
-    ../home-manager/bashrc.nix
-    ../home-manager/waybar.nix
-    ../home-manager/firefox.nix
-    ../home-manager/gtk.nix
+    ../home-manager/configs/bashrc.nix
+    ../home-manager/configs/gtk.nix
+    ../home-manager/configs/waybar.nix
+
+    ../home-manager/programs/alacritty.nix
+    ../home-manager/programs/firefox.nix
+    ../home-manager/programs/git.nix
+    ../home-manager/programs/thunderbird.nix
   ];
 
   home.username = "erik";
@@ -24,28 +28,26 @@
     pkgs.lunarvim
     pkgs.nemo
     pkgs.networkmanager         # Gotta double check if I need this.
-    pkgs.obs-studio
     pkgs.obsidian
     pkgs.openconnect            # Use instead of cisco anyconnect (sudo openconnect [server] --useragent=AnyConnect)
+    pkgs.p7zip
     pkgs.pulsemixer
     pkgs.r2modman
     pkgs.rofi-wayland
+    pkgs.signal-desktop
     pkgs.spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.ungoogled-chromium
     pkgs.unzip                  # To unzip files in the command line (Use "unzip!")
-    pkgs.vim           
+    pkgs.vim     
+    pkgs.vlc
     pkgs.vscode
     pkgs.waybar
     pkgs.xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
-  ];
+    pkgs.zip
 
-  # Git
-  programs.git = {
-    enable = true;
-    #package = pkgs.gitAndTools.gitFull;
-    userName = "yummyhomie";
-    userEmail = "eleedee@outlook.com";
-  };
+  # Hacking Tools
+    pkgs.nmap  
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
