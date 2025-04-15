@@ -10,6 +10,7 @@
     ../home-manager/programs/firefox.nix
     ../home-manager/programs/git.nix
     ../home-manager/programs/thunderbird.nix
+    ../home-manager/programs/vim.nix
   ];
 
   home.username = "erik";
@@ -37,8 +38,7 @@
     pkgs.signal-desktop
     pkgs.spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.ungoogled-chromium
-    pkgs.unzip                  # To unzip files in the command line (Use "unzip!")
-    pkgs.vim     
+    pkgs.unzip                  # To unzip files in the command line (Use "unzip!")     
     pkgs.vlc
     pkgs.vscode
     pkgs.waybar
