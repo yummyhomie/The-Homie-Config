@@ -9,18 +9,15 @@
         height = 25;
         margin = "8px 21px -13px 21px";
         
-        modules-left = [ 
-          "hyprland/workspaces" 
-        ];  
-        modules-center = [ ];
-
-        modules-right = [
+        modules-left = [ "hyprland/workspaces" ];  
+        modules-center = [ 
           "clock"
           "network"
           "bluetooth"
           "pulseaudio"
           "battery"
         ];
+        modules-right = [ "wlr/taskbar" ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -33,8 +30,8 @@
         };
 
         network = {
-          format-wifi = " {signalStrength}";
-          format-ethernet = "";
+          format-wifi = " {signalStrength} {ipaddr}";
+          format-ethernet = " {ipaddr}";
           format-disconnected = "";
           on-click = "gnome-terminal -e sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
@@ -78,6 +75,11 @@
         format-alt = "{icon} {time}";
         format-icons = ["" "" "" "" ""];
         }; 
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          "on-click" = "activate";
+        };
       };
     };
     style = ''
@@ -99,14 +101,12 @@
       .modules-left,
       .modules-center,
       .modules-right {
+        background: transparent;
+
         /* background: #292828; */
         /* background: #4a5942; */
-        background: #282524;
+        /* background: #282524; */
         border-radius: 0; /* Used to be 4 */
-      }
-
-      .modules-left {
-        padding: 0 8px;
       }
 
       #workspaces button + button {
@@ -115,18 +115,6 @@
 
       #workspaces button {
         color: #e2daae;
-      }
-
-      #workspaces button.active {
-        color: #FC7C44;
-      }
-
-      .modules-center {
-        background: transparent;
-      }
-
-      .modules-right {
-        padding: 0 16px;
       }
 
       #bluetooth.connected {
@@ -147,6 +135,10 @@
 
       #battery {
         margin-left: 16px;
+      }
+
+      #taskbar button + button {
+        margin-left: 8px;
       }
     '';        
   };

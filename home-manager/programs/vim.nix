@@ -19,8 +19,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-      vim-nix
-      auto-pairs
+      auto-pairs # Automatically fill in brackets, semi-colons, etc.
 
     ];
   };

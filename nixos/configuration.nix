@@ -32,22 +32,30 @@
     pkgs.wireshark
   ];
 
-  # Programs On This System
-  programs.hyprland.enable = true;
+  # Programs & Services On This System
   
-  programs.steam.enable = true;
+  # Hyprland
+  programs.hyprland.enable = true;
 
+  # Hypridle
+  services.hypridle = {
+    enable = true;
+  };
+
+  #Steam
+  programs.steam.enable = true;
+  
+  # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;
 
   nix = {
     settings = {
       auto-optimise-store = true;
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "14d";
-    };
+  };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
   };
  
   virtualisation.virtualbox = {
@@ -57,14 +65,15 @@
     };
   };
 
+  # Apache Server (For Class)
   services.httpd = {
-    enable = true;
-    enablePHP = true;
-    user = "erik";
+    enable = false;
+    enablePHP = false;
+    user = "user to run as";
     virtualHosts.localhost = {
-      documentRoot = "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev/assign11/";
+      documentRoot = "Directory Folder where HW is";
       extraConfig = ''
-        <Directory "/home/erik/Documents/The-Destruction-of-Homework/INFO-3300-Web-Dev/assign11/">
+        <Directory "Directory Folder where HW is">
           Require all granted
           Options Indexes FollowSymlinks
           AllowOverride All
