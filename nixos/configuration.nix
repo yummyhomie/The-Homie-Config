@@ -38,9 +38,7 @@
   programs.hyprland.enable = true;
 
   # Hypridle
-  services.hypridle = {
-    enable = true;
-  };
+  services.hypridle.enable = true;
 
   #Steam
   programs.steam.enable = true;

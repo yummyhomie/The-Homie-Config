@@ -1,8 +1,7 @@
 {
-    programs.git = {
-        enable = true;
-        #package = pkgs.gitAndTools.gitFull;
-        userName = "yummyhomie";
-        userEmail = "eleedee@outlook.com";
-    };
+  programs.git = {
+    enable = true;
+    userName = "yummyhomie";
+    userEmail = "eleedee@outlook.com";
+  };
 }

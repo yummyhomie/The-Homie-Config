@@ -2,16 +2,32 @@
 
 {
   imports = [
-    ../home-manager/configs/bashrc.nix
-    ../home-manager/configs/gtk.nix
-    ../home-manager/configs/waybar.nix
-
-    ../home-manager/programs/foot.nix
-    ../home-manager/programs/firefox.nix
-    ../home-manager/programs/git.nix
-    ../home-manager/programs/thunderbird.nix
-    ../home-manager/programs/vim.nix
+    ./configs/default.nix
+    ./programs/default.nix
   ];
+
+/*
+▄▄▄█████▓ ██░ ██ ▓█████     ██░ ██  ▒█████   ███▄ ▄███▓ ██▓▓█████ 
+▓  ██▒ ▓▒▓██░ ██▒▓█   ▀    ▓██░ ██▒▒██▒  ██▒▓██▒▀█▀ ██▒▓██▒▓█   ▀ 
+▒ ▓██░ ▒░▒██▀▀██░▒███      ▒██▀▀██░▒██░  ██▒▓██    ▓██░▒██▒▒███   
+░ ▓██▓ ░ ░▓█ ░██ ▒▓█  ▄    ░▓█ ░██ ▒██   ██░▒██    ▒██ ░██░▒▓█  ▄ 
+  ▒██▒ ░ ░▓█▒░██▓░▒████▒   ░▓█▒░██▓░ ████▓▒░▒██▒   ░██▒░██░░▒████▒
+  ▒ ░░    ▒ ░░▒░▒░░ ▒░ ░    ▒ ░░▒░▒░ ▒░▒░▒░ ░ ▒░   ░  ░░▓  ░░ ▒░ ░
+    ░     ▒ ░▒░ ░ ░ ░  ░    ▒ ░▒░ ░  ░ ▒ ▒░ ░  ░      ░ ▒ ░ ░ ░  ░
+  ░       ░  ░░ ░   ░       ░  ░░ ░░ ░ ░ ▒  ░      ░    ▒ ░   ░   
+          ░  ░  ░   ░  ░    ░  ░  ░    ░ ░         ░    ░     ░  ░
+                                                                  
+          ▄████▄   ▒█████   ███▄    █   █████▒██▓  ▄████          
+         ▒██▀ ▀█  ▒██▒  ██▒ ██ ▀█   █ ▓██   ▒▓██▒ ██▒ ▀█▒         
+         ▒▓█    ▄ ▒██░  ██▒▓██  ▀█ ██▒▒████ ░▒██▒▒██░▄▄▄░         
+         ▒▓▓▄ ▄██▒▒██   ██░▓██▒  ▐▌██▒░▓█▒  ░░██░░▓█  ██▓         
+         ▒ ▓███▀ ░░ ████▓▒░▒██░   ▓██░░▒█░   ░██░░▒▓███▀▒         
+         ░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ▒ ▒  ▒ ░   ░▓   ░▒   ▒          
+           ░  ▒     ░ ▒ ▒░ ░ ░░   ░ ▒░ ░      ▒ ░  ░   ░          
+         ░        ░ ░ ░ ▒     ░   ░ ░  ░ ░    ▒ ░░ ░   ░          
+         ░ ░          ░ ░           ░         ░        ░          
+         ░                     
+*/
 
   home.username = "erik";
   home.homeDirectory = "/home/erik";
@@ -28,7 +44,7 @@
     pkgs.hyprshot
     pkgs.libreoffice-qt6-fresh
     pkgs.lunarvim
-    pkgs.ncdu
+    pkgs.ncdu                   # To checkout Disk Usage
     pkgs.nemo
     pkgs.networkmanager         # Gotta double check if I need this.
     pkgs.obs-studio
@@ -54,10 +70,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  home.file = {};
-
-  home.sessionVariables = {};
 
   programs.home-manager.enable = true;
 }
