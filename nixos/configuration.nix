@@ -1,16 +1,32 @@
 { config, lib, pkgs, ... }:
 
+let
+  machineName = "the-homie-laptop"; # Set this manually on each machine
+  machineConfig = 
+    if machineName == "the-homie-laptop" then ./laptop.nix
+    else if machineName == "the-homie-machine" then ./desktop.nix
+    else abort "Unknown Hostname. Try again!";
+in
+
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       /etc/nixos/hardware-configuration.nix
+      machineConfig
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "the-homie-machine";
+  # CPU & GPU 
+  boot.kernelParams = [ "iommu=soft" ];
+  hardware.cpu.amd.updateMicrocode = 
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.amdgpu.initrd.enable = lib.mkDefault true;
+
+  # Networking
   networking.networkmanager.enable = true;
   time.timeZone = "America/Denver";
 
@@ -19,18 +35,12 @@
 
   users.users.erik = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "wireshark" ];
-     packages = with pkgs; [
-       tree
-     ];
+     extraGroups = [ "wheel" ];
+     packages = with pkgs; [];
   };
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [
-    pkgs.os-prober
-    pkgs.ntfs3g # For NTFS Recognition
-    pkgs.wireshark
-  ];
+  environment.systemPackages = with pkgs; [];
 
   # Programs & Services On This System
   
@@ -56,28 +66,14 @@
     dates = "weekly";
   };
  
-  virtualisation.virtualbox = {
-    host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
-  };
+  virtualisation.vmware.host.enable = true;
 
-  # Apache Server (For Class)
-  services.httpd = {
-    enable = false;
-    enablePHP = false;
-    user = "user to run as";
-    virtualHosts.localhost = {
-      documentRoot = "Directory Folder where HW is";
-      extraConfig = ''
-        <Directory "Directory Folder where HW is">
-          Require all granted
-          Options Indexes FollowSymlinks
-          AllowOverride All
-        </Directory>
-      '';
-    };
+  virtualisation.docker.enable = true;
+
+  # ZeroTier
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "60ee7c034a366ab7" ];
   };
   
   nixpkgs.config.allowUnfree = true;

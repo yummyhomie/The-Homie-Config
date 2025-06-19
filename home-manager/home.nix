@@ -36,6 +36,7 @@
   home.packages = [
     pkgs.bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     pkgs.discord
+    pkgs.docker-compose
     pkgs.fastfetch
     pkgs.font-awesome           # For icon functionality. Peep the waybar!
     pkgs.gimp
@@ -57,16 +58,16 @@
     pkgs.rofi-wayland
     pkgs.signal-desktop
     pkgs.spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
-    pkgs.chromium
+    pkgs.thunderbird
     pkgs.unzip                  # To unzip files in the command line (Use "unzip!")     
     pkgs.vlc
-    pkgs.vscode
     pkgs.waybar
     pkgs.xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     pkgs.zip
 
   # Hacking Tools
     pkgs.nmap
+    pkgs.stegseek
   ];
 
   nixpkgs.config.allowUnfree = true;

@@ -4,9 +4,20 @@
   programs.firefox = {
     enable = true;
     policies.DefaultDownloadDirectory = "$HOME/Downloads/";
-    profiles.default.search = {
-      default = "DuckDuckGo";
-      force = true;
+    profiles = {
+      profile0 = {
+        name = "the-homie-profile";
+        isDefault = true;
+        id = 0;
+        search = {
+          default = "ddg";
+          force = true;
+        };
+      };
+      profile1 = {
+        name = "i2p";
+        id = 1;
+      };
     };
 	  #settings = {
 	  #  "general.autoScroll" = true;  # Clicking middle mouse scrolls the page
