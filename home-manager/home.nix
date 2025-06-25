@@ -44,10 +44,8 @@
     pkgs.hyprpaper
     pkgs.hyprshot
     pkgs.libreoffice-qt6-fresh
-    pkgs.lunarvim
     pkgs.ncdu                   # To checkout Disk Usage
     pkgs.nemo
-    pkgs.neovim
     pkgs.networkmanager         # Gotta double check if I need this.
     pkgs.obs-studio
     pkgs.obsidian
@@ -67,7 +65,6 @@
 
   # Hacking Tools
     pkgs.nmap
-    pkgs.stegseek
   ];
 
   nixpkgs.config.allowUnfree = true;

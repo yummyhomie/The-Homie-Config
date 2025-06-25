@@ -10,6 +10,9 @@
       let &t_SI = "\e[6 q"
       let &t_EI = "\e[2 q"
 
+      colorscheme gruvbox
+      set background=dark
+
       set showtabline=2
 
       syntax on
@@ -22,6 +25,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
+      gruvbox         # For gruvbox theme
       auto-pairs      # Automatically fill in brackets, semi-colons, etc.
       nvchad          # Let's see if this works.
       ale             # Code/Syntax error catcher

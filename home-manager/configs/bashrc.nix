@@ -30,14 +30,14 @@
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias edit='lvim ~/The-Homie-Config/home-manager/home.nix'
+      alias edit='vim ~/The-Homie-Config/home-manager/home.nix'
       alias switch='home-manager switch'
-      alias bash='lvim ~/The-Homie-Config/home-manager/configs/bashrc.nix'
-      alias hypr='lvim ~/The-Homie-Config/hypr/hyprland.conf'
-      alias way='lvim ~/The-Homie-Config/home-manager/configs/waybar.nix'
-      alias nixos='sudo lvim ~/The-Homie-Config/nixos/configuration.nix'
+      alias bash='vim ~/The-Homie-Config/home-manager/configs/bashrc.nix'
+      alias hypr='vim ~/The-Homie-Config/hypr/hyprland.conf'
+      alias way='vim ~/The-Homie-Config/home-manager/configs/waybar.nix'
+      alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
       alias rebuild='sudo nixos-rebuild switch'
-      alias ala='lvim ~/The-Homie-Config/home-manager/programs/alacritty.nix'
+      alias ala='vim ~/The-Homie-Config/home-manager/programs/alacritty.nix'
     '';
   };
 }
