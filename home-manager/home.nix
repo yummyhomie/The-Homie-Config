@@ -47,6 +47,7 @@
     pkgs.lunarvim
     pkgs.ncdu                   # To checkout Disk Usage
     pkgs.nemo
+    pkgs.neovim
     pkgs.networkmanager         # Gotta double check if I need this.
     pkgs.obs-studio
     pkgs.obsidian
@@ -55,7 +56,6 @@
     pkgs.prismlauncher
     pkgs.pulsemixer
     pkgs.r2modman
-    pkgs.rofi-wayland
     pkgs.signal-desktop
     pkgs.spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     pkgs.thunderbird
