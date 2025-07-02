@@ -25,19 +25,20 @@
 
       # bold=1 italic=3 underline=4 strikethrough=9
 
-      PS1="$green\u@\h$end $blue\w$end $yellow\@$end: "
-
+      PS1="$green\u@\h$end $yellow\@$end $purple\w$end: "
+      # PS1="\u@\h \w \@: "
+      
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias edit='vim ~/The-Homie-Config/home-manager/home.nix'
-      alias switch='home-manager switch'
       alias bash='vim ~/The-Homie-Config/home-manager/configs/bashrc.nix'
+      alias edit='vim ~/The-Homie-Config/home-manager/home.nix'
+      alias foot='vim ~/The-Homie-Config/home-manager/programs/foot.nix'
       alias hypr='vim ~/The-Homie-Config/hypr/hyprland.conf'
-      alias way='vim ~/The-Homie-Config/home-manager/configs/waybar.nix'
       alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
       alias rebuild='sudo nixos-rebuild switch'
-      alias ala='vim ~/The-Homie-Config/home-manager/programs/alacritty.nix'
+      alias switch='home-manager switch'
+      alias way='vim ~/The-Homie-Config/home-manager/configs/waybar.nix'
     '';
   };
 }
