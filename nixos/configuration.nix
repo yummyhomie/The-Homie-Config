@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  machineName = "the-homie-machine"; # Set this manually on each machine
+  machineName = "the-homie-laptop"; # Set this manually on each machine
   machineConfig = 
     if machineName == "the-homie-laptop" then ./laptop.nix
     else if machineName == "the-homie-machine" then ./desktop.nix
@@ -59,11 +59,21 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
   nix.gc = {
     automatic = true;
     dates = "weekly";
+  };
+
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableKvm = true;
+      enableExtensionPack = true;
+      addNetworkInterface = false;
+    };
   };
  
   virtualisation.vmware.host.enable = true;
