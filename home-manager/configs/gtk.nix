@@ -20,6 +20,12 @@
       package = pkgs.papirus-icon-theme.override {color = "black"; };
     };
   };
+
+  home.pointerCursor = {
+    name = "Hackneyed";
+    package = pkgs.hackneyed;
+    size = 16;
+  };
 }
 
 # To find the name of the theme/icon, run this command:

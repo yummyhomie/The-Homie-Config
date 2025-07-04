@@ -34,6 +34,7 @@
       alias bash='vim ~/The-Homie-Config/home-manager/configs/bashrc.nix'
       alias edit='vim ~/The-Homie-Config/home-manager/home.nix'
       alias foot='vim ~/The-Homie-Config/home-manager/programs/foot.nix'
+      alias gtk='vim ~/The-Homie-Config/home-manager/configs/gtk.nix'
       alias hypr='vim ~/The-Homie-Config/hypr/hyprland.conf'
       alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
       alias rebuild='sudo nixos-rebuild switch'
