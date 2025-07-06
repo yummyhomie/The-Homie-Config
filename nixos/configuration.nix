@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  machineName = "the-homie-laptop"; # Set this manually on each machine
+  machineName = "the-homie-machine"; # Set this manually on each machine
   machineConfig = 
     if machineName == "the-homie-laptop" then ./laptop.nix
     else if machineName == "the-homie-machine" then ./desktop.nix
