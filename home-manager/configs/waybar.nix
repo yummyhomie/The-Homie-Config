@@ -6,10 +6,10 @@
       topBar = {
         layer = "top";
         position = "top";
-        height = 25;
-        margin = "8px 21px -13px 21px";
+        height = 16;
         
         modules-left = [ "hyprland/workspaces" ];  
+        
         modules-center = [ 
           "clock"
           "network"
@@ -17,7 +17,15 @@
           "pulseaudio"
           "battery"
         ];
-        modules-right = [ "wlr/taskbar" ];
+
+        modules-right = [  
+          "cpu_text"
+          "cpu"
+          "memory"
+          "disk"
+          "load"
+          "temperature"
+        ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -30,10 +38,10 @@
         };
 
         network = {
-          format-wifi = " {signalStrength} {ipaddr}";
+          format-wifi = "{signalStrength}  {ipaddr}";
           format-ethernet = " {ipaddr}";
           format-disconnected = "";
-          on-click = "gnome-terminal -e sudo nmtui";
+          on-click = "foot sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
@@ -42,7 +50,7 @@
 
         bluetooth = {
           format =  "";
-          on-click = "gnome-terminal -e bluetuith"; 
+          on-click = "foot bluetuith"; 
 	        # "controller": "controller1" # This specifies the alias of the controller to use if there are more than 1 on the system
           format-disabled = "";
           format-connected = "";
@@ -59,7 +67,7 @@
             headphone = "";
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
-          on-click = "gnome-terminal -e pulsemixer";
+          on-click = "foot pulsemixer";
         };
 
         battery = {
@@ -68,54 +76,56 @@
             "warning" = 30;
             "critical" = 15;
         };
-        format = "{icon} {capacity}%";
-        format-charging = " {capacity}%";
-        #"format-plugged" = " {capacity}%";
-        #"format-discharging" = " {capacity}%";
-        format-alt = "{icon} {time}";
-        format-icons = ["" "" "" "" ""];
-        }; 
+          format = "{icon} {capacity}%";
+          format-charging = " {capacity}%";
+          #"format-plugged" = " {capacity}%";
+          #"format-discharging" = " {capacity}%";
+          format-alt = "{icon} {time}";
+          format-icons = ["" "" "" "" ""];
+        };
 
-        "wlr/taskbar" = {
-          format = "{icon}";
-          "on-click" = "activate";
+        cpu = {
+          format = "cpu {usage}%";
+          interval = 02;
+          "states" = {
+            "critical" = 90;
+          };
+        };
+
+        memory = {
+          format = "mem {percentage}%";
+          interval = 02;
+          "states" = {
+            "critical" = 80;
+          };
         };
       };
     };
+
     style = ''
       * {
         border: none;
-        border-radius: 0;
         padding: 0;
         margin: 0;
-        font-size: 16px;
+
         font-family: Trebuchet;
+        font-size: 16px;
         font-weight: bold;
-        color: #e2daae;
+
+        color: #322d28;
       }
 
-      window#waybar {
+      window#waybar { 
         background: transparent;
       }
 
       .modules-left,
       .modules-center,
-      .modules-right {
-        background: transparent;
-
-        /* background: #292828; */
-        /* background: #4a5942; */
-        /* background: #282524; */
-        border-radius: 0; /* Used to be 4 */
+      .modules-right { 
+        padding: 2px;
       }
 
-      #workspaces button + button {
-        margin-left: 8px;
-      }
-
-      #workspaces button {
-        color: #e2daae;
-      }
+      #workspaces button + button { margin-left: 4px; }
 
       #bluetooth.connected {
         color: #00bfff;
@@ -138,8 +148,11 @@
       }
 
       #taskbar button + button {
-        margin-left: 8px;
+        margin-left: 4px;
       }
     '';        
   };
+
+  # OG font color: #e2daae; Also cool light color -> #d4be98
+  # Background that matches Foot terminal background/opacity rgba(40, 40, 40, 0.9); 
 }
