@@ -1,5 +1,8 @@
-{
-# Waybar 
+{ pkgs, ... }:
+let 
+  thymeImage = pkgs.copyPathToStore /home/erik/The-Homie-Config/hypr/thyme.png;
+in
+{ 
   programs.waybar = {
     enable = true;
     settings = {
@@ -8,7 +11,10 @@
         position = "top";
         height = 16;
         
-        modules-left = [ "hyprland/workspaces" ];  
+        modules-left = [ 
+          "image"
+          "hyprland/workspaces" 
+        ];  
         
         modules-center = [ 
           "clock"
@@ -19,13 +25,17 @@
         ];
 
         modules-right = [  
-          "cpu_text"
           "cpu"
           "memory"
           "disk"
-          "load"
           "temperature"
         ];
+
+        "image" = {
+          path = "/home/erik/The-Homie-Config/hypr/thyme.png";
+          size = 32;
+          tooltip = false;
+        };
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -85,19 +95,34 @@
         };
 
         cpu = {
-          format = "cpu {usage}%";
+          format = " CPU {usage}";
           interval = 02;
           "states" = {
             "critical" = 90;
+            "warning" = 70;
           };
         };
 
         memory = {
-          format = "mem {percentage}%";
+          format = " MEM {percentage}";
           interval = 02;
           "states" = {
-            "critical" = 80;
+            "critical" = 85;
+            "warning" = 70;
           };
+        };
+
+        disk = {
+          format = " DISK {free}";
+          interval = 30;
+          path = "/";
+        };
+
+        temperature = {
+          format = "{icon} {temperatureC}";
+          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          interval = 2;
+          format-icons = ["" "" "" "" ""];
         };
       };
     };
@@ -125,17 +150,24 @@
         padding: 2px;
       }
 
-      #workspaces button + button { margin-left: 4px; }
+      .modules-left { margin-left: 19px; }
+      .modules-right { margin-right: 19px; }
+
+      #workspaces button + button { margin-left: 2px; }
+
+      #image {
+        margin-right: 2px;
+      }
+
+      #network {
+        margin-left: 16px;
+      }
 
       #bluetooth.connected {
         color: #00bfff;
       }
 
       #pulseaudio {
-        margin-left: 16px;
-      }
-
-      #network {
         margin-left: 16px;
       }
 
@@ -147,8 +179,20 @@
         margin-left: 16px;
       }
 
-      #taskbar button + button {
-        margin-left: 4px;
+      #cpu {
+        margin-left: 16px; 
+      }
+
+      #memory {
+        margin-left: 16px;
+      }
+
+      #disk {
+        margin-left: 16px;
+      }
+
+      #temperature {
+        margin-left: 16px;
       }
     '';        
   };
