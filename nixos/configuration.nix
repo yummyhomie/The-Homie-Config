@@ -50,12 +50,6 @@ in
   # Hypridle
   services.hypridle.enable = true;
 
-  # River
-  programs.river = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   #Steam
   programs.steam.enable = true;
   
