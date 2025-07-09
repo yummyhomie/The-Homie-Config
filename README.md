@@ -1,5 +1,5 @@
 <div align="center">
-    ***The-Homie-Config***
+    <h1><i>The-Homie-Config</i></h1>
     <h4>Powered by NixOS, VIM, and American Football (the band).</h4>
 </div>
 
