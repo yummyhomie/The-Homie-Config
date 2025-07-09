@@ -29,3 +29,5 @@ wal/
 xdg-terminals.list
 .bashrc
 .gsd-keyboard.settings-ported
+*.swp
+*.swo

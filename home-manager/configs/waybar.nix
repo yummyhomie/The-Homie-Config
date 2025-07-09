@@ -164,6 +164,7 @@ in
       .modules-left {
         background: #32302F;
         border: 2px solid #928374;
+        margin-left: 8px;
       }
 
       #workspaces button + button { margin-left: 4px; }
