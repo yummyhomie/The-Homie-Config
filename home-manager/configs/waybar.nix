@@ -1,9 +1,18 @@
+{ config, ... }:
+let
+  hostname = builtins.replaceStrings ["\n"] [""] (builtins.readFile "/etc/hostname");
+
+  hwmonPath = 
+  if hostname == "the-homie-laptop" then "/sys/class/hwmon/hwmon4/temp1_input"
+  else if hostname == "the-homie-machine" then "/sys/class/hwmon/hwmon0/temp1_input"
+  else abort "Unknown hostname. Set correct hostname!";
+in
 { 
   programs.waybar = {
     enable = true;
     settings = {
       topBar = {
-        layer = "top";
+        layer = "bottom";
         position = "bottom";
         height = 16;
         
@@ -52,8 +61,8 @@
         };
 
         network = {
-          format-wifi = "{signalStrength}  {ipaddr}";
-          format-ethernet = " {ipaddr}";
+          format-wifi = "{ipaddr}  {signalStrength}";
+          format-ethernet = "{ipaddr}  ";
           format-disconnected = "";
           on-click = "foot sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
@@ -75,9 +84,9 @@
 
         pulseaudio = {
           format = "{icon} {volume}";
-          format-muted = "";
+          format-muted = "{icon}";
           format-icons = {
-            default = ["" "" ""];
+            default = ["" "" "" ""];
             headphone = "";
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
@@ -86,8 +95,7 @@
 
         battery = {
         "states" = {
-            "good" = 95;
-            "warning" = 30;
+            "warning" = 40;
             "critical" = 15;
         };
           format = "{icon} {capacity}%";
@@ -102,8 +110,8 @@
           format = " CPU {usage}";
           interval = 02;
           "states" = {
-            "critical" = 90;
             "warning" = 70;
+            "critical" = 85;
           };
         };
 
@@ -111,8 +119,8 @@
           format = " MEM {percentage}";
           interval = 02;
           "states" = {
-            "critical" = 85;
             "warning" = 70;
+            "critical" = 85;
           };
         };
 
@@ -123,10 +131,15 @@
         };
 
         temperature = {
-          format = "{icon} {temperatureC}";
-          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          format = "{icon} {temperatureC}°C";
+          hwmon-path = hwmonPath;
           interval = 2;
           format-icons = ["" "" "" "" ""];
+          "states" = {
+            "good" = 45;
+            "warning" = 60;
+            "critical" = 75;
+          };
         };
       };
     };
@@ -137,36 +150,52 @@
         padding: 0;
         margin: 0;
 
-        font-family: monospace;
+        font-family: Trebuchet;
         font-size: 16px;
         font-weight: bold;
 
         color: #d4be98;
       }
 
-      window#waybar { 
+      window#waybar {
         background: transparent;
       }
 
-      modules-left {
-        border: 2px solid #D4BE98;
+      .modules-left {
+        background: #32302F;
+        border: 2px solid #928374;
       }
 
       #workspaces button + button { margin-left: 4px; }
+
+      #workspaces,
+      #clock,
+      #network,
+      #bluetooth,
+      #pulseaudio,
+      #battery,
+      #cpu,
+      #memory,
+      #disk,
+      #temperature,
+      #image { 
+        padding: 0px 4px; 
+      }
       
-      #workspaces {
-        background-color: #32302F;
-        padding: 2px;
+      #workspaces { 
+        margin: 2px 2px; 
       }
 
       #clock,
       #network,
       #bluetooth,
       #pulseaudio,
-      #battery {
-        background-color: #32302F;
-        padding: 2px;
+      #battery { 
+        margin: 0px 2px; 
       }
+
+      #battery.warning { color: #D8A657; }
+      #battery.critical { color: #EA6962; }
 
       #bluetooth.connected {
         color: #00bfff;
@@ -175,14 +204,22 @@
       #cpu,
       #memory,
       #disk,
-      #temperature {
-        background-color: #32302F;
-        padding: 2px;
+      #temperature { 
+        margin: 0px 2px; 
       }
+      
+      #cpu.warning { color: #D8A657; }
+      #cpu.critical { color: #EA6962; }
+      
+      #memory.warning { color: #D8A657; }
+      #memory.critical { color: #EA6962; }
 
-      #image {
-        background-color: #32302F;
-        padding: 2px;
+      #temperature.good { color: #A9B665; }
+      #temperature.warning { color: #D8A657; }
+      #temperature.critical { color: #EA6962; }
+
+      #image { 
+        margin: 0px 2px; 
       }
     '';        
   };

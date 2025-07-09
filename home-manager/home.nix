@@ -46,6 +46,7 @@
     hyprpaper
     hyprshot
     libreoffice-qt6-fresh
+    lm_sensors
     nautilus
     ncdu                   # To checkout Disk Usage
     networkmanager         # Gotta double check if I need this.
