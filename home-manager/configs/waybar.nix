@@ -1,7 +1,3 @@
-{ pkgs, ... }:
-let 
-  thymeImage = pkgs.copyPathToStore /home/erik/The-Homie-Config/hypr/thyme.png;
-in
 { 
   programs.waybar = {
     enable = true;
@@ -12,7 +8,7 @@ in
         height = 16;
         
         modules-left = [ 
-          "image"
+          "image#thyme"
           "hyprland/workspaces" 
         ];  
         
@@ -29,11 +25,18 @@ in
           "memory"
           "disk"
           "temperature"
+          "image#iris"
         ];
 
-        "image" = {
+        "image#iris" = {
+          path = "/home/erik/The-Homie-Config/hypr/iris.png";
+          size = 16;
+          tooltip = false;
+        };
+
+        "image#thyme" = {
           path = "/home/erik/The-Homie-Config/hypr/thyme.png";
-          size = 32;
+          size = 16;
           tooltip = false;
         };
 
@@ -153,11 +156,7 @@ in
       .modules-left { margin-left: 19px; }
       .modules-right { margin-right: 19px; }
 
-      #workspaces button + button { margin-left: 2px; }
-
-      #image {
-        margin-right: 2px;
-      }
+      #workspaces button + button { margin-left: 2px; } 
 
       #network {
         margin-left: 16px;
@@ -193,6 +192,7 @@ in
 
       #temperature {
         margin-left: 16px;
+        margin-right: 4px;
       }
     '';        
   };

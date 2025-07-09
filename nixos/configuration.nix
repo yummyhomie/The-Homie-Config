@@ -36,7 +36,7 @@ in
   users.users.erik = {
      isNormalUser = true;
      extraGroups = [ "wheel" ];
-     packages = with pkgs; [];
+     packages = with pkgs; [ btop ];
   };
 
   # Packages On This System
