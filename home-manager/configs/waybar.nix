@@ -4,29 +4,30 @@
     settings = {
       topBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         height = 16;
         
         modules-left = [ 
-          "image#thyme"
           "hyprland/workspaces" 
-        ];  
-        
-        modules-center = [ 
+          
           "clock"
           "network"
           "bluetooth"
           "pulseaudio"
           "battery"
-        ];
 
-        modules-right = [  
           "cpu"
           "memory"
           "disk"
           "temperature"
+          
           "image#iris"
-        ];
+          "image#thyme"
+        ];  
+        
+        modules-center = [];
+
+        modules-right = [];
 
         "image#iris" = {
           path = "/home/erik/The-Homie-Config/hypr/iris.png";
@@ -136,67 +137,56 @@
         padding: 0;
         margin: 0;
 
-        font-family: Trebuchet;
+        font-family: monospace;
         font-size: 16px;
         font-weight: bold;
 
-        color: #322d28;
+        color: #d4be98;
       }
 
       window#waybar { 
         background: transparent;
       }
 
-      .modules-left,
-      .modules-center,
-      .modules-right { 
+      modules-left {
+        border: 2px solid #D4BE98;
+      }
+
+      #workspaces button + button { margin-left: 4px; }
+      
+      #workspaces {
+        background-color: #32302F;
         padding: 2px;
       }
 
-      .modules-left { margin-left: 19px; }
-      .modules-right { margin-right: 19px; }
-
-      #workspaces button + button { margin-left: 2px; } 
-
-      #network {
-        margin-left: 16px;
+      #clock,
+      #network,
+      #bluetooth,
+      #pulseaudio,
+      #battery {
+        background-color: #32302F;
+        padding: 2px;
       }
 
       #bluetooth.connected {
         color: #00bfff;
       }
 
-      #pulseaudio {
-        margin-left: 16px;
-      }
-
-      #bluetooth {
-        margin-left: 16px;
-      }
-
-      #battery {
-        margin-left: 16px;
-      }
-
-      #cpu {
-        margin-left: 16px; 
-      }
-
-      #memory {
-        margin-left: 16px;
-      }
-
-      #disk {
-        margin-left: 16px;
-      }
-
+      #cpu,
+      #memory,
+      #disk,
       #temperature {
-        margin-left: 16px;
-        margin-right: 4px;
+        background-color: #32302F;
+        padding: 2px;
+      }
+
+      #image {
+        background-color: #32302F;
+        padding: 2px;
       }
     '';        
   };
 
-  # OG font color: #e2daae; Also cool light color -> #d4be98
+  # OG font color: #e2daae; Also cool dark color -> #322d28;
   # Background that matches Foot terminal background/opacity rgba(40, 40, 40, 0.9); 
 }

@@ -35,6 +35,7 @@
 
   home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
+    brightnessctl
     discord
     docker-compose
     fastfetch
