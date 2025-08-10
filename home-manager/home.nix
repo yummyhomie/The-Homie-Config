@@ -4,6 +4,7 @@
   imports = [
     ./configs/default.nix
     ./programs/default.nix
+    ../nixos/stylix.nix
   ];
 
 /*
@@ -39,9 +40,10 @@
     discord
     docker-compose
     fastfetch
+    firefox
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
-    gnome-keyring
+    gnome-keyring          # Supposed to help with storing login "keys."
     gvfs                   # This helps with connecting to remote folders via nautilus
     hyprpaper
     hyprshot
@@ -50,6 +52,7 @@
     nautilus
     ncdu                   # To checkout Disk Usage
     networkmanager         # Gotta double check if I need this.
+    nmap
     obs-studio
     obsidian
     openconnect            # Use instead of cisco anyconnect (sudo openconnect [server] --useragent=AnyConnect)
@@ -65,9 +68,7 @@
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
-
-  # Hacking Tools
-    nmap
+    sway-launcher-desktop
   ];
 
   nixpkgs.config.allowUnfree = true;

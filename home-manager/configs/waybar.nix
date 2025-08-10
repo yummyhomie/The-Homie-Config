@@ -1,74 +1,91 @@
-{ config, ... }:
+{ config, hostname, ... }:
 let
-  hostname = builtins.replaceStrings ["\n"] [""] (builtins.readFile "/etc/hostname");
-
   hwmonPath = 
   if hostname == "the-homie-laptop" then "/sys/class/hwmon/hwmon4/temp1_input"
   else if hostname == "the-homie-machine" then "/sys/class/hwmon/hwmon0/temp1_input"
-  else abort "Unknown hostname. Set correct hostname!";
+  else abort "Unknown hostname ${hostname}. Set correct hostname!";
 in
 { 
   programs.waybar = {
     enable = true;
     settings = {
       topBar = {
-        layer = "bottom";
-        position = "bottom";
-        height = 16;
+        layer = "top";
+        position = "top";
+        height = 8;
+        width = 963;
         
         modules-left = [ 
-          "hyprland/workspaces" 
-          
+          "hyprland/workspaces"
+          "cava"
+        ];  
+        
+        modules-center = [
           "clock"
+        ];
+
+        modules-right = [  
           "network"
           "bluetooth"
           "pulseaudio"
           "battery"
-
+          
           "cpu"
           "memory"
           "disk"
           "temperature"
-          
-          "image#iris"
-          "image#thyme"
-        ];  
-        
-        modules-center = [];
-
-        modules-right = [];
-
-        "image#iris" = {
-          path = "/home/erik/The-Homie-Config/hypr/iris.png";
-          size = 16;
-          tooltip = false;
-        };
-
-        "image#thyme" = {
-          path = "/home/erik/The-Homie-Config/hypr/thyme.png";
-          size = 16;
-          tooltip = false;
-        };
+        ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
           "on-click" = "activate";
         }; 
 
+        cava = {
+          "framerate" = 60;
+          "autosens" = 2;
+          "sensitivity" = 1;
+          "bars" = 8;
+          "lower_cutoff_freq" = 50;
+          "higher_cutoff_freq" = 10000;
+          "hide_on_silence" = true;
+          "method" = "pulse";
+          "source" = "auto";
+          "stereo" = true;
+          "reverse" = false;
+          "bar_delimiter" = 0;
+          "monstercat" = false;
+          "waves" = false;
+          "noise_reduction" = 0.77;
+          "input_delay" = 2;
+          "format-icons" = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+        };
+
         clock = {
-          interval = 01;
-          format = "{:%A, %b %d - %I:%M:%S %p}";
+          interval = 60;
+          format = "{:%I:%M}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            "mode" = "year";
+            "mode-mon-col" = 3;
+            "weeks-pos" = "right";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "weeks" = "<span color='#fa6122'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#fa6122'><b><u>{}</u></b></span>";
+            };
+          };
         };
 
         network = {
-          format-wifi = "{ipaddr}  {signalStrength}";
-          format-ethernet = "{ipaddr}  ";
+          format-wifi = "";
+          format-ethernet = "";
           format-disconnected = "";
           on-click = "foot sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
-          interval = 01;
         };
 
         bluetooth = {
@@ -83,11 +100,11 @@ in
         };
 
         pulseaudio = {
-          format = "{icon} {volume}";
+          format = "{icon}";
           format-muted = "{icon}";
           format-icons = {
             default = ["" "" "" ""];
-            headphone = "";
+            headphone = [" " " " " " " "];
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
           on-click = "foot pulsemixer";
@@ -107,7 +124,8 @@ in
         };
 
         cpu = {
-          format = " CPU {usage}";
+          format = "";
+          tooltip-format = "CPU Usage: {usage}";
           interval = 02;
           "states" = {
             "warning" = 70;
@@ -116,7 +134,8 @@ in
         };
 
         memory = {
-          format = " MEM {percentage}";
+          format = "";
+          tooltip-format = "Memory Usage: {percentage}%";
           interval = 02;
           "states" = {
             "warning" = 70;
@@ -125,13 +144,16 @@ in
         };
 
         disk = {
-          format = " DISK {free}";
+          format = "";
+          tooltip-format = " Disk Free: {free}";
           interval = 30;
           path = "/";
         };
 
         temperature = {
-          format = "{icon} {temperatureC}°C";
+          format = "{icon}";
+          tooltip = true;
+          tooltip-format = "Temp: {temperatureC}°C";
           hwmon-path = hwmonPath;
           interval = 2;
           format-icons = ["" "" "" "" ""];
@@ -158,42 +180,11 @@ in
       }
 
       window#waybar {
-        background: transparent;
-      }
-
-      .modules-left {
-        background: #32302F;
-        border: 2px solid #928374;
-        margin-left: 8px;
+        background: #120f09;
+        border-radius: 0 0 4px 4px;
       }
 
       #workspaces button + button { margin-left: 4px; }
-
-      #workspaces,
-      #clock,
-      #network,
-      #bluetooth,
-      #pulseaudio,
-      #battery,
-      #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #image { 
-        padding: 0px 4px; 
-      }
-      
-      #workspaces { 
-        margin: 2px 2px; 
-      }
-
-      #clock,
-      #network,
-      #bluetooth,
-      #pulseaudio,
-      #battery { 
-        margin: 0px 2px; 
-      }
 
       #battery.warning { color: #D8A657; }
       #battery.critical { color: #EA6962; }
@@ -202,11 +193,26 @@ in
         color: #00bfff;
       }
 
+      #workspaces {
+        margin: 0px 2px;
+      }
+
+      .modules-right {
+        margin-right: 4px;
+      }
+      
+      #cava {
+        padding-left: 2px;
+      }
+
+      #network,
+      #bluetooth,
+      #pulseaudio,
+      #battery,
       #cpu,
       #memory,
-      #disk,
-      #temperature { 
-        margin: 0px 2px; 
+      #disk {
+        padding-right: 8px;
       }
       
       #cpu.warning { color: #D8A657; }
@@ -218,10 +224,6 @@ in
       #temperature.good { color: #A9B665; }
       #temperature.warning { color: #D8A657; }
       #temperature.critical { color: #EA6962; }
-
-      #image { 
-        margin: 0px 2px; 
-      }
     '';        
   };
 

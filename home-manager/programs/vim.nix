@@ -10,8 +10,8 @@
       let &t_SI = "\e[6 q"
       let &t_EI = "\e[2 q"
 
-      colorscheme gruvbox
       set background=dark
+      colorscheme gruvbox
 
       set showtabline=2
 

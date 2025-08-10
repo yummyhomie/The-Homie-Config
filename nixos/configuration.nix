@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  machineName = "the-homie-laptop"; # Set this manually on each machine
+  machineName = "the-homie-machine"; # Set this manually on each machine
   machineConfig = 
     if machineName == "the-homie-laptop" then ./laptop.nix
     else if machineName == "the-homie-machine" then ./desktop.nix
@@ -11,7 +11,8 @@ in
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
+      ./stylix.nix
       machineConfig
     ];
 
@@ -20,7 +21,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # CPU & GPU 
-  boot.kernelParams = [ "iommu=soft" ];
   hardware.cpu.amd.updateMicrocode = 
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
@@ -28,6 +28,8 @@ in
 
   # Networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "default";
+  networking.networkmanager.ethernet.macAddress = "permanent";
   time.timeZone = "America/Denver";
 
   # Hardware
@@ -37,6 +39,12 @@ in
      isNormalUser = true;
      extraGroups = [ "wheel" ];
      packages = with pkgs; [ btop ];
+  };
+
+  # Flakes
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    warn-dirty = false;
   };
 
   # Packages On This System
@@ -59,33 +67,13 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
     };
   };
   nix.gc = {
     automatic = true;
     dates = "weekly";
   };
-
-  virtualisation.virtualbox = {
-    host = {
-      enable = true;
-      enableKvm = true;
-      enableExtensionPack = true;
-      addNetworkInterface = false;
-    };
-  };
  
-  virtualisation.vmware.host.enable = true;
-
-  virtualisation.docker.enable = true;
-
-  # ZeroTier
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "60ee7c034a366ab7" ];
-  };
-  
   nixpkgs.config.allowUnfree = true;
 
   networking.firewall.enable = true;

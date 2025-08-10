@@ -37,9 +37,13 @@
       alias gtk='vim ~/The-Homie-Config/home-manager/configs/gtk.nix'
       alias hypr='vim ~/The-Homie-Config/hypr/hyprland.conf'
       alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
-      alias rebuild='sudo nixos-rebuild switch'
-      alias switch='home-manager switch'
+
+      alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#$(hostname)'
+      alias switch='home-manager switch --flake ~/The-Homie-Config#$(hostname)'
       alias way='vim ~/The-Homie-Config/home-manager/configs/waybar.nix'
+
+      alias flake='vim ~/The-Homie-Config/flake.nix'
+      alias styl='vim ~/The-Homie-Config/nixos/stylix.nix'
     '';
   };
 }

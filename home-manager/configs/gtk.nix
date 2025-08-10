@@ -1,32 +1,15 @@
 { pkgs, ... }:
-
 {
   gtk = {
     enable = true;
-    theme = {
-      name = "Colloid-Orange-Dark-Gruvbox";
-      package = pkgs.colloid-gtk-theme.override {
-        themeVariants = [ "orange" ];
-        colorVariants = [ "dark" ];
-        tweaks = [
-          "gruvbox"
-          "rimless"
-          "float"
-        ];
-      };
-    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme.override {color = "black"; };
     };
   };
-
-  home.pointerCursor = {
-    name = "Hackneyed";
-    package = pkgs.hackneyed;
-    size = 16;
-  };
 }
+
+# NOTE: Color theme is set by stylix. This just sets the icon theme. 
 
 # To find the name of the theme/icon, run this command:
 # cd $(nix build nixpkgs#PACKAGE-NAME --print-out-paths --no-link)
