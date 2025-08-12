@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 
+# This is currently not being used for my config. Too many profile declarations causing issues with rebuilding. :/ 
+
 {
   programs.firefox = {
     enable = true;

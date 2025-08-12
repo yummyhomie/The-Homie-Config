@@ -31,19 +31,16 @@
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias bash='vim ~/The-Homie-Config/home-manager/configs/bashrc.nix'
-      alias edit='vim ~/The-Homie-Config/home-manager/home.nix'
-      alias foot='vim ~/The-Homie-Config/home-manager/programs/foot.nix'
-      alias gtk='vim ~/The-Homie-Config/home-manager/configs/gtk.nix'
-      alias hypr='vim ~/The-Homie-Config/hypr/hyprland.conf'
+      alias edit='vim ~/The-Homie-Config/home/home.nix'
       alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
-
+      alias flake='vim ~/The-Homie-Config/flake.nix'
       alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#$(hostname)'
       alias switch='home-manager switch --flake ~/The-Homie-Config#$(hostname)'
-      alias way='vim ~/The-Homie-Config/home-manager/configs/waybar.nix'
 
-      alias flake='vim ~/The-Homie-Config/flake.nix'
-      alias styl='vim ~/The-Homie-Config/nixos/stylix.nix'
+      alias bash='vim ~/The-Homie-Config/home/modules/bash.nix'
+      alias way='vim ~/The-Homie-Config/home/modules/waybar.nix'
+      alias styl='vim ~/The-Homie-Config/nixos/modules/stylix.nix'
+      alias home='cd ~/The-Homie-Config/home'
     '';
   };
 }

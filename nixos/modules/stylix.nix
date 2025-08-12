@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../hypr/menbug.jpg;
+    image = ../../hypr/menbug.jpg;
     base16Scheme = {
       system = "base16";
       name = "Charcoal Dark";
@@ -39,7 +39,5 @@
       terminal = 0.90;
       desktop = 0.90;
     };
-
-    targets.waybar.enable = false;
   };
 }

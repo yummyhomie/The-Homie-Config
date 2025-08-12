@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./configs/default.nix
-    ./programs/default.nix
-    ../nixos/stylix.nix
+  imports = [ 
+    ./modules/default.nix 
+    ../nixos/modules/stylix.nix
   ];
 
 /*
@@ -62,14 +61,16 @@
     r2modman
     signal-desktop
     spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
-    sway-launcher-desktop
   ];
+
+  stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
 
   nixpkgs.config.allowUnfree = true;
 

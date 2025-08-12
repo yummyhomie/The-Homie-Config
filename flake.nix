@@ -16,52 +16,37 @@
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
+    hostname = "the-homie-${host}";
+    host = "machine"; # Declare this manually!
   in 
 
   {
     nixosConfigurations = {
-
-      # The-Homie-Machine
-      the-homie-machine = lib.nixosSystem {
+      ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
           ./nixos/configuration.nix
+          ./nixos/${host}/configuration.nix
+          ./nixos/${host}/hardware-configuration.nix
           home-manager.nixosModules.home-manager
 
           stylix.nixosModules.stylix
-        ];
-      };
-
-      # The-Homie-Laptop
-      the-homie-laptop = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          
-          stylix.nixosModules.stylix
+          {
+            _module.args.hostname = hostname;
+          }
         ];
       };
     };
     
     homeConfigurations = {
-      "the-homie-machine" = home-manager.lib.homeManagerConfiguration {
+      ${hostname} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home-manager/home.nix
+          ./home/home.nix
+
           stylix.homeModules.stylix
           {
-            _module.args.hostname = "the-homie-machine";
-          }
-        ];
-      };
-      "the-homie-laptop" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home-manager/home.nix
-          stylix.homeModules.stylix
-          {
-            _module.args.hostname = "the-homie-laptop";
+            _module.args.hostname = hostname;
           }
         ];
       };

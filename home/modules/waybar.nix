@@ -48,17 +48,18 @@ in
           "bars" = 8;
           "lower_cutoff_freq" = 50;
           "higher_cutoff_freq" = 10000;
-          "hide_on_silence" = true;
+          "hide_on_silence" = false;
           "method" = "pulse";
           "source" = "auto";
           "stereo" = true;
           "reverse" = false;
           "bar_delimiter" = 0;
-          "monstercat" = false;
+          "monstercat" = true;
           "waves" = false;
           "noise_reduction" = 0.77;
           "input_delay" = 2;
           "format-icons" = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+          "format-silent" = "";
         };
 
         clock = {
@@ -111,10 +112,10 @@ in
         };
 
         battery = {
-        "states" = {
+          "states" = {
             "warning" = 40;
             "critical" = 15;
-        };
+          };
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           #"format-plugged" = " {capacity}%";
@@ -128,6 +129,7 @@ in
           tooltip-format = "CPU Usage: {usage}";
           interval = 02;
           "states" = {
+            "good" = 55;
             "warning" = 70;
             "critical" = 85;
           };
@@ -157,11 +159,8 @@ in
           hwmon-path = hwmonPath;
           interval = 2;
           format-icons = ["" "" "" "" ""];
-          "states" = {
-            "good" = 45;
-            "warning" = 60;
-            "critical" = 75;
-          };
+          critical-threshold = 75;
+          format-critical = "{icon}";
         };
       };
     };
@@ -215,14 +214,13 @@ in
         padding-right: 8px;
       }
       
+      #cpu.good { color: #A9B665; }
       #cpu.warning { color: #D8A657; }
       #cpu.critical { color: #EA6962; }
       
       #memory.warning { color: #D8A657; }
       #memory.critical { color: #EA6962; }
-
-      #temperature.good { color: #A9B665; }
-      #temperature.warning { color: #D8A657; }
+      
       #temperature.critical { color: #EA6962; }
     '';        
   };
@@ -230,3 +228,4 @@ in
   # OG font color: #e2daae; Also cool dark color -> #322d28;
   # Background that matches Foot terminal background/opacity rgba(40, 40, 40, 0.9); 
 }
+

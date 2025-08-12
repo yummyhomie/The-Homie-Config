@@ -1,20 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let
-  machineName = "the-homie-machine"; # Set this manually on each machine
-  machineConfig = 
-    if machineName == "the-homie-laptop" then ./laptop.nix
-    else if machineName == "the-homie-machine" then ./desktop.nix
-    else abort "Unknown Hostname. Try again!";
-in
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./stylix.nix
-      machineConfig
-    ];
+  imports = [ ./modules/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -58,9 +45,9 @@ in
   # Hypridle
   services.hypridle.enable = true;
 
-  #Steam
-  programs.steam.enable = true;
-  
+  # QEMU
+  services.qemuGuest.enable = true;
+
   # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;
 
