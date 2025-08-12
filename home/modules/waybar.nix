@@ -116,12 +116,13 @@ in
             "warning" = 40;
             "critical" = 15;
           };
-          format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
+          format = "{icon}";
+          format-charging = "";
           #"format-plugged" = " {capacity}%";
           #"format-discharging" = " {capacity}%";
           format-alt = "{icon} {time}";
           format-icons = ["" "" "" "" ""];
+          tooltip-format = "Battery at {capacity}%";
         };
 
         cpu = {

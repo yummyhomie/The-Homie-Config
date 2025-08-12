@@ -17,7 +17,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     hostname = "the-homie-${host}";
-    host = "machine"; # Declare this manually!
+    host = "laptop"; # Declare this manually!
   in 
 
   {
