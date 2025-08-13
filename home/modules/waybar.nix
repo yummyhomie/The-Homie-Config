@@ -42,24 +42,17 @@ in
         }; 
 
         cava = {
-          "framerate" = 60;
+          "framerate" = 32;
           "autosens" = 2;
           "sensitivity" = 1;
           "bars" = 8;
-          "lower_cutoff_freq" = 50;
-          "higher_cutoff_freq" = 10000;
-          "hide_on_silence" = false;
-          "method" = "pulse";
-          "source" = "auto";
+          "hide_on_silence" = true;
           "stereo" = true;
-          "reverse" = false;
           "bar_delimiter" = 0;
           "monstercat" = true;
-          "waves" = false;
-          "noise_reduction" = 0.77;
-          "input_delay" = 2;
+          "waves" = true;
           "format-icons" = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
-          "format-silent" = "";
+          "sleep_timer" = 4;
         };
 
         clock = {
@@ -203,6 +196,10 @@ in
       
       #cava {
         padding-left: 2px;
+      }
+
+      #cava.silent {
+        color: rgba(0, 0, 0, 0);
       }
 
       #network,
