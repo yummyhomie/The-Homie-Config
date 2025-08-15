@@ -65,6 +65,7 @@
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
+    vscode
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip

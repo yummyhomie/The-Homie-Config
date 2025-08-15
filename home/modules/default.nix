@@ -7,7 +7,6 @@
     ./rofi.nix
     ./thunderbird.nix
     ./vim.nix
-    ./vscode.nix
     ./waybar.nix
   ];
 }
