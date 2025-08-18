@@ -41,7 +41,6 @@
     inotify-tools
     nmap
     tmux
-    git-crypt
   ];
 
   # Allow UnFree Packages

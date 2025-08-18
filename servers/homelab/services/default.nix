@@ -1,7 +1,6 @@
 {
   imports = [
     ./adguard.nix
-    ./glance.nix
     ./i2p.nix
     ./jellyfin.nix
     ./mine.nix

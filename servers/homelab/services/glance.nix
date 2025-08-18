@@ -1,4 +1,6 @@
-{ inputs, config, ... }:
+# This does not work without making passwords/apis cleartext. Setting up secrets has proved way too difficult. So this is disabled until then. 
+
+{ configs, pkgs, secrets, ... }:
 {
   services.glance = {
     enable = true;
@@ -15,8 +17,8 @@
       };
 
       auth = {
-        secret-key = "YP2vDX7e53cpj2AjcFcullGLufsG0ZdvjNdrbAzceBrVlCGdK6s018hq81IQkqJ4JQR6oQjAODbV6+NLL9zJyQ==";
-        users.erik.password = "testdksjaldjaskldjaslkdjklasjkl";
+        secret-key = secrets.glance_key;
+        users.erik.password = secrets.glance_pass;
       };
 
       pages = [
@@ -83,7 +85,7 @@
                   service = "adguard";
                   url = "https://ad.eleedee.net";
                   username = "erik";
-                  password = builtins.getEnv "ADGUARD_PASS";
+                  password = secrets.adguard_pass;
                 }
               ];
             }
@@ -104,7 +106,7 @@
                   options = {
                     media-server = "jellyfin";
                     base-url = "https://media.eleedee.net";
-                    api-key = builtins.getEnv "JELLYFIN_API";
+                    api-key = secrets.jellyfin_api;
                     small-column = true;
                     compact = false;
                     play-state = "indicator";

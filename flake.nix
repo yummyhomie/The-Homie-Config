@@ -28,7 +28,7 @@
       desktop = [ stylix.nixosModules.stylix ];
       laptop = [ stylix.nixosModules.stylix ];
       
-      homelab = []; 
+      homelab = [];
       hacking = [];
     };
 
@@ -39,7 +39,7 @@
       homelab = []; 
       hacking = [];
     };
-    
+ 
   in 
 
   {
