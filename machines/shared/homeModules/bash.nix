@@ -38,9 +38,7 @@
       alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
       alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
 
-      alias bash='vim ~/The-Homie-Config/shared/homeModules/bash.nix'
-      alias machines='cd ~/The-Homie-Config/machines'
-      alias servers='cd ~/The-Homie-Config/servers'
+      alias bash='vim ~/The-Homie-Config/${type}/shared/homeModules/bash.nix'
     '';
   };
 }
