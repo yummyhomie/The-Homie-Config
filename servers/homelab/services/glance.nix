@@ -1,10 +1,5 @@
-{ config, age, ... }:
+{ inputs, config, ... }:
 {
-  age.secrets.glance_secret_key.file = ../secrets/glance_secret_key.age;
-  age.secrets.glance_password.file = ../secrets/glance_password.age;
-  age.secrets.adguard_password.file = ../secrets/adguard_password.age;
-  age.secrets.jellyfin_api_key.file = ../secrets/jellyfin_api_key.age;
-
   services.glance = {
     enable = true;
     settings = {
@@ -21,7 +16,7 @@
 
       auth = {
         secret-key = "YP2vDX7e53cpj2AjcFcullGLufsG0ZdvjNdrbAzceBrVlCGdK6s018hq81IQkqJ4JQR6oQjAODbV6+NLL9zJyQ==";
-        users.erik.password = "config.age.secrets.glance_password.path";
+        users.erik.password = "testdksjaldjaskldjaslkdjklasjkl";
       };
 
       pages = [
@@ -88,7 +83,7 @@
                   service = "adguard";
                   url = "https://ad.eleedee.net";
                   username = "erik";
-                  password = config.age.secrets.adguard_password.path;
+                  password = builtins.getEnv "ADGUARD_PASS";
                 }
               ];
             }
@@ -109,7 +104,7 @@
                   options = {
                     media-server = "jellyfin";
                     base-url = "https://media.eleedee.net";
-                    api-key = config.age.secrets.jellyfin_api_key.path;
+                    api-key = builtins.getEnv "JELLYFIN_API";
                     small-column = true;
                     compact = false;
                     play-state = "indicator";

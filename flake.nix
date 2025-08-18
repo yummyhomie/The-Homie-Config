@@ -19,21 +19,25 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
 
-    type = "machines";                # Choose type "Machines" or "Servers."
-    host = "desktop";                 # Choose desktop, laptop, homelab or hacking.
-    hostname = "the-homie-machine";   # Change per system!
+    type = "servers";                # Choose type "Machines" or "Servers."
+    host = "homelab";                # Choose desktop, laptop, homelab or hacking.
+    hostname = "the-homie-server";   # Change per system!
 
     # Put Outputs here! It's like this to choose per system what has what.
     nixModules = {
       desktop = [ stylix.nixosModules.stylix ];
       laptop = [ stylix.nixosModules.stylix ];
-      # homelab = []; hacking = [];
+      
+      homelab = []; 
+      hacking = [];
     };
 
     homeModules = {
       desktop = [ stylix.homeModules.stylix ];
       laptop = [ stylix.homeModules.stylix ];
-      # homelab = []; hacking = [];
+      
+      homelab = []; 
+      hacking = [];
     };
     
   in 

@@ -41,8 +41,7 @@
     inotify-tools
     nmap
     tmux
-    agenix-cli
-    glance
+    git-crypt
   ];
 
   # Allow UnFree Packages
