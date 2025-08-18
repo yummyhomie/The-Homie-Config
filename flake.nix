@@ -1,5 +1,5 @@
 {
-  description = "The-Homie-Flake! For use with the-homie-laptop and the-homie-machine.";
+  description = "The-Homie-Flake! For use across all my beloved machines.";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -12,12 +12,30 @@
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+
   let
+
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
-    hostname = "the-homie-${host}";
-    host = "laptop"; # Declare this manually!
+
+    type = "machines";                # Choose type "Machines" or "Servers."
+    host = "desktop";                 # Choose desktop, laptop, homelab or hacking.
+    hostname = "the-homie-machine";   # Change per system!
+
+    # Put Outputs here! It's like this to choose per system what has what.
+    nixModules = {
+      desktop = [ stylix.nixosModules.stylix ];
+      laptop = [ stylix.nixosModules.stylix ];
+      # homelab = []; hacking = [];
+    };
+
+    homeModules = {
+      desktop = [ stylix.homeModules.stylix ];
+      laptop = [ stylix.homeModules.stylix ];
+      # homelab = []; hacking = [];
+    };
+    
   in 
 
   {
@@ -25,16 +43,16 @@
       ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
-          ./nixos/configuration.nix
-          ./nixos/${host}/configuration.nix
-          ./nixos/${host}/hardware-configuration.nix
-          home-manager.nixosModules.home-manager
+          ./${type}/config.nix                            # This'll import modules managed by NixOS.
+          ./${type}/${host}/configuration.nix             # This will import host-specific modules.
+          ./${type}/${host}/hardware-configuration.nix
 
-          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
           {
             _module.args.hostname = hostname;
+            _module.args.type = type;
           }
-        ];
+        ] ++ nixModules.${host};
       };
     };
     
@@ -42,13 +60,14 @@
       ${hostname} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home/home.nix
-
-          stylix.homeModules.stylix
+          ./${type}/home.nix                              # This'll import modules managed by home-manager.
+          ./${type}/${host}/home.nix                      # This will import host-specific modules.
+          ./shared/homeModules/default.nix                # This imports shared modules across all systems. Currently ONLY home-manager managed modules.
           {
             _module.args.hostname = hostname;
+            _module.args.type = type;
           }
-        ];
+        ] ++ homeModules.${host};
       };
     };
   };

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./modules/default.nix ];
+  imports = [ ./shared/nixModules/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -15,8 +15,6 @@
 
   # Networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "default";
-  networking.networkmanager.ethernet.macAddress = "permanent";
   time.timeZone = "America/Denver";
 
   # Hardware

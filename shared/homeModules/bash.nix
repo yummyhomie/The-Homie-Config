@@ -1,3 +1,4 @@
+{ hostname, type, ... }:
 {
 # bashrc
   programs.bash = {
@@ -31,16 +32,15 @@
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias edit='vim ~/The-Homie-Config/home/home.nix'
-      alias nixos='sudo vim ~/The-Homie-Config/nixos/configuration.nix'
+      alias edit='vim ~/The-Homie-Config/${type}/home.nix'
+      alias nixos='sudo vim ~/The-Homie-Config/${type}/config.nix'
       alias flake='vim ~/The-Homie-Config/flake.nix'
-      alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#$(hostname)'
-      alias switch='home-manager switch --flake ~/The-Homie-Config#$(hostname)'
+      alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
+      alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
 
-      alias bash='vim ~/The-Homie-Config/home/modules/bash.nix'
-      alias way='vim ~/The-Homie-Config/home/modules/waybar.nix'
-      alias styl='vim ~/The-Homie-Config/nixos/modules/stylix.nix'
-      alias home='cd ~/The-Homie-Config/home'
+      alias bash='vim ~/The-Homie-Config/shared/homeModules/bash.nix'
+      alias machines='cd ~/The-Homie-Config/machines'
+      alias servers='cd ~/The-Homie-Config/servers'
     '';
   };
 }

@@ -2,8 +2,8 @@
 
 {
   imports = [ 
-    ./modules/default.nix 
-    ../nixos/modules/stylix.nix
+    ./shared/homeModules/default.nix 
+    ./shared/nixModules/stylix.nix
   ];
 
 /*
@@ -42,7 +42,6 @@
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
-    gnome-keyring          # Supposed to help with storing login "keys."
     gvfs                   # This helps with connecting to remote folders via nautilus
     hyprpaper
     hyprshot
