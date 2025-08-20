@@ -9,6 +9,8 @@
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+    
+    # firefoxcss = {url = "github:"; flake = false; }; WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
@@ -55,6 +57,7 @@
           {
             _module.args.hostname = hostname;
             _module.args.type = type;
+            _module.args.inputs = inputs;                 # Pass inputs to NixOS modules.
           }
         ] ++ nixModules.${host};
       };
@@ -66,10 +69,11 @@
         modules = [
           ./${type}/home.nix                              # This'll import modules managed by home-manager.
           ./${type}/${host}/home.nix                      # This will import host-specific modules.
-          ./shared/homeModules/default.nix                # This imports shared modules across all systems. Currently ONLY home-manager managed modules.
+
           {
             _module.args.hostname = hostname;
             _module.args.type = type;
+            _module.args.inputs = inputs;                 # Pass inputs to home-manager modules.
           }
         ] ++ homeModules.${host};
       };
