@@ -1,6 +1,5 @@
 {
   imports = [
-    ./gaming.nix
-    ./stylix.nix
+    # Put some imports here!
   ];
 }
