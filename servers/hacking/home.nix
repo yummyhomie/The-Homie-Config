@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./system/default.nix
-  ];
+  imports = []; # Maybe one day this'll have imports!
 
   home.username = "erik";
   home.homeDirectory = "/home/erik";

@@ -22,8 +22,8 @@
     pkgs = nixpkgs.legacyPackages.${system};
 
     type = "servers";               # Choose type "Machines" or "Servers."
-    host = "homelab";                # Choose desktop, laptop, homelab or hacking.
-    hostname = "the-homie-server";   # Change per system!
+    host = "hacking";                # Choose desktop, laptop, homelab or hacking.
+    hostname = "the-hacking-server";   # Change per system!
 
     # Put Outputs here! It's like this to choose per system what has what.
     nixModules = {

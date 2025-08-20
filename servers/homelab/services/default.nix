@@ -6,6 +6,5 @@
     ./mine.nix
     ./nginx.nix
     ./samba.nix
-    ./zerotier.nix
   ];
 }

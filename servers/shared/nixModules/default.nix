@@ -1,5 +1,3 @@
 {
-  imports = [
-    # Put some imports here!
-  ];
+  imports = [ ./zerotier.nix ];
 }
