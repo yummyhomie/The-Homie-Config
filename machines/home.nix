@@ -64,9 +64,13 @@
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
+    vscode
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
+
+    screen
+    nomacs
   ];
 
   stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 

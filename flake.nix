@@ -21,9 +21,9 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
 
-    type = "servers";               # Choose type "Machines" or "Servers."
-    host = "hacking";                # Choose desktop, laptop, homelab or hacking.
-    hostname = "the-hacking-server";   # Change per system!
+    type = "machines";               # Choose type "Machines" or "Servers."
+    host = "laptop";                # Choose desktop, laptop, homelab or hacking.
+    hostname = "the-homie-laptop";   # Change per system!
 
     # Put Outputs here! It's like this to choose per system what has what.
     nixModules = {
