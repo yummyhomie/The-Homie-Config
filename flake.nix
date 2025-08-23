@@ -66,7 +66,7 @@
           ./modules/nixos-${type}.nix                     # Import type specific nixos module.
 
           ./hosts/${host}/config.nix                      # Import host specific nixos module.
-          ./host/${host}/hardware-configuration.nix       # Import host specific hardware module. 
+          ./hosts/${host}/hardware-configuration.nix      # Import host specific hardware module. 
 
           home-manager.nixosModules.home-manager
           {
