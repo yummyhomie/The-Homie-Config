@@ -13,19 +13,32 @@
     # firefoxcss = {url = "github:"; flake = false; }; WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, ... }@inputs:
 
   let
 
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
+    
+    hostname = "the-homie-machine";   # Change per system!
 
-    type = "machines";               # Choose type "Machines" or "Servers."
-    host = "laptop";                # Choose desktop, laptop, homelab or hacking.
-    hostname = "the-homie-laptop";   # Change per system!
+    # Determine the type and host based on the hostname.
+    type =
+      if hostname == "the-homie-laptop" then "machines"
+      else if hostname == "the-homie-machine" then "machines"
+      else if hostname == "the-homie-server" then "servers"
+      else if hostname == "the-hacking-server" then "servers"
+      else "unknown";
 
-    # Put Outputs here! It's like this to choose per system what has what.
+    host =
+      if hostname == "the-homie-laptop" then "laptop"
+      else if hostname == "the-homie-machine" then "desktop"
+      else if hostname == "the-homie-server" then "homelab"
+      else if hostname == "the-hacking-server" then "hacking"
+      else "unknown";
+
+    # Put outputs. Determine which system type gets what. (This may get changed to type specific config.) 
     nixModules = {
       desktop = [ stylix.nixosModules.stylix ];
       laptop = [ stylix.nixosModules.stylix ];
@@ -49,14 +62,17 @@
       ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
-          ./${type}/config.nix                            # This'll import modules managed by NixOS.
-          ./${type}/${host}/configuration.nix             # This will import host-specific modules.
-          ./${type}/${host}/hardware-configuration.nix
+          ./modules/nixos-base.nix                        # Import base nixos module for all systems.
+          ./modules/nixos-${type}.nix                     # Import type specific nixos module.
+
+          ./hosts/${host}/config.nix                      # Import host specific nixos module.
+          ./host/${host}/hardware-configuration.nix       # Import host specific hardware module. 
 
           home-manager.nixosModules.home-manager
           {
             _module.args.hostname = hostname;
             _module.args.type = type;
+            _module.args.host = host;
             _module.args.inputs = inputs;                 # Pass inputs to NixOS modules.
           }
         ] ++ nixModules.${host};
@@ -67,12 +83,14 @@
       ${hostname} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./${type}/home.nix                              # This'll import modules managed by home-manager.
-          ./${type}/${host}/home.nix                      # This will import host-specific modules.
+          ./modules/home-base.nix                         # Import base home-manager modules for all systems.
+          ./modules/home-${type}.nix                      # Import type specific home-manager module.
 
+          ./hosts/${host}/home.nix                        # Import host specific home-manager module.
           {
             _module.args.hostname = hostname;
             _module.args.type = type;
+            _module.args.host = host;
             _module.args.inputs = inputs;                 # Pass inputs to home-manager modules.
           }
         ] ++ homeModules.${host};
