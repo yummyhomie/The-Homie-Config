@@ -106,8 +106,10 @@ in
 
         battery = {
           "states" = {
+            "good" = 100;
+            "normal" = 98;
             "warning" = 40;
-            "critical" = 15;
+            "critical" = 15;  
           };
           format = "{icon}";
           format-charging = "";
@@ -179,9 +181,6 @@ in
 
       #workspaces button + button { margin-left: 4px; }
 
-      #battery.warning { color: #D8A657; }
-      #battery.critical { color: #EA6962; }
-
       #bluetooth.connected {
         color: #00bfff;
       }
@@ -211,6 +210,11 @@ in
       #disk {
         padding-right: 8px;
       }
+      
+      #battery.good { color: #A9B665; }
+      #battery.normal { color: #D4BE98; }
+      #battery.warning { color: #D8A657; }
+      #battery.critical { color: #EA6962; }
       
       #cpu.good { color: #A9B665; }
       #cpu.warning { color: #D8A657; }
