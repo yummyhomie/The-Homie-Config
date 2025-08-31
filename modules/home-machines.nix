@@ -37,6 +37,8 @@
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     discord
+    vencord
+    vesktop
     docker-compose
     fastfetch
     firefox
@@ -70,6 +72,9 @@
     zip
 
     screen
+    python313
+    python313Packages.pip
+    python313Packages.matplotlib
   ];
 
   stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
