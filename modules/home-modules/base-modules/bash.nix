@@ -32,13 +32,13 @@
       alias ls='ls --color=auto'
       alias grep='grep --color=auto'
 
-      alias edit='vim ~/The-Homie-Config/${type}/home.nix'
-      alias nixos='sudo vim ~/The-Homie-Config/${type}/config.nix'
+      alias edit='vim ~/The-Homie-Config/modules/home-${type}.nix'
+      alias nixos='sudo vim ~/The-Homie-Config/modules/nixos-${type}.nix'
       alias flake='vim ~/The-Homie-Config/flake.nix'
       alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
       alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
 
-      alias bash='vim ~/The-Homie-Config/${type}/shared/homeModules/bash.nix'
+      alias bash='vim ~/The-Homie-Config/modules/home-modules/base-modules/bash.nix'
     '';
   };
 }

@@ -29,21 +29,16 @@
          ░                     
 */
 
-  home.username = "erik";
-  home.homeDirectory = "/home/erik";
-  home.stateVersion = "24.11";
-
+  
+  stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
+  
   home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     discord
-    vencord
-    vesktop
-    docker-compose
     fastfetch
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
-    gimp
     gvfs                   # This helps with connecting to remote folders via nautilus
     hyprpaper
     hyprshot
@@ -60,6 +55,7 @@
     prismlauncher
     pulsemixer
     r2modman
+    screen
     signal-desktop
     spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     tree
@@ -70,16 +66,5 @@
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
-
-    screen
-    python313
-    python313Packages.pip
-    python313Packages.matplotlib
   ];
-
-  stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
-
-  nixpkgs.config.allowUnfree = true;
-
-  programs.home-manager.enable = true;
 }
