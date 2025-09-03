@@ -32,10 +32,16 @@
 │   │   ├── home.nix
 │   │   └── services/
 │   │
-│   └── laptop
+│   ├── laptop
+│   │   ├── config.nix
+│   │   ├── hardware-configuration.nix
+│   │   └── home.nix
+│   │
+│   └── minecraft
 │       ├── config.nix
 │       ├── hardware-configuration.nix
-│       └── home.nix
+│       ├── home.nix
+│       └── modules/
 │
 ├── modules
 │   ├── home-base.nix
