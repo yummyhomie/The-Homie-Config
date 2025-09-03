@@ -11,9 +11,11 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     
     # firefoxcss = {url = "github:"; flake = false; }; WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, ... }@inputs:
 
   let
 
@@ -47,7 +49,7 @@
       
       homelab = [];
       hacking = [];
-      minecraft = [];
+      minecraft = [ nix-minecraft.nixosModules.minecraft-servers ];
     };
 
     homeModules = {
