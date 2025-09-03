@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./mine-server.nix
+  ];
+}

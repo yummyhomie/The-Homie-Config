@@ -21,7 +21,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-laptop";   # Change per system!
+    hostname = "the-minecraft-server";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -29,6 +29,7 @@
       else if hostname == "the-homie-machine" then "machines"
       else if hostname == "the-homie-server" then "servers"
       else if hostname == "the-hacking-server" then "servers"
+      else if hostname == "the-minecraft-server" then "servers"
       else "unknown";
 
     host =
@@ -36,6 +37,7 @@
       else if hostname == "the-homie-machine" then "desktop"
       else if hostname == "the-homie-server" then "homelab"
       else if hostname == "the-hacking-server" then "hacking"
+      else if hostname == "the-minecraft-server" then "minecraft"
       else "unknown";
 
     # Put outputs. Determine which system type gets what. (This may get changed to type specific config.) 
@@ -45,6 +47,7 @@
       
       homelab = [];
       hacking = [];
+      minecraft = [];
     };
 
     homeModules = {
@@ -53,6 +56,7 @@
       
       homelab = []; 
       hacking = [];
+      minecraft = [];
     };
  
   in 
