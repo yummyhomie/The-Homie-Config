@@ -22,7 +22,7 @@
 
   users.users.erik = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "docker" ];
      packages = with pkgs; [ btop ];
   };
 
@@ -33,15 +33,27 @@
   };
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ docker-compose xwayland-satellite ];
 
   # Programs & Services On This System
-  
+
+  # Docker
+  virtualisation.docker.enable = true;
+ 
   # Hyprland
   programs.hyprland.enable = true;
 
   # Hypridle
   services.hypridle.enable = true;
+  
+  # Niri
+  programs.niri.enable = true; # Off until I get a good enough config working
+  
+  environment.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   # QEMU
   services.qemuGuest.enable = true;

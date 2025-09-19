@@ -32,13 +32,14 @@
   
   stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
   
+# Packages {{{ 
   home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
-    discord
     fastfetch
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
+    fuzzel
     gvfs                   # This helps with connecting to remote folders via nautilus
     hyprpaper
     hyprshot
@@ -57,7 +58,7 @@
     r2modman
     screen
     signal-desktop
-    spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    # spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
@@ -67,4 +68,7 @@
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
   ];
+  
+  fonts.fontconfig.enable = true;
+#  }}}
 }

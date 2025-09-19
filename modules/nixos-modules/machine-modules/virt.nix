@@ -42,3 +42,7 @@
 # OVMF: UEFI firmware support for VMs
 # virt-viewer: Lightweight VM console viewer
 # spice components: Better graphics and USB redirection support
+
+# If you're running into "DEFAULT NETWORK NOT STARTED" issues, run the following command. 
+
+# sudo virsh net-start default

@@ -2,20 +2,23 @@
   description = "The-Homie-Flake! For use across all my beloved machines.";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs = { url = "nixpkgs/nixos-unstable"; };
+    
+    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
+    
+    stylix = { url = "github:nix-community/stylix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    
+    nix-minecraft = { url = "github:Infinidoge/nix-minecraft"; };
+    
+    nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    stylix.url = "github:nix-community/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; }; 
     
     # firefoxcss = {url = "github:"; flake = false; }; WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
-
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
 
   let
 
@@ -23,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-minecraft-server";   # Change per system!
+    hostname = "the-homie-laptop";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -42,20 +45,28 @@
       else if hostname == "the-minecraft-server" then "minecraft"
       else "unknown";
 
-    # Put outputs. Determine which system type gets what. (This may get changed to type specific config.) 
+    # Put outputs. Determine which system type gets what. (This may get changed to type specific config.)
+
+    # NixOS Modules
     nixModules = {
       desktop = [ stylix.nixosModules.stylix ];
       laptop = [ stylix.nixosModules.stylix ];
-      
       homelab = [];
       hacking = [];
       minecraft = [ nix-minecraft.nixosModules.minecraft-servers ];
     };
 
     homeModules = {
-      desktop = [ stylix.homeModules.stylix ];
-      laptop = [ stylix.homeModules.stylix ];
-      
+      desktop = [ 
+        stylix.homeModules.stylix 
+        nixcord.homeModules.nixcord 
+        spicetify-nix.homeManagerModules.spicetify 
+      ];
+      laptop = [ 
+        stylix.homeModules.stylix 
+        nixcord.homeModules.nixcord 
+        spicetify-nix.homeManagerModules.spicetify 
+      ];
       homelab = []; 
       hacking = [];
       minecraft = [];
