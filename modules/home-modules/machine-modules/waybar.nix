@@ -9,14 +9,35 @@ in
   programs.waybar = {
     enable = true;
     settings = {
+      
+      leftBar = {
+        layer = "top";
+        position = "left";
+        width = 8;
+        height = 963;
+        
+        modules-center = [ 
+          "wlr/taskbar"
+        ];   
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          "icon-size" = 16;
+          "on-click" = "activate";
+          "sort-by-app-id" = true;
+        };
+      };
+
       topBar = {
         layer = "top";
         position = "top";
         height = 8;
         width = 963;
+        reload_style_on_change = true;
         
         modules-left = [ 
-          "hyprland/workspaces"
+          # "hyprland/workspaces"
+          "niri/workspaces"
           "cava"
         ];  
         

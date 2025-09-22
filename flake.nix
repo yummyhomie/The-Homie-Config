@@ -2,13 +2,13 @@
   description = "The-Homie-Flake! For use across all my beloved machines.";
 
   inputs = {
-
+    
     nixpkgs = { url = "nixpkgs/nixos-unstable"; };
     
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     
     stylix = { url = "github:nix-community/stylix"; inputs.nixpkgs.follows = "nixpkgs"; };
-    
+
     nix-minecraft = { url = "github:Infinidoge/nix-minecraft"; };
     
     nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };

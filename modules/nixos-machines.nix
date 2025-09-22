@@ -48,12 +48,6 @@
   
   # Niri
   programs.niri.enable = true; # Off until I get a good enough config working
-  
-  environment.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    XDG_SESSION_TYPE = "wayland";
-  };
 
   # QEMU
   services.qemuGuest.enable = true;
