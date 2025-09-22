@@ -49,6 +49,12 @@
   # Niri
   programs.niri.enable = true; # Off until I get a good enough config working
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  };
+
   # QEMU
   services.qemuGuest.enable = true;
 

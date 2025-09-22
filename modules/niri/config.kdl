@@ -1,7 +1,9 @@
 input {
     mod-key "Alt"
 
-    keyboard { numlock } // Enable numlock on startup, omitting this setting disables it.
+    keyboard { 
+	numlock 
+    } // Enable numlock on startup, omitting this setting disables it
     
     warp-mouse-to-focus // Uncomment this to make the mouse warp to the center of newly focused windows.
     
@@ -35,10 +37,19 @@ input {
 }
 
 // the-homie-machine
-output "DP-1" { mode "2560x1440@164.956" scale 1 transform "normal" } // Run 'niri msg outputs' to find the screen outputs detected by Niri.
+output "DP-1" { 
+  mode "2560x1440@164.956" 
+  scale 1 
+  transform "normal" 
+} // Run 'niri msg outputs' to find the screen outputs detected by Niri.
 
 // the-homie-laptop
-output "eDP-1" { mode "1920x1080@60.049" scale 1 transform "normal" position x=1280 y=0 }
+output "eDP-1" { 
+  mode "1920x1080@60.049" 
+  scale 1 
+  transform "normal" 
+  position x=1080 y=0 
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
