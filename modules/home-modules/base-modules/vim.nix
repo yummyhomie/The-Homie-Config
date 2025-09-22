@@ -12,7 +12,6 @@
 
       set showtabline=2
 
-      syntax on
       set autoindent
       set smartindent
 
@@ -28,11 +27,12 @@
 
     # colorscheme gruvbox
     # set background=dark
+    # syntax on
     
     plugins = with pkgs.vimPlugins; [
       #gruvbox         # For gruvbox theme
       auto-pairs      # Automatically fill in brackets, semi-colons, etc.
-      nvchad          # Let's see if this works.
+      #nvchad          # Let's see if this works.
       ale             # Code/Syntax error catcher
       lightline-vim   # Status Bar
       lightline-ale   # Status Bar addon that works with ALE
