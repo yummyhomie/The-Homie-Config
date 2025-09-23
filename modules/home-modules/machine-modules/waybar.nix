@@ -9,29 +9,20 @@ in
   programs.waybar = {
     enable = true;
     settings = {
-      leftBar = {
-        layer = "top";
-        position = "left";
-        width = 16;
-        
-        modules-left = [ 
-          "niri/workspaces"
-        ];  
-      };
-
       topBar = {
         layer = "top";
-        position = "top";
-        height = 16;
+        position = "left";
+        height = 796;
         
         modules-left = [ 
           # "hyprland/workspaces"
-          # "niri/workspaces"
-          "cava"
+          "niri/workspaces"
+          # "cava"
         ];  
         
         modules-center = [
           "clock"
+          "clock#clock2"
         ];
 
         modules-right = [  
@@ -67,7 +58,24 @@ in
 
         clock = {
           interval = 60;
-          format = "{:%I:%M}";
+          format = "{:%I}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            "mode" = "year";
+            "mode-mon-col" = 3;
+            "weeks-pos" = "right";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "weeks" = "<span color='#fa6122'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#fa6122'><b><u>{}</u></b></span>";
+            };
+          };
+        };
+
+        "clock#clock2" = {
+          interval = 60;
+          format = "{:%M}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             "mode" = "year";
@@ -108,7 +116,7 @@ in
           format-muted = "{icon}";
           format-icons = {
             default = ["" "" "" ""];
-            headphone = [" " " " " " " "];
+            headphone = ["" "" "" ""];
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
           on-click = "foot pulsemixer";
@@ -174,8 +182,8 @@ in
     style = ''
       * {
         border: none;
-        padding: 0;
-        margin: 0;
+        padding: 0px;
+        margin: 0px;
 
         font-family: Trebuchet;
         font-size: 16px;
@@ -185,15 +193,28 @@ in
       }
 
       window#waybar {
-        background: #120f09;
+        border-radius: 50px;
       }
 
       #bluetooth.connected {
         color: #00bfff;
       }
 
+      .modules-left {
+        margin-top: 4px;
+      }
+
+      .module-center {
+      }
+
       .modules-right {
-        margin-left: 8px;
+        margin-bottom: 8px;
+      }
+    
+      #clock,
+      #clock.clock2 {
+        padding-left: 2px;
+        padding-right: 2px;
       }
 
       #network,
@@ -202,9 +223,8 @@ in
       #battery,
       #cpu,
       #memory,
-      #disk,
-      #temperature {
-        padding-left: 8px;
+      #disk {
+        padding-bottom: 9px;
       }
       
       #battery.good { color: #A9B665; }
