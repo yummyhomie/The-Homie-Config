@@ -9,35 +9,24 @@ in
   programs.waybar = {
     enable = true;
     settings = {
-      
       leftBar = {
         layer = "top";
         position = "left";
-        width = 8;
-        height = 963;
+        width = 16;
         
-        modules-center = [ 
-          "wlr/taskbar"
-        ];   
-
-        "wlr/taskbar" = {
-          format = "{icon}";
-          "icon-size" = 16;
-          "on-click" = "activate";
-          "sort-by-app-id" = true;
-        };
+        modules-left = [ 
+          "niri/workspaces"
+        ];  
       };
 
       topBar = {
         layer = "top";
         position = "top";
-        height = 8;
-        width = 963;
-        reload_style_on_change = true;
+        height = 16;
         
         modules-left = [ 
           # "hyprland/workspaces"
-          "niri/workspaces"
+          # "niri/workspaces"
           "cava"
         ];  
         
@@ -197,29 +186,14 @@ in
 
       window#waybar {
         background: #120f09;
-        border-radius: 0 0 4px 4px;
       }
-
-      #workspaces button + button { margin-left: 4px; }
 
       #bluetooth.connected {
         color: #00bfff;
       }
 
-      #workspaces {
-        margin: 0px 2px;
-      }
-
       .modules-right {
-        margin-right: 4px;
-      }
-      
-      #cava {
-        padding-left: 2px;
-      }
-
-      #cava.silent {
-        color: rgba(0, 0, 0, 0);
+        margin-left: 8px;
       }
 
       #network,
@@ -228,8 +202,9 @@ in
       #battery,
       #cpu,
       #memory,
-      #disk {
-        padding-right: 8px;
+      #disk,
+      #temperature {
+        padding-left: 8px;
       }
       
       #battery.good { color: #A9B665; }

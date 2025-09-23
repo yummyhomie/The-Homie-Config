@@ -1,9 +1,7 @@
 input {
     mod-key "Alt"
 
-    keyboard { 
-	numlock 
-    } // Enable numlock on startup, omitting this setting disables it
+    keyboard { numlock; } // Enable numlock on startup, omitting this setting disables it
     
     warp-mouse-to-focus // Uncomment this to make the mouse warp to the center of newly focused windows.
     
@@ -233,7 +231,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 3.0
 
     // Individual animations.
 
@@ -324,7 +322,7 @@ window-rule {
 }
 
 window-rule {
-    open-maximized true
+    open-maximized false
 }
 
 binds {
@@ -364,9 +362,11 @@ binds {
 
     Mod+C { close-window; }
 
+    Mod+MouseLeft { focus-column-left; }
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
+    Mod+MouseRight { focus-column-right; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -423,7 +423,7 @@ binds {
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    // Mod+I              { focus-workspace-up; } Commented Out
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -514,10 +514,10 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    // Mod+R { switch-preset-column-width; }
+    Mod+I { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    // Mod+F { maximize-column; }
+    Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
