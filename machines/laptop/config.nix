@@ -1,5 +1,5 @@
 {
-  imports = [ ./modules/default.nix ];
+  imports = [  ];
 
   networking.hostName = "the-homie-laptop";
 }

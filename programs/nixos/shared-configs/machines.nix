@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./nixos-modules/machine-modules/default.nix ];
+  # Import nixos modules & configs for all machines here!
+  imports = [  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

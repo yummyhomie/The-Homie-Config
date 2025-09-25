@@ -79,11 +79,11 @@
       ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
-          ./modules/nixos-base.nix                        # Import base nixos module for all systems.
-          ./modules/nixos-${type}.nix                     # Import type specific nixos module.
+          ./programs/nixos/shared-configs/base.nix        # Import base nixos module for all systems.
+          ./programs/nixos/shared-configs/${type}.nix     # Import type specific nixos module. (Servers or Machines)
 
-          ./hosts/${host}/config.nix                      # Import host specific nixos module.
-          ./hosts/${host}/hardware-configuration.nix      # Import host specific hardware module. 
+          ./machines/${host}/config.nix                   # Import host specific nixos module.
+          ./machines/${host}/hardware-configuration.nix   # Import host specific hardware module. 
 
           home-manager.nixosModules.home-manager
           {
@@ -100,10 +100,10 @@
       ${hostname} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./modules/home-base.nix                         # Import base home-manager modules for all systems.
-          ./modules/home-${type}.nix                      # Import type specific home-manager module.
-
-          ./hosts/${host}/home.nix                        # Import host specific home-manager module.
+          ./programs/home/shared-configs/base.nix        # Import base home-manager module for all systems.
+          ./programs/home/shared-configs/${type}.nix     # Import type specific home-manager module. (Servers or Machines)
+          
+          ./machines/${host}/home.nix                    # Import host specific home-manager module.
           {
             _module.args.hostname = hostname;
             _module.args.type = type;

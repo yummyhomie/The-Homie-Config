@@ -1,6 +1,10 @@
 {
-  # Import home-manager modules for all systems here!
-  imports = [ ./home-modules/base-modules/default.nix ];
+  # Import home-manager modules & configs for all systems here!
+  imports = [ 
+    ../bash.nix
+    ../git.nix
+    ../vim.nix
+  ];
 
   home.username = "erik";
   home.homeDirectory = "/home/erik";

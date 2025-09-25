@@ -2,8 +2,11 @@
 
 {
   imports = [
-      ./services/default.nix
-    ];
+    ../../programs/nixos/adguard.nix 
+    ../../programs/nixos/jellyfin.nix
+    ../../programs/nixos/nginx.nix    
+    ../../programs/nixos/samba.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

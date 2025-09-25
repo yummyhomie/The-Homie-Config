@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./modules/default.nix
-    ];
+  imports = [
+    ../../programs/nixos/mine-server.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

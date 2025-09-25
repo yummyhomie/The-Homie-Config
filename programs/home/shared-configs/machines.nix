@@ -1,9 +1,15 @@
 { config, pkgs, ... }:
-
+  # Import home-manager modules & configs for all machines here!
 {
   imports = [ 
-    ./home-modules/machine-modules/default.nix 
-    ./nixos-modules/machine-modules/stylix.nix
+    ../browser.nix
+    ../foot.nix
+    ../gtk.nix
+    ../nixcord.nix
+    ../rofi.nix
+    ../spicetify.nix
+    ../stylix-home.nix
+    ../waybar.nix
   ];
 
 /*
@@ -68,7 +74,15 @@
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
   ];
-  
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ "../hypr/menbug.jpg" ];
+      wallpaper = [ " , ../hypr/menbug.jpg"  ];
+    };
+  };
+
   fonts.fontconfig.enable = true;
 #  }}}
 }

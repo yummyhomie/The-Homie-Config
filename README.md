@@ -4,7 +4,7 @@
 </div>
 
 <div>
-    <br> <img src="./files/screenshot.png" alt="Loading bruh chill for 1 sec...">
+    <br> <img src="./programs/files/screenshot.png" alt="Loading bruh chill for 1 sec...">
 </div>
 
 <div align="center">
