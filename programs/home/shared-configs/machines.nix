@@ -2,7 +2,6 @@
   # Import home-manager modules & configs for all machines here!
 {
   imports = [ 
-    ../browser.nix
     ../foot.nix
     ../gtk.nix
     ../nixcord.nix
@@ -10,6 +9,8 @@
     ../spicetify.nix
     ../stylix-home.nix
     ../waybar.nix
+
+    ../../nixos/stylix.nix
   ];
 
 /*
@@ -78,8 +79,8 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "../hypr/menbug.jpg" ];
-      wallpaper = [ " , ../hypr/menbug.jpg"  ];
+      preload = [ "../../window-manager/hypr/menbug.jpg" ];
+      wallpaper = [ " , ../../window-manager/hypr/menbug.jpg"  ];
     };
   };
 

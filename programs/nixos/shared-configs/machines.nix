@@ -2,7 +2,10 @@
 
 {
   # Import nixos modules & configs for all machines here!
-  imports = [  ];
+  imports = [ 
+    ../stylix.nix
+    ../virt.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

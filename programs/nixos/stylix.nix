@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../../hypr/menbug.jpg;
+    image = ../window-manager/hypr/menbug.jpg;
     base16Scheme = {
       system = "base16";
       name = "gruvbox-material-dark-soft";
