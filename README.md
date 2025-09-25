@@ -15,54 +15,41 @@
 .
 ├── flake.nix
 │
-├── hosts
+├── machines
+│   │
 │   ├── desktop
 │   │   ├── config.nix
 │   │   ├── hardware-configuration.nix
 │   │   └── home.nix
-│   │
+│   │
 │   ├── hacking
-│   │   ├── config.nix
-│   │   ├── hardware-configuration.nix
-│   │   └── home.nix
-│   │
+│   │   └── ...
+│   │
 │   ├── homelab
-│   │   ├── config.nix
-│   │   ├── hardware-configuration.nix
-│   │   ├── home.nix
-│   │   └── services/
-│   │
+│   │   └── ...        
+│   │
 │   ├── laptop
-│   │   ├── config.nix
-│   │   ├── hardware-configuration.nix
-│   │   └── home.nix
-│   │
-│   └── minecraft
-│       ├── config.nix
-│       ├── hardware-configuration.nix
-│       ├── home.nix
-│       └── modules/
+│   │   └── ...    
+│   │
+│   └── minecraft
+│       └── ...  
 │
-├── modules
-│   ├── home-base.nix
-│   ├── home-machines.nix
-│   ├── home-servers.nix
-│   │
-│   ├── home-modules
-│   │   ├── base-modules/
-│   │   ├── machine-modules/
-│   │   └── server-modules/
-│   │
-│   ├── nixos-base.nix
-│   ├── nixos-machines.nix
-│   ├── nixos-servers.nix
-│   │
-│   ├── nixos-modules
-│   │   ├── base-modules/
-│   │   ├── machine-modules/
-│   │   └── server-modules/
-│   └── hypr/
-│
+├── programs
+│   │
+│   ├── home
+│   │   └── shared-configs
+│   │       ├── base.nix
+│   │       ├── machines.nix
+│   │       └── servers.nix
+│   │
+│   ├── nixos
+│   │   └── shared-configs
+│   │       └── ... 
+│   │
+│   └── window-manager
+│       ├── hypr/
+│       └── niri/
+│ 
 └── README.md
 ```
 
