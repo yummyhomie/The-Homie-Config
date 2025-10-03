@@ -2,6 +2,8 @@
   # NginX Reverse Proxy
   services.nginx = {
     enable = true;
+
+    # JELLYFIN
     virtualHosts."media.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
@@ -16,6 +18,8 @@
         '';
       };
     };
+
+    # ADGUARD
     virtualHosts."ad.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
@@ -30,31 +34,19 @@
         '';
       };
     };
-    virtualHosts."homelab.eleedee.net" = {
+
+    # RADICALE
+    virtualHosts."rad.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:1918";  # Glance port
+        proxyPass = "http://127.0.0.1:5232";
         proxyWebsockets = true;
-        extraConfig = ''
+        extraConfig = '' 
           proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
-      };
-    };
-    virtualHosts."files.eleedee.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3923";  # Copyparty port
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Remote-User $remote_user;
+          proxy_pass_header Authorization;
         '';
       };
     };

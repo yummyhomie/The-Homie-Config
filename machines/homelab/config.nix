@@ -2,9 +2,11 @@
 
 {
   imports = [
-    ../../programs/nixos/adguard.nix 
+    ../../programs/nixos/adguard.nix
+    ../../programs/nixos/i2p.nix
     ../../programs/nixos/jellyfin.nix
-    ../../programs/nixos/nginx.nix    
+    ../../programs/nixos/nginx.nix
+    ../../programs/nixos/radicale.nix
     ../../programs/nixos/samba.nix
   ];
 
@@ -27,7 +29,7 @@
   users.users.erik = {
     isNormalUser = true;
     description = "Erik";
-    extraGroups = [ "networkmanager" "wheel" "i2p" "i2pd" "jellyfin" "media" "docker" "copyparty" ];
+    extraGroups = [ "networkmanager" "wheel" "samba" "i2p" "i2pd" "jellyfin" "media" "docker" "copyparty" ];
     packages = with pkgs; [];
   };
 
