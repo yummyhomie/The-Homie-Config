@@ -36,3 +36,5 @@
 
 # Add subsequent users (-c) overwrites everything!
 # sudo htpasswd -B /var/lib/radicale/users USERNAME-2
+
+# nix-shell -p apacheHttpd if htpasswd isn't installed. 

@@ -7,6 +7,7 @@
 {
   imports = [
     ../../programs/nixos/mine-server.nix
+    ../../programs/nixos/duplicate-configs/radicale-cysc.nix
   ];
 
   # Bootloader.
