@@ -6,26 +6,26 @@
     image = ../window-manager/hypr/menbug.jpg;
     base16Scheme = {
       system = "base16";
-      name = "gruvbox-material-dark-soft";
-      author = "Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)";
+      name = "Mocha";
+      author = "Chris Kempson (http://chriskempson.com)";
       variant = "dark";
       palette = {
-        base00 = "#32302f";
-        base01 = "#3c3836";
-        base02 = "#5a524c";
-        base03 = "#7c6f64";
-        base04 = "#bdae93";
-        base05 = "#ddc7a1";
-        base06 = "#ebdbb2";
-        base07 = "#fbf1c7";
-        base08 = "#ea6962";
-        base09 = "#e78a4e";
-        base0A = "#d8a657";
-        base0B = "#a9b665";
-        base0C = "#89b482";
-        base0D = "#7daea3";
-        base0E = "#d3869b";
-        base0F = "#bd6f3e";
+        base00 = "3B3228";
+        base01 = "534636";
+        base02 = "645240";
+        base03 = "7e705a";
+        base04 = "b8afad";
+        base05 = "d0c8c6";
+        base06 = "e9e1dd";
+        base07 = "f5eeeb";
+        base08 = "cb6077";
+        base09 = "d28b71";
+        base0A = "f4bc87";
+        base0B = "beb55b";
+        base0C = "7bbda4";
+        base0D = "8ab3b5";
+        base0E = "a89bb9";
+        base0F = "bb9584";
       };
     };
     
