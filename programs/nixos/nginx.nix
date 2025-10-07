@@ -50,22 +50,29 @@
         '';
       };
     };
-    
-    # RADICALE FOR CYSC
-    virtualHosts."rad.cyscuvu.com" = {
-      enableACME = true;
+
+    # DAVIS
+    virtualHosts."davis.cyscuvu.com" = {
       forceSSL = true;
+      enableACME = true;
+      
       locations."/" = {
-        proxyPass = "http://192.168.1.8:5232";
+        proxyPass = "http://192.168.1.8:1945";
         proxyWebsockets = true;
-        extraConfig = '' 
+        extraConfig = ''
           proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Remote-User $remote_user;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Port $server_port;
+          
+          # CalDAV specific headers
+          proxy_set_header Destination $http_destination;
           proxy_pass_header Authorization;
         '';
       };
-    };
+    }; 
   };
 
   # SSL/TLS
