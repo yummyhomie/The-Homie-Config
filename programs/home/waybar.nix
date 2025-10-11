@@ -12,7 +12,7 @@ in
       topBar = {
         layer = "top";
         position = "left";
-        height = 796;
+        # height = 796;
         
         modules-left = [ 
           # "hyprland/workspaces"
@@ -188,12 +188,8 @@ in
         font-family: Trebuchet;
         font-size: 16px;
         font-weight: bold;
-
+        
         color: #d4be98;
-      }
-
-      window#waybar {
-        border-radius: 50px;
       }
 
       #bluetooth.connected {

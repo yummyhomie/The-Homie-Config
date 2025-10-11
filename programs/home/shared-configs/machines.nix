@@ -37,12 +37,12 @@
 */
 
   
-  stylix.targets.waybar.enable = false; # This option doesn't exists for NixOS. Thus why it's here. Just a band-aid tho for now. 
   
-# Packages {{{ 
+# Packages 
   home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
+    eog
     fastfetch
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
@@ -85,5 +85,4 @@
   };
 
   fonts.fontconfig.enable = true;
-#  }}}
 }
