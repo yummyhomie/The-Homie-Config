@@ -15,6 +15,7 @@
       alias flake='vim ~/The-Homie-Config/flake.nix'
       alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
       alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
+      alias config='vim ~/The-Homie-Config/machines/${type}/config.nix'
 
       alias bash='vim ~/The-Homie-Config/programs/home/bash.nix'
       alias way='vim ~/The-Homie-Config/programs/home/waybar.nix'

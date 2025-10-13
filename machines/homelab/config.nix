@@ -3,7 +3,6 @@
 {
   imports = [
     ../../programs/nixos/adguard.nix
-    ../../programs/nixos/dashboard.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/jellyfin.nix
     ../../programs/nixos/nginx.nix

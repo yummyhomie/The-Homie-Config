@@ -1,4 +1,3 @@
-# WORK IN PROGRESS
 {
   services.grafana = {
     enable = true;
