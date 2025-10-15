@@ -1,11 +1,60 @@
 { config, lib, pkgs, ... }:
-
-{
   # Import nixos modules & configs for all machines here!
+{
   imports = [ 
+    ../niri.nix
     ../stylix.nix
-    ../virt.nix
+    ../virtual-machines.nix
   ];
+
+/*  ////////////////////////////////////////////////////////////////////////
+    //                                                                    //
+    //                                                                    //
+    //     ███████████ █████                                              //
+    //    ░█░░░███░░░█░░███                                               //
+    //    ░   ░███  ░  ░███████    ██████                                 //
+    //        ░███     ░███░░███  ███░░███                                //
+    //        ░███     ░███ ░███ ░███████                                 //
+    //        ░███     ░███ ░███ ░███░░░                                  //
+    //        █████    ████ █████░░██████                                 //
+    //       ░░░░░    ░░░░ ░░░░░  ░░░░░░                                  //
+    //                                                                    //
+    //                                                                    //
+    //                                                                    //
+    //     █████   █████                           ███                    //
+    //    ░░███   ░░███                           ░░░                     //
+    //     ░███    ░███   ██████  █████████████   ████   ██████           //
+    //     ░███████████  ███░░███░░███░░███░░███ ░░███  ███░░███          //
+    //     ░███░░░░░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███████           //
+    //     ░███    ░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███░░░            //
+    //     █████   █████░░██████  █████░███ █████ █████░░██████           //
+    //    ░░░░░   ░░░░░  ░░░░░░  ░░░░░ ░░░ ░░░░░ ░░░░░  ░░░░░░            //
+    //                                                                    //
+    //                                                                    //
+    //                                                                    //
+    //       █████████                         ██████   ███               //
+    //      ███░░░░░███                       ███░░███ ░░░                //
+    //     ███     ░░░   ██████  ████████    ░███ ░░░  ████   ███████     //
+    //    ░███          ███░░███░░███░░███  ███████   ░░███  ███░░███     //
+    //    ░███         ░███ ░███ ░███ ░███ ░░░███░     ░███ ░███ ░███     //
+    //    ░░███     ███░███ ░███ ░███ ░███   ░███      ░███ ░███ ░███     //
+    //     ░░█████████ ░░██████  ████ █████  █████     █████░░███████     //
+    //      ░░░░░░░░░   ░░░░░░  ░░░░ ░░░░░  ░░░░░     ░░░░░  ░░░░░███     //
+    //                                                       ███ ░███     //
+    //                                                      ░░██████      //
+    //                                                       ░░░░░░       //
+    //                                                                    //
+    //                                                                    //
+    ////////////////////////////////////////////////////////////////////////  */
+
+  # Nix Settings
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ]; # For Flakes
+    warn-dirty = false;    
+
+    download-buffer-size = 524288000; # 500 MiB
+    auto-optimise-store = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -23,21 +72,17 @@
 
   # Hardware
   hardware.bluetooth.enable = true;
-
+  
+  # User
   users.users.erik = {
      isNormalUser = true;
      extraGroups = [ "wheel" "docker" ];
      packages = with pkgs; [ btop ];
   };
 
-  # Flakes
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    warn-dirty = false;
-  };
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ docker-compose xwayland-satellite ];
+  environment.systemPackages = with pkgs; [ btop ];
 
   # Programs & Services On This System
 
@@ -48,51 +93,15 @@
   programs.hyprland.enable = true;
 
   # Hypridle
-  services.hypridle.enable = true;
-  
-  # Niri
-  programs.niri.enable = true; # Off until I get a good enough config working
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk  # This should work now with xwayland-satellite
-    ];
-    config = {
-      common = {
-        default = [ "wlr" "gtk" ];
-      };
-      niri = {
-        default = [ "wlr" "gtk" ];
-      };
-    };
-  };
-
-  # QEMU
-  services.qemuGuest.enable = true;
+  services.hypridle.enable = true;  
 
   # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-    };
-  };
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-  };
  
   nixpkgs.config.allowUnfree = true;
 
   networking.firewall.enable = true;
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
 

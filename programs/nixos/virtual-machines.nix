@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
-
 {
+  # QEMU
+  services.qemuGuest.enable = true;
+
   programs.dconf.enable = true;
 
   # Enable virtualization
@@ -10,8 +12,8 @@
       qemu = {
         package = pkgs.qemu_kvm;
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ]; 
+        # ovmf.enable = true;                   These were removed recently. 
+        # ovmf.packages = [ pkgs.OVMFFull.fd ]; 
       };
     };
   };

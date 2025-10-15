@@ -16,6 +16,8 @@
   
   services.xserver.videoDrivers = ["amdgpu"];
   programs.gamemode.enable = true;
+
+  programs.gpu-screen-recorder.enable = true;
   
   environment.systemPackages = with pkgs; [
     # Common gaming dependencies
@@ -23,6 +25,7 @@
     vulkan-loader
     vulkan-validation-layers
     mesa
+    gpu-screen-recorder-gtk
   ];
   
   programs.xwayland.enable = true;
