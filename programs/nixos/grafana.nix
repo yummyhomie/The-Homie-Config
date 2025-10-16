@@ -9,11 +9,11 @@
       http_addr = "0.0.0.0";
     };
 
-    provision.datasources.datasources = [
+    provision.datasources.settings.datasources = [
       {
         name = "The-Homie-Server Data";
         type = "prometheus";
-        url = "http://127.0.0.1:9090";
+        url = "http://192.168.1.2:9090";
         access = "proxy";
         isDefault = true;
       }
