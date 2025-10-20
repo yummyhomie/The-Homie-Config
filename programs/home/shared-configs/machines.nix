@@ -89,6 +89,8 @@
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
+
+    burpsuite
   ];
 
   fonts.fontconfig.enable = true;

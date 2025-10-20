@@ -47,7 +47,6 @@
 │   │       └── ... 
 │   │
 │   └── window-manager
-│       ├── hypr/
 │       └── niri/
 │ 
 └── README.md
