@@ -51,6 +51,16 @@
       };
     };
 
+    # INFCLOUD
+    virtualHosts."calendar.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        return = "301 https://rad.eleedee.net/.web/infcloud/";
+      };
+    };
+
+
     # DAVIS
     virtualHosts."davis.cyscuvu.com" = {
       forceSSL = true;
