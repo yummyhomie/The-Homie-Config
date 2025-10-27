@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
   # Import home-manager modules & configs for all machines here!
+let 
+  capacities = pkgs.callPackage ../capacities.nix {};
+in
 {
   imports = [ 
     ../foot.nix
@@ -57,6 +60,7 @@
   home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
+    capacities
     eog
     fastfetch
     firefox
@@ -81,11 +85,13 @@
     screen
     signal-desktop
     # spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    tailwindcss_4
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
     vscode
+    watchman
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
