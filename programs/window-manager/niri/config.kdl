@@ -46,7 +46,7 @@ output "eDP-1" {
   mode "1920x1080@60.049" 
   scale 1 
   transform "normal" 
-  position x=1080 y=0 
+  position x=1280 y=0 
 }
 
 // TV
@@ -56,6 +56,14 @@ output "HDMI-A-1" {
   transform "normal" 
   position x=2160 y=0 
 }
+
+// OG Monitor
+//output "HDMI-A-1" {
+//  mode "1280x1024@60.020" 
+//  scale 1 
+//  transform "normal" 
+//  position x=0 y=0 
+//}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -240,7 +248,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown 3.0
+    slowdown 2.0
 
     // Individual animations.
 
@@ -326,7 +334,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 4
     clip-to-geometry true
 }
 

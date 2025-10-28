@@ -11,6 +11,11 @@
 
 # NOTE: Color theme is set by stylix. This just sets the icon theme. 
 
+# Old Icon Theme
+# name = "Papirus-Dark";
+# package = pkgs.papirus-icon-theme.override {color = "black"; };
+
+
 # To find the name of the theme/icon, run this command:
 # cd $(nix build nixpkgs#PACKAGE-NAME --print-out-paths --no-link)
 # It'll put you in it's directory and you can ls for the correct name. 
