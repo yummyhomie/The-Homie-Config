@@ -9,6 +9,7 @@
     ../../programs/nixos/nginx.nix
     ../../programs/nixos/radicale.nix
     ../../programs/nixos/samba.nix
+    ../../programs/nixos/syncthing.nix
   ];
 
   # Bootloader.
