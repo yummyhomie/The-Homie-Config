@@ -7,11 +7,18 @@
     group = "users";
     configDir = "/home/erik/.config/syncthing";
     
-    folders = {
-      "obsidian" = {
-        label = "Obsidian";
-        path = "/home/erik/the-homie-vault";
+    settings = {
+      options = {
+        localAnnounceEnabled = false;
+        relaysEnabled = false;
       };
+
+      folders."the-homie-notes" = {
+        label = "the-homie-notes";
+        path = "/home/erik/the-homie-notes";
+      };    
     };
   };
+
+  networking.firewall.interfaces."ztmoseu2p5".allowedTCPPorts = [ 22000 ];
 }

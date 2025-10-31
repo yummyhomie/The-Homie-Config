@@ -6,6 +6,7 @@
     ../stylix.nix
     ../syncthing-clients.nix
     ../virtual-machines.nix
+    ../zerotier.nix
   ];
 
 /*  ////////////////////////////////////////////////////////////////////////

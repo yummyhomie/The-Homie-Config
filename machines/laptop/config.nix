@@ -1,7 +1,5 @@
 {
-  imports = [ 
-    ../../programs/nixos/zerotier.nix
-  ];
+  imports = [ ];
 
   networking.hostName = "the-homie-laptop";
 }
