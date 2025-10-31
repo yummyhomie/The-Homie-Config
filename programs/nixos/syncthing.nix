@@ -1,7 +1,7 @@
 {
   services.syncthing = {
     enable = true;
-    openDefaultPorts = true;
+    openDefaultPorts = false;
     guiAddress = "10.144.79.39:8384";  # Localhost Only
     user = "erik";
     group = "users";
@@ -9,8 +9,8 @@
     
     settings = {
       options = {
-        localAnnounceEnabled = false;
-        relaysEnabled = false;
+        localAnnounceEnabled = true;
+        relaysEnabled = true;
       };
 
       folders."the-homie-notes" = {
