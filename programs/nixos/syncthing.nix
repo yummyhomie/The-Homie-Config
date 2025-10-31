@@ -9,7 +9,7 @@
     
     settings = {
       options = {
-        localAnnounceEnabled = true;
+        localAnnounceEnabled = false;
         relaysEnabled = true;
       };
 
