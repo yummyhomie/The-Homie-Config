@@ -16,7 +16,15 @@
       folders."the-homie-notes" = {
         label = "the-homie-notes";
         path = "/home/erik/the-homie-notes";
-      };    
+        devices = [ "the-homie-machine" ];
+      };
+
+      devices = {
+        the-homie-machine = {
+          addresses = [ "tcp://10.144.47.44:22000" ];
+          id = "5PICSNR-QJCIHQI-YIPDPZO-3IHQZRS-527W5NP-JBK6LWL-2HLGF5B-YMPXOAS";
+        };
+      };
     };
   };
 
