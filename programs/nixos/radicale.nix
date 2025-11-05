@@ -25,7 +25,7 @@
   systemd.services.radicale.environment.PYTHONPATH = 
     let    
       python = pkgs.python3.withPackages (ps: with ps; [
-        radicale_infcloud
+        radicale-infcloud
         pytz                                                                                             
         setuptools  
       ]);
