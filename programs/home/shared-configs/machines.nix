@@ -61,19 +61,16 @@ in
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     capacities
-    eog
+    eog                    # Gnome image viewer 
     fastfetch
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
-    fuzzel
     gvfs                   # This helps with connecting to remote folders via nautilus
     hyprpaper
-    hyprshot
     libreoffice-qt6-fresh
-    lm_sensors
     nautilus
     ncdu                   # To checkout Disk Usage
-    networkmanager         # Gotta double check if I need this.
+    networkmanager
     nmap
     obs-studio
     obsidian
@@ -82,21 +79,17 @@ in
     prismlauncher
     pulsemixer
     r2modman
-    screen
+    screen                 # For interfacing with mgmt ports
     signal-desktop
-    # spotify                # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
-    tailwindcss_4
+    # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
-    vscode
-    watchman
+    vscodium
     waybar
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
-
-    burpsuite
   ];
 
   fonts.fontconfig.enable = true;

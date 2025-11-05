@@ -1,12 +1,12 @@
 {
   stylix = {
     targets = {
+      btop.enable = true;
       foot.enable = true;
-      fuzzel.enable = true;
       nixcord.enable = true;
       vscode = {
         enable = true; 
-        profileNames = [ "default" ];
+        profileNames = [ "Default" ];
       };
       waybar.enable = false;
     };
