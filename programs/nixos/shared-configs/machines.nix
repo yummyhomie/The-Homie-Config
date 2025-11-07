@@ -68,6 +68,9 @@
 
   hardware.amdgpu.initrd.enable = lib.mkDefault true;
 
+  # USB Ports
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
   # Networking
   networking.networkmanager.enable = true;
   time.timeZone = "America/Denver";
@@ -78,13 +81,13 @@
   # User
   users.users.erik = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker" ];
-     packages = with pkgs; [ btop ];
+     extraGroups = [ "wheel" "docker" "dialout" ];
+     packages = with pkgs; [ ];
   };
 
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ btop ];
+  environment.systemPackages = with pkgs; [ btop minicom gtkterm putty openvpn ];
 
   # Programs & Services On This System
 
