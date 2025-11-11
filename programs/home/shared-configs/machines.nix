@@ -66,7 +66,6 @@ in
     firefox
     font-awesome           # For icon functionality. Peep the waybar!
     gvfs                   # This helps with connecting to remote folders via nautilus
-    hyprpaper
     libreoffice-qt6-fresh
     nautilus
     ncdu                   # To checkout Disk Usage
@@ -88,6 +87,7 @@ in
     vlc
     vscodium
     waybar
+    wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
   ];

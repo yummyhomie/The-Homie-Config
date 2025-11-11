@@ -68,9 +68,6 @@
 
   hardware.amdgpu.initrd.enable = lib.mkDefault true;
 
-  # USB Ports
-  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
-
   # Networking
   networking.networkmanager.enable = true;
   time.timeZone = "America/Denver";
@@ -87,7 +84,7 @@
 
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ btop minicom gtkterm putty openvpn ];
+  environment.systemPackages = with pkgs; [ btop ];
 
   # Programs & Services On This System
 
@@ -98,8 +95,8 @@
   programs.hyprland.enable = true;
 
   # Hypridle
-  services.hypridle.enable = true;  
-
+  services.hypridle.enable = true; 
+  
   # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;
  

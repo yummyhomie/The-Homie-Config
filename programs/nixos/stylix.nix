@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../window-manager/hypr/menbug.jpg;
+    image = ../window-manager/wallpapers/birch.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
     
     cursor = {

@@ -3,8 +3,8 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "../window-manager/hypr/menbug.jpg" ];
-      wallpaper = [ " , ../window-manager/hypr/menbug.jpg"  ];
+      preload = [ "../window-manager/hypr/birch.jpg" ];
+      wallpaper = [ " , ../window-manager/hypr/birch.jpg"  ];
     };
   };
 }
