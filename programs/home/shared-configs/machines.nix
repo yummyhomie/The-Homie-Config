@@ -4,10 +4,11 @@ let
   capacities = pkgs.callPackage ../capacities.nix {};
 in
 {
-  imports = [ 
+  imports = [
     ../foot.nix
     ../gtk.nix
     ../hyprpaper.nix
+    ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix

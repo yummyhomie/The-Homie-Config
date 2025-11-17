@@ -18,6 +18,7 @@
       alias config='vim ~/The-Homie-Config/machines/${host}/config.nix'
 
       alias bash='vim ~/The-Homie-Config/programs/home/bash.nix'
+      alias ni='vim ~/The-Homie-Config/programs/window-manager/niri/config.kdl'
       alias way='vim ~/The-Homie-Config/programs/home/waybar.nix'
     '';
   };

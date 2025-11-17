@@ -5,7 +5,7 @@
 
     extraConfig = {
       modi = "drun,filebrowser";
-      font = "monospace 12";
+      font = "monospace 14";
       show-icons = true;
       disable-history = true;
       hover-select = true;

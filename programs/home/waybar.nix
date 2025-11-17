@@ -89,7 +89,7 @@ in
             };
           };
         };
-
+        
         network = {
           format-wifi = "";
           format-ethernet = "";

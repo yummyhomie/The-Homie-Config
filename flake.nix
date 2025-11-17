@@ -15,7 +15,7 @@
 
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; }; 
     
-    # firefoxcss = {url = "github:"; flake = false; }; WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
+    #firefoxcss = {url = "github:"; flake = false; }; # WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
   };
 
   outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
@@ -26,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-machine";   # Change per system!
+    hostname = "the-homie-laptop";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
