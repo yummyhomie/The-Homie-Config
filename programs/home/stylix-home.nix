@@ -2,6 +2,12 @@
   stylix = {
     targets = {
       btop.enable = true;
+      firefox = {
+        enable = true;
+        colorTheme.enable = true;
+        firefoxGnomeTheme.enable = true;
+        profileNames = [ "Default" "I2P" ];
+      };
       foot.enable = true;
       librewolf = {
         enable = true;

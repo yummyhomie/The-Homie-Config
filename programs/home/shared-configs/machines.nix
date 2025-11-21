@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ../firefox.nix
     ../foot.nix
     ../gtk.nix
     ../hyprpaper.nix
@@ -64,7 +65,6 @@ in
     capacities
     eog                    # Gnome image viewer 
     fastfetch
-    firefox
     font-awesome           # For icon functionality. Peep the waybar!
     gvfs                   # This helps with connecting to remote folders via nautilus
     libreoffice-qt6-fresh
