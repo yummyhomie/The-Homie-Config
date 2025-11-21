@@ -9,7 +9,6 @@ in
     ../foot.nix
     ../gtk.nix
     ../hyprpaper.nix
-    ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix

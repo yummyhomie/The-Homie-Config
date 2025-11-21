@@ -45,10 +45,6 @@
           # HTTPS-Only Mode - Disabled
           "dom.security.https_only_mode" = false;
           "dom.security.https_only_mode_ever_enabled" = false;
-          # Optional: Delete cookies after every session
-          "network.cookie.lifetimePolicy" = 2;  # 2 = Accept for session only
-          "privacy.clearOnShutdown.cookies" = true;
-          "privacy.clearOnShutdown.cache" = true;
           # Optional: Do Not Track
           "privacy.donottrackheader.enabled" = true;
         };
