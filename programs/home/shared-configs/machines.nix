@@ -65,6 +65,7 @@ in
     eog                    # Gnome image viewer 
     fastfetch
     font-awesome           # For icon functionality. Peep the waybar!
+    gimp
     gvfs                   # This helps with connecting to remote folders via nautilus
     libreoffice-qt6-fresh
     nautilus
@@ -81,6 +82,7 @@ in
     screen                 # For interfacing with mgmt ports
     signal-desktop
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    tailwindcss_4
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
@@ -90,6 +92,8 @@ in
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
+
+    krita
   ];
 
   fonts.fontconfig.enable = true;
