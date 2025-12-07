@@ -1,5 +1,5 @@
 {
-  description = "The-Homie-Flake! For use across all my beloved machines.";
+  description = "The-Homie-Flake! For use across all my homie machines.";
 
   inputs = {
     
@@ -26,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-machine";   # Change per system!
+    hostname = "the-dell-homie";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -34,7 +34,7 @@
       else if hostname == "the-homie-machine" then "machines"
       else if hostname == "the-homie-server" then "servers"
       else if hostname == "the-hacking-server" then "servers"
-      else if hostname == "the-minecraft-server" then "servers"
+      else if hostname == "the-dell-homie" then "servers"
       else "unknown";
 
     host =
@@ -42,7 +42,7 @@
       else if hostname == "the-homie-machine" then "desktop"
       else if hostname == "the-homie-server" then "homelab"
       else if hostname == "the-hacking-server" then "hacking"
-      else if hostname == "the-minecraft-server" then "minecraft"
+      else if hostname == "the-dell-homie" then "dell"
       else "unknown";
 
     # Put outputs. Determine which system type gets what. (This may get changed to type specific config.)
@@ -53,7 +53,7 @@
       laptop = [ stylix.nixosModules.stylix ];
       homelab = [];
       hacking = [];
-      minecraft = [ nix-minecraft.nixosModules.minecraft-servers ];
+      dell = [ nix-minecraft.nixosModules.minecraft-servers ];
     };
 
     homeModules = {
@@ -69,7 +69,7 @@
       ];
       homelab = []; 
       hacking = [];
-      minecraft = [];
+      dell = [];
     };
  
   in 
