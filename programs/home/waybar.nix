@@ -12,12 +12,9 @@ in
       topBar = {
         layer = "top";
         position = "left";
-        # height = 796;
         
         modules-left = [ 
-          # "hyprland/workspaces"
           "niri/workspaces"
-          # "cava"
         ];  
         
         modules-center = [

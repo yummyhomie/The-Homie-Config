@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
   # Import nixos modules & configs for all machines here!
 {
-  imports = [ 
+  imports = [
     ../niri.nix
     ../stylix.nix
     ../syncthing-clients.nix
@@ -84,7 +84,13 @@
 
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ btop gparted ];
+  environment.systemPackages = with pkgs; [ btop gparted 
+    wineWowPackages.stable
+    wine
+    wine64
+    winetricks
+    wineWowPackages.waylandFull
+  ];
 
   # Programs & Services On This System
 
