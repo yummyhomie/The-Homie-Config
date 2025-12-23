@@ -3,8 +3,8 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../window-manager/wallpapers/birch.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+    image = ../window-manager/wallpapers/sunset.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/irblack.yaml";
     
     cursor = {
       name = "Hackneyed";
@@ -13,9 +13,9 @@
     };
 
     opacity = {
-      desktop = 0.90;
-      terminal = 0.90;
-      popups = 0.90;
+      desktop = 0.80;
+      terminal = 0.80;
+      popups = 0.80;
     };
   };
 }

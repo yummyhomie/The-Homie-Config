@@ -92,8 +92,6 @@ in
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
-
-    krita
   ];
 
   fonts.fontconfig.enable = true;

@@ -12,6 +12,7 @@ in
       topBar = {
         layer = "top";
         position = "left";
+        margin-right = -8;
         
         modules-left = [ 
           "niri/workspaces"
@@ -187,6 +188,7 @@ in
         font-weight: bold;
         
         color: #d4be98;
+        background: transparent;
       }
 
       #bluetooth.connected {

@@ -1,9 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # Niri
   programs.niri.enable = true;
 
   environment.systemPackages = with pkgs; [ xwayland-satellite ];
+
+  # Environment Variables (To help various programs to use the correct WM Protocol)
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1"; # Let Electron Apps know to use Wayland
+  };
 
   xdg.portal = {
     enable = true;
@@ -16,7 +21,7 @@
       common = {
         default = [ "wlr" "gtk" ];
       };
-      niri = {
+      niri = lib.mkForce {
         default = [ "wlr" "gtk" ];
       };
     };

@@ -3,39 +3,39 @@
   programs.vim = {
     enable = true;
     extraConfig = ''
-      set number 
+      " Line numbers, no line wrapping, mouse support
+      set number  
       set nowrap
       set mouse=a
 
+      " Cursor Shape changes based on mode. (Normal or Insert)
       let &t_SI = "\e[6 q"
       let &t_EI = "\e[2 q"
 
+      " Set tab space to 2 spaces
       set showtabline=2
 
+      " Automatic Indent
       set autoindent
       set smartindent
 
+      " Always show status line
       set laststatus=2
+
+      " Highlight matching brackets      
       set showmatch
-      set cursorline
-
-      set foldmethod=marker
-      set foldlevel=0
-      set foldenable
-      set foldcolumn=1
     '';
-
-    # colorscheme gruvbox
-    # set background=dark
-    # syntax on
     
     plugins = with pkgs.vimPlugins; [
-      #gruvbox         # For gruvbox theme
       auto-pairs      # Automatically fill in brackets, semi-colons, etc.
-      #nvchad          # Let's see if this works.
       ale             # Code/Syntax error catcher
       lightline-vim   # Status Bar
       lightline-ale   # Status Bar addon that works with ALE
+      vim-polyglot     # Syntax Highlighting 
+      vim-fugitive    # Git Wrapper so Awesome it should be illegal
+      nerdtree        # VIM File Explorer
+      vim-nerdtree-syntax-highlight
+      tailwind-tools-nvim
     ];
   };
 }
