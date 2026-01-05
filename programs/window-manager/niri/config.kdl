@@ -118,7 +118,7 @@ layout {
 //// STARTUP ////
 
 spawn-at-startup "waybar"
-spawn-at-startup "wbg" "../wallpapers/sunset.jpg"
+spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/sunset.jpg"
 
 prefer-no-csd // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

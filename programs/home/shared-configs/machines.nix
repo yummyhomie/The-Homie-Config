@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
   # Import home-manager modules & configs for all machines here!
-let 
-  capacities = pkgs.callPackage ../capacities.nix {};
-in
 {
   imports = [
     ../firefox.nix
