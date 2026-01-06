@@ -64,6 +64,7 @@
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
     gvfs                   # This helps with connecting to remote folders via nautilus
+    htop
     libreoffice-qt6-fresh
     nautilus
     ncdu                   # To checkout Disk Usage

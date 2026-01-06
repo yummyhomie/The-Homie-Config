@@ -84,7 +84,7 @@
 
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ btop gparted ];
+  environment.systemPackages = with pkgs; [ gparted ];
 
   # Programs & Services On This System
 
