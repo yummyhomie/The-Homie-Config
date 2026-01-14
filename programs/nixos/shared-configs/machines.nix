@@ -2,10 +2,12 @@
   # Import nixos modules & configs for all machines here!
 {
   imports = [
+    ../gaming.nix
     ../niri.nix
     ../stylix.nix
     ../syncthing-clients.nix
     ../virtual-machines.nix
+    ../wine-gaming.nix
     ../zerotier.nix
   ];
 
@@ -87,16 +89,8 @@
   environment.systemPackages = with pkgs; [ gparted ];
 
   # Programs & Services On This System
+  # None here for now! Used to be hyprland and whatnot
 
-  # Docker
-  virtualisation.docker.enable = true;
- 
-  # Hyprland
-  programs.hyprland.enable = true;
-
-  # Hypridle
-  services.hypridle.enable = true; 
-  
   # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;
  
