@@ -3,7 +3,6 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../window-manager/wallpapers/sunset.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/twilight.yaml";
     
     cursor = {
