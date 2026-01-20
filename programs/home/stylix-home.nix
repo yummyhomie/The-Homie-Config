@@ -20,7 +20,7 @@
         enable = true; 
         profileNames = [ "Default" ];
       };
-      waybar.enable = false;
+      waybar.enable = false;    
     };
   };
 }

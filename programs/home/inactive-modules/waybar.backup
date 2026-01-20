@@ -11,13 +11,16 @@ in
     settings = {
       topBar = {
         layer = "top";
-        position = "top";
+        position = "left";
+        margin-right = -8;
         
         modules-left = [ 
-          "clock"
+          "niri/workspaces"
         ];  
         
         modules-center = [
+          "clock"
+          "clock#clock2"
         ];
 
         modules-right = [  
@@ -53,7 +56,7 @@ in
 
         clock = {
           interval = 60;
-          format = "{:%A, %B %d  %I:%M %p}";
+          format = "{:%I}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             "mode" = "year";
@@ -68,9 +71,26 @@ in
           };
         };
 
+        "clock#clock2" = {
+          interval = 60;
+          format = "{:%M}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            "mode" = "year";
+            "mode-mon-col" = 3;
+            "weeks-pos" = "right";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "weeks" = "<span color='#fa6122'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#fa6122'><b><u>{}</u></b></span>";
+            };
+          };
+        };
+        
         network = {
-          format-wifi = "  {bandwidthUpBits}  {bandwidthDownBits}";
-          format-ethernet = "[  {bandwidthTotalBytes} ]";
+          format-wifi = "";
+          format-ethernet = "";
           format-disconnected = "";
           on-click = "foot sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
@@ -79,16 +99,18 @@ in
         };
 
         bluetooth = {
-          format =  "[  ]";
+          format =  "";
           on-click = "foot bluetuith"; 
-          format-on = "[  {status} ]";
-          format-connected = "[  {device_alias} ]";
+	        # "controller": "controller1" # This specifies the alias of the controller to use if there are more than 1 on the system
+          format-disabled = "";
+          format-connected = "";
+          #tooltip-format = "{controller_alias}\t{controller_address}";
           tooltip-format-connected = "Connected:\n{device_alias}";
           tooltip-format-disconnected = "Disconnected!";
         };
 
         pulseaudio = {
-          format = "[ {icon} {volume} ]";
+          format = "{icon}";
           format-muted = "{icon}";
           format-icons = {
             default = ["" "" "" ""];
@@ -115,7 +137,7 @@ in
         };
 
         cpu = {
-          format = "[  {avg_frequency} ]";
+          format = "";
           tooltip-format = "CPU Usage: {usage}";
           interval = 02;
           "states" = {
@@ -126,7 +148,7 @@ in
         };
 
         memory = {
-          format = "[  {percentage} ]";
+          format = "";
           tooltip-format = "Memory Usage: {percentage}%";
           interval = 02;
           "states" = {
@@ -136,14 +158,14 @@ in
         };
 
         disk = {
-          format = "[  {free} ]";
+          format = "";
           tooltip-format = " Disk Free: {free}";
           interval = 30;
           path = "/";
         };
 
         temperature = {
-          format = "[ {icon} {temperatureC} ]";
+          format = "{icon}";
           tooltip = true;
           tooltip-format = "Temp: {temperatureC}°C";
           hwmon-path = hwmonPath;
@@ -155,10 +177,6 @@ in
       };
     };
 
-    # Notes
-    # Old Text Color: 
-    # color: #d4be98;
-
     style = ''
       * {
         border: none;
@@ -168,21 +186,25 @@ in
         font-family: Trebuchet;
         font-size: 16px;
         font-weight: bold;
-
-        color: #d0c8c6;
-        background-color: #3b3228;
+        
+        color: #d4be98;
+        background: transparent;
       }
 
       #bluetooth.connected {
         color: #00bfff;
       }
 
-      .modules-left,
-      .modules-right,
-      .modules-center {
-        padding: 2px 4px 2px 4px;
+      .modules-left {
+        margin-top: 4px;
       }
 
+      .module-center {
+      }
+
+      .modules-right {
+        margin-bottom: 8px;
+      }
     
       #clock,
       #clock.clock2 {
@@ -196,9 +218,8 @@ in
       #battery,
       #cpu,
       #memory,
-      #disk,
-      #temperature {
-        padding-left: 9px;
+      #disk {
+        padding-bottom: 9px;
       }
       
       #battery.good { color: #A9B665; }

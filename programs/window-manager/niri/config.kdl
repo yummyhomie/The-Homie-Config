@@ -63,7 +63,7 @@ output "HDMI-A-1" {
 //// LAYOUTS - How the windows are positioned ////
 
 layout {
-    gaps 8
+    gaps 32
     center-focused-column "never"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -89,9 +89,9 @@ layout {
     }
 
     border {
-        off
-        width 4
-        // active-color "#ffc87f"
+        // off
+        width 2
+        active-color "#ef350e"
         // inactive-color "#505050"
         // urgent-color "#9b0000"
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -101,24 +101,24 @@ layout {
     shadow {
         // on
         // draw-behind-window true
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
+        softness 0
+        spread 4
+        offset x=16 y=16
+        color "#0008"
     }
     
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 0
+        right 0
+        top 32
+        bottom 32
     }
 }
 
 //// STARTUP ////
 
 spawn-at-startup "waybar"
-spawn-sh-at-startup "wbg -s $(find ~/The-Homie-Config/programs/window-manager/wallpapers/ -type f -name '*.jpg' -o -name '*.png' | shuf -n 1)"
+spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/orange.jpg"
 
 prefer-no-csd // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -127,7 +127,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
     // off
-    slowdown 2.0 // Slow down all animations by this factor. Values below 1 speed them up instead.
+    slowdown 2.8 // Slow down all animations by this factor. Values below 1 speed them up instead.
 
     // Individual animations.
 
@@ -136,12 +136,12 @@ animations {
     }
 
     window-open {
-        duration-ms 150
+        duration-ms 200
         curve "ease-out-expo"
     }
 
     window-close {
-        duration-ms 150
+        duration-ms 200
         curve "ease-out-quad"
     }
 
@@ -178,12 +178,12 @@ animations {
 //// WINDOW RULES ////
 
 window-rule { // Rounded Corners for all Windows
-    geometry-corner-radius 4
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
 window-rule {
-    match app-id="Spotify"
+    match app-id="spotify"
     match app-id="steam"
     default-column-width { proportion 0.3; }
 }
