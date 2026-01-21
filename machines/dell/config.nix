@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/mine-server.nix
+    ../../programs/nixos/immich.nix
   ];
 
   # Bootloader.

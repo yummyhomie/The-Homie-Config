@@ -10,8 +10,25 @@
   
     servers = {
       
-      ScaryServer = {
+      The-Homie-Server = {
         enable = true;
+        package = pkgs.vanillaServers.vanilla;
+      
+        serverProperties = {
+          gamemode = "survival";
+          difficulty = "normal";
+          motd = "The-Homie-Server";
+          level-name = "The-Homie-Server";
+        };
+        
+        operators = {
+          "Yamcakes" = { level = 4; uuid = "c65f0f0a-cfb1-4593-a552-dfc828d348e3"; };
+          "YummyHomie" = { level = 1; uuid = "92406a03-9db1-41db-9daa-28d8a2117927"; };
+        };
+      };
+      
+      ScaryServer = {
+        enable = false;
         package = pkgs.fabricServers.fabric-1_20_1;
       
         serverProperties = {
@@ -76,7 +93,7 @@
       };
 
       EI = {
-        enable = true;
+        enable = false;
         package = pkgs.fabricServers.fabric-1_20_1;
       
         serverProperties = {
@@ -88,6 +105,7 @@
         };
         
         operators = {
+          "YummyHomie" = { level = 4; uuid = "92406a03-9db1-41db-9daa-28d8a2117927"; };
           "Yamcakes" = { level = 4; uuid = "c65f0f0a-cfb1-4593-a552-dfc828d348e3"; };
         };
         
@@ -122,6 +140,7 @@
           level-name = "627-2";
           max-players = "32";
           #enforce-whitelist = "true";
+          server-port = 31337; #leet 
         };
         
         operators = {
@@ -130,24 +149,18 @@
         
         symlinks = {
           "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-            SimpleVC = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/meaWIBQj/voicechat-fabric-1.21.8-2.6.3.jar"; sha256 = "sha256-+PTG/mPbQsnfRSNMGX5EO9rSVp4uzSSw8qOL8fvrl9A="; };
+            SimpleVC = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/1OVXKX2W/voicechat-fabric-1.21.11-2.6.11.jar"; sha256 = "sha256-G1/hX+4GVerQMnYrlaNdB8u+Df0hwl7gtSR6ydG5NTs="; };
 
-            VeryManyPlayers = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wnEe9KBa/versions/KvcCuByh/vmp-fabric-mc1.21.8-0.2.0%2Bbeta.7.207-all.jar"; sha256 = "sha256-ob8YZu8cWcGoJGCGP2F9rDJ4kV2k3T4TpFjFJg04IHE="; };
+            VeryManyPlayers = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/wnEe9KBa/versions/sH60MMGd/vmp-fabric-mc1.21.11-0.2.0%2Bbeta.7.223-all.jar"; sha256 = "sha256-/o3Da0O0L6fyiA+Jnc84uqC4h/N+NT4UzQ2CzjnanHg="; };
 
-            MiniMOTD = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/16vhQOQN/versions/PqE4xl4P/minimotd-fabric-mc1.21.8-2.2.0.jar"; sha256 = "sha256-DnqULml+FWF+Na4LUyh3g8FWsvyz/j50lgWutEHYo4Y="; };
+            MiniMOTD = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/16vhQOQN/versions/KdNWldBx/minimotd-fabric-mc1.21.11-2.2.2.jar"; sha256 = "sha256-KrT+IGrakLA8nsVbhNPZJom/Zhufd70Fw3TWSaeegKI="; };
 
-            FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/CF23l2iP/fabric-api-0.133.4%2B1.21.8.jar"; sha256 = "sha256-aG8XESXoFNxYC6amH2Hs3oUamBcw5Dtwjwdz1iNWwJk="; };
-
-            #LumenFuch = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/pXWM4MKR/versions/33kBdKie/lumenfuchs-dummy-1.6.1.jar"; sha256 = "sha256-KMEDpvFgbKDLuw3fqZe00Ixz3VvAzBak7aaq97592Do="; };
-
-            #ServerSideHorror = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/RJ4U0qmn/versions/KA0rlDG2/serversidehorror-1.21.8-fabric-3.jar"; sha256 = "sha256-NiT9Z/5/Vc5Fw/IuH4VqOmNVzLP2f4Y7ePyxkXc6ey0="; };
-
-            #Deimos = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/WQaxNzFg/versions/ZfShJG3i/deimos-1.21.8-fabric-2.4.jar"; sha256 = "sha256-kBp01nF+aAy0rTOHsKahisXgY/Om/f+Etl/LqfcvtB4="; };
+            FabricAPI = pkgs.fetchurl { url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/DdVHbeR1/fabric-api-0.141.1%2B1.21.11.jar"; sha256 = "sha256-ald/g72LM8lAQSfRZTGsycQZX0feA5WVfJ1M0J17mMY="; };
           });
         };
       };
     };
   };
 
-  networking.firewall.allowedUDPPorts = [ 24454 24456 1738 ];
+  networking.firewall.allowedUDPPorts = [ 24454 24456 1738 31337 ];
 }

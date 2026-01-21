@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services.filebrowser = {
     enable = true;
@@ -8,6 +9,11 @@
       port = 2023;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    ffmpeg-headless
+    ffmpegthumbnailer
+  ];
 
   networking.firewall.allowedTCPPorts = [ 2023 ];
 }
