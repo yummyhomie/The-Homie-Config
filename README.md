@@ -22,16 +22,16 @@
 │   │   ├── hardware-configuration.nix
 │   │   └── home.nix
 │   │
-│   ├── hacking
+│   ├── dell
 │   │   └── ...
 │   │
-│   ├── homelab
+│   ├── hacking
 │   │   └── ...        
 │   │
-│   ├── laptop
+│   ├── homelab
 │   │   └── ...    
 │   │
-│   └── minecraft
+│   └── laptop
 │       └── ...  
 │
 ├── programs

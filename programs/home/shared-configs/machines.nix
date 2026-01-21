@@ -77,6 +77,7 @@ home.packages = with pkgs; [
     prismlauncher
     pulsemixer
     r2modman
+    remmina
     screen                 # For interfacing with mgmt ports
     signal-desktop
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
