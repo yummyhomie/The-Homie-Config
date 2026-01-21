@@ -7,7 +7,6 @@
     ../stylix.nix
     ../syncthing-clients.nix
     ../virtual-machines.nix
-    ../wine-gaming.nix
     ../zerotier.nix
   ];
 

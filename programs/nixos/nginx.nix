@@ -60,42 +60,23 @@
       };
     };
 
-
-    # DAVIS
-    virtualHosts."davis.cyscuvu.com" = {
-      forceSSL = true;
+    # IMMICH
+    virtualHosts."immich.eleedee.net" = {
       enableACME = true;
-      
+      forceSSL = true;
       locations."/" = {
-        proxyPass = "http://192.168.1.8:1945";
+        proxyPass = "http://192.168.1.8:2283";
         proxyWebsockets = true;
+        recommendedProxySettings = true;
         extraConfig = ''
+          client_max_body_size 50000M;
+          proxy_read_timeout   600s;
+          proxy_send_timeout   600s;
+          send_timeout         600s;
           proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-          proxy_set_header X-Forwarded-Host $host;
-          proxy_set_header X-Forwarded-Port $server_port;
-          
-          # CalDAV specific headers
-          proxy_set_header Destination $http_destination;
+          proxy_set_header X-Remote-User $remote_user;
           proxy_pass_header Authorization;
-        '';
-      };
-    }; 
-
-    # GRAFANA
-    virtualHosts."dashboard.eleedee.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
         '';
       };
     };
