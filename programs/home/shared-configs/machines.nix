@@ -5,7 +5,6 @@
     ../firefox.nix
     ../foot.nix
     ../gtk.nix
-    ../hyprpaper.nix
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
@@ -58,7 +57,6 @@
 home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
-    capacities
     eog                    # Gnome image viewer 
     fastfetch
     font-awesome           # For icon functionality. Peep the waybar!
