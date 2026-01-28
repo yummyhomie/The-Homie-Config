@@ -61,9 +61,12 @@ home.packages = with pkgs; [
     fastfetch
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
+    gnome-calendar
     gvfs                   # This helps with connecting to remote folders via nautilus
     htop
+    kdePackages.kdenlive   # Same.  
     libreoffice-qt6-fresh
+    metadata-cleaner       # For my projects!
     nautilus
     ncdu                   # To checkout Disk Usage
     networkmanager
