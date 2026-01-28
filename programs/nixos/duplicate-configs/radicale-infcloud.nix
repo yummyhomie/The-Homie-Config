@@ -1,5 +1,6 @@
 # This config with infcloud no longer works as infcloud has become too out-of-date to work
 # with Radicale anymore. Hopefully they update it in the future! Keeping this here just in case. :-) 
+# RIP /.web/infcloud/ 
 
 { config, pkgs, lib, ... }: {
 
