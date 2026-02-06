@@ -8,6 +8,7 @@
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
+    ../sleep.nix
     ../stylix-home.nix
     ../waybar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
@@ -57,14 +58,14 @@
 home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
-    eog                    # Gnome image viewer 
+    eog                    # Gnome image viewer
+    evolution              # For Gnome-Calendar to work with CalDav Servers
     fastfetch
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
     gnome-calendar
     gvfs                   # This helps with connecting to remote folders via nautilus
     htop
-    kdePackages.kdenlive   # Same.  
     libreoffice-qt6-fresh
     metadata-cleaner       # For my projects!
     nautilus
