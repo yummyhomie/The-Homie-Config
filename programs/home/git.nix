@@ -4,6 +4,7 @@
     settings = {
       user.email = "eleedee@outlook.com";
       user.name = "yummyhomie";
+      core.autocrlf = false;
     };
   };
 }
