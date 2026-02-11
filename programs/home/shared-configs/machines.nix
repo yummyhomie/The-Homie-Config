@@ -56,6 +56,7 @@
   
 # Packages 
 home.packages = with pkgs; [
+    ani-cli
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     eog                    # Gnome image viewer

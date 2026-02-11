@@ -3,7 +3,7 @@
   services.swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 120; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+      { timeout = 300; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }
