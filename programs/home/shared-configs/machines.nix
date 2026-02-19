@@ -8,7 +8,6 @@
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
-    ../sleep.nix
     ../stylix-home.nix
     ../waybar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix

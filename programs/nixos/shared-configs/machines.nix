@@ -84,10 +84,10 @@
   };
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ gparted ];
+  environment.systemPackages = with pkgs; [ gparted docker-compose ];
 
   # Programs & Services On This System
-  # None here for now! Used to be hyprland and whatnot
+  virtualisation.docker.enable = true;
 
   # Virtual File System (For connecting to network folders)
   services.gvfs.enable = true;

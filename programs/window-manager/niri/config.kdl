@@ -41,14 +41,21 @@ output "eDP-1" {
   mode "1920x1080@60.049" 
   scale  1
   transform "normal" 
-  position x=1080 y=0 
 }
 
 // the-homie-machine
-output "DP-3" { 
+output "DP-1" { 
   mode "2560x1440@164.956" 
-  scale 1 
+  scale 1
   transform "normal" 
+}
+
+// the-homie-monitor "4:3 BTW"
+output "DP-3" {
+    mode "1280x1024@60.020"
+    scale 1
+    transform "normal"
+    position x=-2560 y=400
 }
 
 // HDMI Output
@@ -57,7 +64,6 @@ output "HDMI-A-1" {
   // mode "1920x1080@60.000"
   scale 1 
   transform "normal" 
-  position x=2160 y=0 
 }
 
 //// LAYOUTS - How the windows are positioned ////
