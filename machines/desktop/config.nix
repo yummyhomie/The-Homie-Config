@@ -10,4 +10,7 @@
     fsType = "ext4";
     options = [ "defaults" "users" "exec" ];
   };
+
+  # Version
+  system.stateVersion = "24.05";
 }

@@ -14,8 +14,6 @@
     nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; }; 
-    
-    #firefoxcss = {url = "github:"; flake = false; }; # WORK IN PROGRESS. MAKE SURE TO ADD TO OUTPUTS!
   };
 
   outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
@@ -33,7 +31,7 @@
       if hostname == "the-homie-laptop" then "machines"
       else if hostname == "the-homie-machine" then "machines"
       else if hostname == "the-homie-server" then "servers"
-      else if hostname == "the-hacking-server" then "servers"
+      else if hostname == "the-hp-server" then "servers"
       else if hostname == "the-dell-homie" then "servers"
       else "unknown";
 
@@ -41,7 +39,7 @@
       if hostname == "the-homie-laptop" then "laptop"
       else if hostname == "the-homie-machine" then "desktop"
       else if hostname == "the-homie-server" then "homelab"
-      else if hostname == "the-hacking-server" then "hacking"
+      else if hostname == "the-hp-server" then "hp"
       else if hostname == "the-dell-homie" then "dell"
       else "unknown";
 

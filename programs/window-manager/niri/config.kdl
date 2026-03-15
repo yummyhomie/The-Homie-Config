@@ -47,15 +47,16 @@ output "eDP-1" {
 output "DP-1" { 
   mode "2560x1440@164.956" 
   scale 1
-  transform "normal" 
+  transform "normal"
+  position x=0 y=0
 }
 
 // the-homie-monitor "4:3 BTW"
-output "DP-3" {
+output "DP-2" {
     mode "1280x1024@60.020"
     scale 1
     transform "normal"
-    position x=-2560 y=400
+    position x=2560 y=400
 }
 
 // HDMI Output
