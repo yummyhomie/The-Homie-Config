@@ -13,4 +13,6 @@
   home.username = "erik";
   home.homeDirectory = "/home/erik";
   home.stateVersion = "24.05"; # OG Version of NixOS when I joined.
+
+  nixpkgs.config.allowUnfree = true;
 }
