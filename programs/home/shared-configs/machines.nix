@@ -2,9 +2,9 @@
   # Import home-manager modules & configs for all machines here!
 {
   imports = [
-    ../firefox.nix
     ../foot.nix
     ../gtk.nix
+    ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix

@@ -3,6 +3,7 @@
     enable = true;
     settings = {
       main = {
+        term = "xterm-256color";
         pad = "4x4";
       };
       cursor = {
