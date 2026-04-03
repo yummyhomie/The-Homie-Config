@@ -70,7 +70,7 @@ output "HDMI-A-1" {
 //// LAYOUTS - How the windows are positioned ////
 
 layout {
-    gaps 32
+    gaps 4
     center-focused-column "never"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -117,8 +117,9 @@ layout {
     struts {
         left 0
         right 0
-        top 32
-        bottom 32
+        top 0
+        bottom 0
+        // Used to add a little extra gap around the outer edges of the workspace
     }
 }
 
@@ -221,7 +222,7 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; } // shows a list of important hotkeys.
 
-    Mod+Q { spawn "foot"; }
+    Mod+Q { spawn "kitty"; }
     Mod+L { spawn "librewolf"; }
     Mod+R { spawn "rofi" "-show" "drun"; }
     Mod+E { spawn "nautilus"; }

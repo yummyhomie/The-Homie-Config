@@ -4,6 +4,7 @@
   imports = [
     ../foot.nix
     ../gtk.nix
+    ../kitty.nix
     ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
@@ -61,6 +62,7 @@ home.packages = with pkgs; [
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
     fastfetch
+    freerdp
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
     gnome-calendar
@@ -75,6 +77,7 @@ home.packages = with pkgs; [
     obs-studio
     obsidian
     openconnect            # Use instead of cisco anyconnect (sudo openconnect [server] --useragent=AnyConnect)
+    openvpn
     p7zip
     prismlauncher
     pulsemixer
@@ -84,6 +87,7 @@ home.packages = with pkgs; [
     signal-desktop
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     tailwindcss_4
+    terminator
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
