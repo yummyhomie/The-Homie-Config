@@ -8,6 +8,7 @@
     ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
+    ../screensaver.nix
     ../spicetify.nix
     ../stylix-home.nix
     ../waybar.nix
@@ -86,6 +87,7 @@ home.packages = with pkgs; [
     screen                 # For interfacing with mgmt ports
     signal-desktop
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
+    sqlitebrowser
     tailwindcss_4
     terminator
     tree

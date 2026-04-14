@@ -2,11 +2,16 @@
 {
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override {color = "black"; };
+    gtk4 = {
+      theme = null; # This is due to my system stateVersion being older than 25.05
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme.override {color = "black"; };
+      };
     };
   };
+
+
 }
 
 # NOTE: Color theme is set by stylix. This just sets the icon theme. 
@@ -14,7 +19,6 @@
 # Old Icon Theme
 # name = "Papirus-Dark";
 # package = pkgs.papirus-icon-theme.override {color = "black"; };
-
 
 # To find the name of the theme/icon, run this command:
 # cd $(nix build nixpkgs#PACKAGE-NAME --print-out-paths --no-link)

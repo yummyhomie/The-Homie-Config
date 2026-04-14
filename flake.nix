@@ -13,10 +13,12 @@
     
     nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; }; 
+    spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
+
+    gitlogue = {url = "github:unhappychoice/gitlogue"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, gitlogue, ... }@inputs:
 
   let
 
@@ -58,7 +60,7 @@
       desktop = [ 
         stylix.homeModules.stylix 
         nixcord.homeModules.nixcord 
-        spicetify-nix.homeManagerModules.spicetify 
+        spicetify-nix.homeManagerModules.spicetify
       ];
       laptop = [ 
         stylix.homeModules.stylix 

@@ -106,7 +106,7 @@ in
           format-wifi = " {ipaddr}";
           format-ethernet = " {ipaddr}";
           format-disconnected = "";
-          on-click = "foot sudo nmtui";
+          on-click = "kitty sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
@@ -117,7 +117,7 @@ in
           format-wifi = " {bandwidthUpBytes}  {bandwidthDownBytes}";
           format-ethernet = " {bandwidthUpBytes}  {bandwidthDownBytes}";
           format-disconnected = "";
-          on-click = "foot sudo nmtui";
+          on-click = "kitty sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
@@ -125,7 +125,7 @@ in
 
         bluetooth = {
           format =  "";
-          on-click = "foot bluetuith"; 
+          on-click = "kitty bluetuith"; 
           format-on = " {status}";
           format-connected = " {device_battery_percentage}";
           tooltip-format-connected = "Connected:\n{device_alias}";
@@ -140,7 +140,7 @@ in
             headphone = ["" "" "" ""];
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
-          on-click = "foot pulsemixer";
+          on-click = "kitty pulsemixer";
         };
         
         "pulseaudio/slider" = {
