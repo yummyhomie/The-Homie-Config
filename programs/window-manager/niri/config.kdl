@@ -41,6 +41,7 @@ output "eDP-1" {
   mode "1920x1080@60.049" 
   scale  1
   transform "normal" 
+  position x=320 y=1440 // To center my laptop screen underneath big displays
 }
 
 // the-homie-machine

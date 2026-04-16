@@ -3,7 +3,6 @@
 {
   imports = [
     ../foot.nix
-    ../gtk.nix
     ../kitty.nix
     ../librewolf.nix
     ../nixcord.nix
@@ -102,4 +101,7 @@ home.packages = with pkgs; [
   ];
 
   fonts.fontconfig.enable = true;
+
+  # System StateVersion Fixes for Home Manager (Since my build is older than 25.05)
+  gtk.gtk4.theme = null;
 }
