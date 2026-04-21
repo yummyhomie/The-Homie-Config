@@ -16,12 +16,13 @@
 
   # Users
   users.users.erik.extraGroups = [ 
-    "networkmanager" 
-    "wheel" 
-    "samba" 
-    "i2p" 
-    "i2pd" 
-    "jellyfin" 
+    "i2p"               # I2P
+    "i2pd"              # I2PD
+    "jellyfin"          # Jellyfin
+    "networkmanager"    # Networking
+    "render"            # Gives Permission to access GPU 4 Hardware Acceleration for Jellyfin
+    "samba"             # Samba
+    "wheel"             # Not sure LMAO
   ];
 
   # Firewall
