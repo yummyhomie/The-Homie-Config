@@ -9,8 +9,9 @@
     enable = true;
     hostName = "pihole.eleedee.net";
     ports = [
-      "80r"
-      "443s"
+      "5436s"
     ];
   };
+
+  networking.firewall.allowedTCPPorts = [ 5436 ];
 }
