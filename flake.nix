@@ -26,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-server";   # Change per system!
+    hostname = "the-wyse-homie";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -35,6 +35,7 @@
       else if hostname == "the-homie-server" then "servers"
       else if hostname == "the-hp-server" then "servers"
       else if hostname == "the-dell-homie" then "servers"
+      else if hostname == "the-wyse-homie" then "servers"
       else "unknown";
 
     host =
@@ -43,6 +44,7 @@
       else if hostname == "the-homie-server" then "homelab"
       else if hostname == "the-hp-server" then "hp"
       else if hostname == "the-dell-homie" then "dell"
+      else if hostname == "the-wyse-homie" then "wyse"
       else "unknown";
 
     # Put outputs. Determine which system type gets what. (This may get changed to type specific config.)
@@ -54,6 +56,7 @@
       homelab = [];
       hacking = [];
       dell = [ nix-minecraft.nixosModules.minecraft-servers ];
+      wyse = [];
     };
 
     homeModules = {
@@ -70,6 +73,7 @@
       homelab = []; 
       hacking = [];
       dell = [];
+      wyse = [];
     };
  
   in 
