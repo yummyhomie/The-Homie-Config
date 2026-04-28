@@ -72,6 +72,23 @@
       };
     };
 
+
+    # JELLYFIN
+    virtualHosts."pihole.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "https://192.168.1.13:5436";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
+
     # RADICALE
     virtualHosts."rad.eleedee.net" = {
       enableACME = true;
