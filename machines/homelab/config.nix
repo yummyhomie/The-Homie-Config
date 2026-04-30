@@ -6,7 +6,6 @@
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/jellyfin.nix
-    ../../programs/nixos/nginx.nix
     ../../programs/nixos/radicale.nix
     ../../programs/nixos/samba.nix
     ../../programs/nixos/syncthing.nix

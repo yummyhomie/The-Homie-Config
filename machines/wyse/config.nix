@@ -1,5 +1,6 @@
 {
   imports = [
+    ../../programs/nixos/nginx.nix
     ../../programs/nixos/pihole.nix
   ];
   

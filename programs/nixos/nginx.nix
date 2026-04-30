@@ -8,7 +8,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:1914";  # AdGuard port
+        proxyPass = "http://192.168.1.2:1914";  # AdGuard port
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
@@ -24,7 +24,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:2023";
+        proxyPass = "http://192.168.1.2:2023";
         proxyWebsockets = true;
         extraConfig = '' 
           proxy_set_header Host $host;
@@ -61,7 +61,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:8096";  # Default Jellyfin port
+        proxyPass = "http://192.168.1.2:8096";  # Default Jellyfin port
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
@@ -73,12 +73,12 @@
     };
 
 
-    # JELLYFIN
+    # PIHOLE
     virtualHosts."pihole.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "https://192.168.1.13:5436";
+        proxyPass = "https://127.0.0.1:5436";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
@@ -94,7 +94,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:5232";
+        proxyPass = "http://192.168.1.2:5232";
         proxyWebsockets = true;
         extraConfig = '' 
           proxy_set_header Host $host;
