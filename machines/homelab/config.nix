@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../programs/nixos/adguard.nix
+    # ../../programs/nixos/adguard.nix # Testing PiHole
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/jellyfin.nix
