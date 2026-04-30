@@ -26,8 +26,6 @@
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 
-    80        # NginX
-    443       # NginX
     7657      # i2p & i2pd
   ];
 
