@@ -1,3 +1,6 @@
 {
-  # Put host specific home-manager modules here! 
+  # Put host specific home-manager modules here!
+  imports = [
+    ../programs/home/spicetify.nix
+  ];
 }

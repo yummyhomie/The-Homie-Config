@@ -54,10 +54,9 @@
   hardware.bluetooth.enable = true;
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ gparted docker-compose ];
+  environment.systemPackages = with pkgs; [ ];
 
   # Programs & Services On This System
-  virtualisation.docker.enable = true;
 
   services.gvfs.enable = true;  # Virtual File System (For connecting to network folders)
 }

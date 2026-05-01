@@ -7,8 +7,6 @@
     ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
-    ../screensaver.nix
-    ../spicetify.nix
     ../stylix-home.nix
     ../waybar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
@@ -56,7 +54,6 @@
   
 # Packages 
 home.packages = with pkgs; [
-    ani-cli
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     eog                    # Gnome image viewer
@@ -71,7 +68,6 @@ home.packages = with pkgs; [
     libreoffice-qt6-fresh
     metadata-cleaner       # For my projects!
     nautilus
-    ncdu                   # To checkout Disk Usage
     networkmanager
     nmap
     obs-studio
@@ -88,7 +84,6 @@ home.packages = with pkgs; [
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     sqlitebrowser
     tailwindcss_4
-    terminator
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     

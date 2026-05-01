@@ -14,11 +14,9 @@
     nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
-
-    gitlogue = {url = "github:unhappychoice/gitlogue"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, gitlogue, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
 
   let
 
@@ -26,7 +24,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-server";   # Change per system!
+    hostname = "the-homie-laptop";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -120,3 +118,23 @@
   };
 }
 
+/*  ██████   █████    ███████    ███████████ ██████████  █████████    
+  ░░██████ ░░███   ███░░░░░███ ░█░░░███░░░█░░███░░░░░█ ███░░░░░███   
+   ░███░███ ░███  ███     ░░███░   ░███  ░  ░███  █ ░ ░███    ░░░  ██
+   ░███░░███░███ ░███      ░███    ░███     ░██████   ░░█████████ ░░ 
+   ░███ ░░██████ ░███      ░███    ░███     ░███░░█    ░░░░░░░░███   
+   ░███  ░░█████ ░░███     ███     ░███     ░███ ░   █ ███    ░███   
+   █████  ░░█████ ░░░███████░      █████    ██████████░░█████████  ██
+   ░░░░░    ░░░░░    ░░░░░░░       ░░░░░    ░░░░░░░░░░  ░░░░░░░░░  ░░  */
+
+# When ur having issues with rebuild time, run these two commands
+# to check for any anomylous results. Could be it's broken upstream, 
+# and taking 30+ Minutes to rebuild/switch. 
+
+# 1. See what would be built
+# nixos-rebuild dry-build --flake .#the-homie-laptop 2>&1 | grep "will be built"
+
+# 2. Manually hydra-check anything that looks large or suspicious
+# nix-shell -p hydra-check --run "hydra-check rusty-v8" <- example
+
+# AND DON'T RUN nix flake update EVERYTIME YOU REBUILD. ONLY WHEN YOU EDIT THE FLAKE

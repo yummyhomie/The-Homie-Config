@@ -7,14 +7,8 @@
 
     icons = {
       enable = true;
-      package = pkgs.papirus-icon-theme.override { color = "black"; };
+      package = pkgs.papirus-icon-theme.override { color = "orange"; };
       dark = "Papirus-Dark";
-    };
-    
-    cursor = {
-      name = "Hackneyed";
-      package = pkgs.hackneyed;
-      size = 16;
     };
 
     opacity = {
@@ -22,6 +16,16 @@
       terminal = 0.80;
       popups = 0.80;
     };
+
+    #cursor = {
+    #  name = "Hackneyed";
+    #  package = pkgs.hackneyed;
+    #  size = 16;
+    #};
+    
+    # Stylix has an issue where it rebuilds the entire cursor package from source
+    # every single time your rebuild/switch. I am letting home-manager 
+    # handle this until a fix get's implemented.My rebuild times are way too long.
   };
 }
 

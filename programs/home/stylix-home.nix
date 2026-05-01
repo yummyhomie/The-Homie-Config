@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   stylix = {
     targets = {
@@ -16,5 +17,13 @@
       };
       waybar.enable = false;    
     };
+  };
+
+  # This is here since the nixos stylix config doesn't have options for home-manager 
+  home.pointerCursor = {
+    name = "Hackneyed";
+    package = pkgs.hackneyed;
+    size = 16;
+    gtk.enable = true;
   };
 }
