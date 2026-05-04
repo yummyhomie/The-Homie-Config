@@ -4,20 +4,20 @@
     enable = true;
     
     # ADGUARD
-    #virtualHosts."ad.eleedee.net" = {
-    #  enableACME = true;
-    #  forceSSL = true;
-    #  locations."/" = {
-    #    proxyPass = "http://192.168.1.2:1914";  # AdGuard port
-    #    proxyWebsockets = true;
-    #    extraConfig = ''
-    #      proxy_set_header Host $host;
-    #      proxy_set_header X-Real-IP $remote_addr;
-    #      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #      proxy_set_header X-Forwarded-Proto $scheme;
-    #    '';
-    #  };
-    #};
+    virtualHosts."ad.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:1914";  # AdGuard port
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
     
     # FILEBROWSER
     virtualHosts."file.eleedee.net" = {
@@ -47,6 +47,7 @@
           client_max_body_size 50000M;
           proxy_read_timeout   600s;
           proxy_send_timeout   600s;
+
           send_timeout         600s;
           proxy_set_header Host $host;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -71,24 +72,7 @@
         '';
       };
     };
-
-
-    # PIHOLE
-    virtualHosts."pihole.eleedee.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "https://127.0.0.1:5436";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
-      };
-    };
-
+    
     # RADICALE
     virtualHosts."rad.eleedee.net" = {
       enableACME = true;

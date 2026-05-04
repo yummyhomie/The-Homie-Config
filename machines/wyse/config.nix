@@ -1,7 +1,7 @@
 {
   imports = [
+    ../../programs/nixos/adguard.nix
     ../../programs/nixos/nginx.nix
-    ../../programs/nixos/pihole.nix
   ];
   
   networking.hostName = "the-wyse-homie";
