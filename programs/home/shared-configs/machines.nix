@@ -7,6 +7,7 @@
     ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
+    ../spicetify.nix
     ../stylix-home.nix
     ../waybar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
@@ -56,6 +57,7 @@
 home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
+    easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
     fastfetch
