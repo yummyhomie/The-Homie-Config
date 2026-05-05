@@ -88,6 +88,22 @@
         '';
       };
     };
+    
+    # SEERR
+    virtualHosts."seerr.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://192.168.1.2:5055";
+        proxyWebsockets = true;
+        extraConfig = '' 
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Remote-User $remote_user;
+          proxy_pass_header Authorization;
+        '';
+      };
+    };
   };
 
   # SSL/TLS
