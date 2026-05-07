@@ -18,6 +18,7 @@
   users.users.erik.extraGroups = [ 
     "i2p"               # I2P
     "i2pd"              # I2PD
+    "immich"            # Immich
     "jellyfin"          # Jellyfin
     "networkmanager"    # Networking
     "render"            # Gives Permission to access GPU 4 Hardware Acceleration for Jellyfin
@@ -30,14 +31,14 @@
     7657      # i2p & i2pd
   ];
 
-  fileSystems."/home/erik/Warehouse" = {
+  fileSystems."/Warehouse" = {
     device = "/dev/disk/by-uuid/74786c01-9ab9-4d4f-bb46-7026a0586d8c";
     fsType = "ext4";
     options = [ "defaults" "users" "exec" ];
   };
 
   # If you have issues writing to the drives
-  # sudo chown -R $USER /path
+  # sudo chown -R erik:users /path
   # chmod -R 755 /path
 
   # Version

@@ -18,7 +18,7 @@
   };
 
   # If you have issues writing to the drives 
-  # sudo chown -R $USER /path
+  # sudo chown -R erik:users /path
   # chmod -R 755 /path
 
   # Version
