@@ -2,6 +2,7 @@
   # Import nixos modules & configs for all machines here!
 {
   imports = [
+    ../airvpn.nix
     ../gaming.nix
     ../niri.nix
     ../stylix.nix
@@ -54,7 +55,7 @@
   hardware.bluetooth.enable = true;
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ eddie ];
 
   # Programs & Services On This System
 

@@ -16,11 +16,15 @@
       alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
       alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
       alias config='vim ~/The-Homie-Config/machines/${host}/config.nix'
+      alias home='vim ~/The-Homie-Config/machines/${host}/home.nix'
 
       alias bash='vim ~/The-Homie-Config/programs/home/bash.nix'
       alias ni='vim ~/The-Homie-Config/programs/window-manager/niri/config.kdl'
       alias stylix='vim ~/The-Homie-Config/programs/home/stylix-home.nix'
       alias way='vim ~/The-Homie-Config/programs/home/waybar.nix'
+
+      alias up='sudo systemctl start wg-quick-airvpn'
+      alias down='sudo systemctl stop wg-quick-airvpn'
     '';
   };
 }

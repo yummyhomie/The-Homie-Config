@@ -93,6 +93,7 @@ home.packages = with pkgs; [
     vscodium
     waybar
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
+    wireguard-tools
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
   ];
