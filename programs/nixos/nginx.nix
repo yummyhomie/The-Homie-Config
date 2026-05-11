@@ -110,7 +110,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://192.168.15.1:8080";
+        proxyPass = "http://192.168.1.2:2283";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;

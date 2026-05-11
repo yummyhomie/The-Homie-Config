@@ -5,7 +5,7 @@
 
     accessibleFrom = [ "192.168.1.0/24" ];
 
-    portMappings = [{ from = 8080; to = 8080; }];
+    portMappings = [{ from = 2283; to = 8080; }];
 
     openVPNPorts = [{ port = 21353; protocol = "both"; }];
   };
