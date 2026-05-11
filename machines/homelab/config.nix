@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../programs/nixos/airvpn.nix
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/immich.nix
@@ -20,6 +21,7 @@
     "i2pd"              # I2PD
     "immich"            # Immich
     "jellyfin"          # Jellyfin
+    "media"             # Seerr
     "networkmanager"    # Networking
     "render"            # Gives Permission to access GPU 4 Hardware Acceleration for Jellyfin
     "samba"             # Samba

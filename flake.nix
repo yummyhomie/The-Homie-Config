@@ -14,9 +14,11 @@
     nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
+
+    vpn-confinement = { url = "github:Maroka-chan/VPN-Confinement"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, vpn-confinement, ... }@inputs:
 
   let
 
@@ -51,7 +53,7 @@
     nixModules = {
       desktop = [ stylix.nixosModules.stylix ];
       laptop = [ stylix.nixosModules.stylix ];
-      homelab = [];
+      homelab = [ vpn-confinement.nixosModules.default ];
       hacking = [];
       dell = [ nix-minecraft.nixosModules.minecraft-servers ];
       wyse = [];
