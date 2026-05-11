@@ -57,6 +57,7 @@
 home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
+    chromium
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
