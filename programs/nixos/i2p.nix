@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  services.i2p.enable = true;
+  services.i2p.enable = false;
 
   services.i2pd = {
-    enable = true;
+    enable = false;
     address = "127.0.0.1";
     port = 21005;           # For TCP & UDP
     bandwidth = 25000;      # About 200 MBps (20% of 1 GBps)
@@ -43,6 +43,6 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 21005 ];
-  networking.firewall.allowedUDPPorts = [ 21005 ];
+  # networking.firewall.allowedTCPPorts = [ 21005 ];
+  # networking.firewall.allowedUDPPorts = [ 21005 ];
 }
