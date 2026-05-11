@@ -104,6 +104,22 @@
         '';
       };
     };
+
+    # QBITTORRENT
+    virtualHosts."torrent.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://192.168.15.1:8080";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
   };
 
   # SSL/TLS

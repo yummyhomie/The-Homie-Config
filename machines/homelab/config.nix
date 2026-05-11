@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../programs/nixos/airvpn.nix
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/immich.nix
