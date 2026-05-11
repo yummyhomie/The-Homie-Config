@@ -122,12 +122,12 @@
       };
     };
     
-    # PROWLARR
-    virtualHosts."prowlarr.eleedee.net" = {
+    # RADARR
+    virtualHosts."radarr.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://192.168.1.2:9696";
+        proxyPass = "http://192.168.1.2:7878";
         proxyWebsockets = true;
         extraConfig = '' 
           proxy_set_header Host $host;

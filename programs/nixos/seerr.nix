@@ -8,26 +8,18 @@
   services.sonarr = {
     enable = true;
     openFirewall = true;
-    group = "media";
+    group = "users";
   };
   
-  services.prowlarr = {
+  services.radarr = {
     enable = true;
     openFirewall = true;
-  };
-
-  users.groups.media = {};
-  users.groups.prowlarr = {};
-
-  users.users.prowlarr = {
-    isSystemUser = true;
-    group = "prowlarr";
-    extraGroups = [ "media" ];
+    group = "users";
   };
   
   networking.firewall.allowedTCPPorts = [ 
     5055  # Seerr
+    7878  # Radarr
     8989  # Sonarr
-    9696  # Prowlarr
   ]; 
 }
