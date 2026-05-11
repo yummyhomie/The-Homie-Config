@@ -105,6 +105,39 @@
       };
     };
 
+
+    # SONARR
+    virtualHosts."sonarr.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://192.168.1.2:8989";
+        proxyWebsockets = true;
+        extraConfig = '' 
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Remote-User $remote_user;
+          proxy_pass_header Authorization;
+        '';
+      };
+    };
+    
+    # PROWLARR
+    virtualHosts."prowlarr.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://192.168.1.2:9696";
+        proxyWebsockets = true;
+        extraConfig = '' 
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Remote-User $remote_user;
+          proxy_pass_header Authorization;
+        '';
+      };
+    };
+
     # QBITTORRENT
     virtualHosts."torrent.eleedee.net" = {
       enableACME = true;
