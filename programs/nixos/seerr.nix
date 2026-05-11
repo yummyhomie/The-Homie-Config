@@ -17,9 +17,16 @@
     group = "users";
   };
   
+  services.prowlarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  
   networking.firewall.allowedTCPPorts = [ 
     5055  # Seerr
     7878  # Radarr
     8989  # Sonarr
+    9696  # Prowlarr
   ]; 
 }

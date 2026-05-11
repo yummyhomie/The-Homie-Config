@@ -26,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-wyse-homie";   # Change per system!
+    hostname = "the-homie-server";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
