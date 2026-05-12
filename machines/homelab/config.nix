@@ -50,9 +50,9 @@
     "d /Warehouse/Media/Shows                0775 sonarr        users        -"
     
     # QBittorrent
-    "d /Warehouse/Media/Downloads            0775 qbittorrent   qbittorrent  -"
-    "d /Warehouse/Media/Downloads/Incomplete 0775 qbittorrent   qbittorrent  -"
-    
+    "d /Warehouse/Media/Downloads            2775 qbittorrent users -"
+    "d /Warehouse/Media/Downloads/Incomplete 2775 qbittorrent users -"
+
     # Jellyfin
     "d /Warehouse/Media/Jellyfin             0775 jellyfin      users        -"
     "d /Warehouse/Media/Jellyfin/data        0775 jellyfin      users        -"
