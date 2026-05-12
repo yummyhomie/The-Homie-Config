@@ -24,8 +24,16 @@
         "WebUI\\Address" = "192.168.15.1";
         "WebUI\\Port" = "8080";
         "Connection\\PortRangeMin" = "21353";
+        
+        # Fix that might have been causing seeding to stall
         "WebUI\\BanDuration" = "3600";
         "WebUI\\MaxAuthenticationFailCount" = "0";
+        
+        # This prevents my downloads from saving to the main drive
+        # & instead download directly to the big drive
+        "Downloads\\SavePath" = "/Warehouse/Media/Downloads/";
+        "Downloads\\TempPath" = "/Warehouse/Media/Downloads/Incomplete/";
+        "Downloads\\TempPathEnabled" = "true";
       };
     };
   };

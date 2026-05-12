@@ -39,6 +39,28 @@
     options = [ "defaults" "users" "exec" ];
   };
 
+  # Tell systemd tmpfiles that /Warehouse is safe to use
+  # by declaring the root dir first
+  systemd.tmpfiles.rules = [
+    # /Warehouse
+    "d /Warehouse/Media                      0755 root          root         -"
+    
+    # Arr Stack
+    "d /Warehouse/Media/Movies               0775 radarr        users        -"
+    "d /Warehouse/Media/Shows                0775 sonarr        users        -"
+    
+    # QBittorrent
+    "d /Warehouse/Media/Downloads            0775 qbittorrent   qbittorrent  -"
+    "d /Warehouse/Media/Downloads/Incomplete 0775 qbittorrent   qbittorrent  -"
+    
+    # Jellyfin
+    "d /Warehouse/Media/Jellyfin             0775 jellyfin      users        -"
+    "d /Warehouse/Media/Jellyfin/data        0775 jellyfin      users        -"
+    "d /Warehouse/Media/Jellyfin/cache       0775 jellyfin      users        -"
+    "d /Warehouse/Media/Jellyfin/config      0775 jellyfin      users        -"
+    "d /Warehouse/Media/Jellyfin/log         0775 jellyfin      users        -"
+  ];
+
   # If you have issues writing to the drives
   # sudo chown -R erik:users /path
   # chmod -R 755 /path

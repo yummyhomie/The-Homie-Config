@@ -155,7 +155,7 @@
     };
 
     # QBITTORRENT
-    virtualHosts."torrent.eleedee.net" = {
+    virtualHosts."qbittorrent.eleedee.net" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {

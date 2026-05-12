@@ -22,7 +22,6 @@
     openFirewall = true;
   };
 
-  
   networking.firewall.allowedTCPPorts = [ 
     5055  # Seerr
     7878  # Radarr
