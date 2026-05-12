@@ -87,6 +87,7 @@ home.packages = with pkgs; [
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     sqlitebrowser
     tailwindcss_4
+    texlivePackages.tex-gyre
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     

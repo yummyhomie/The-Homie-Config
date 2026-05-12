@@ -1,24 +1,27 @@
-{ config, hostname, pkgs, ... }:
+{ config, hostname, ... }:
 let
   hwmonPath = 
   if hostname == "the-homie-laptop" then "/sys/class/hwmon/hwmon4/temp1_input"
   else if hostname == "the-homie-machine" then "/sys/class/hwmon/hwmon0/temp1_input"
   else abort "Unknown hostname ${hostname}. Set correct hostname!";
-in  
+in
 { 
   programs.waybar = {
     enable = true;
     settings = {
       topBar = {
-        layer = "bottom";
-        position = "bottom";
+        layer = "top";
+        position = "top";
         
-        modules-left = [ ];  
-        
-        modules-center = [ 
+        modules-left = [ 
           "clock"
           "clock#clock2"
-          
+          "privacy"
+        ];  
+        
+        modules-center = [ ];
+
+        modules-right = [  
           "network"
           "network#network2"
           "bluetooth"
@@ -30,17 +33,73 @@ in
           "memory"
           "disk"
           "temperature"
-          
-          "privacy"
         ];
 
-        modules-right = [ ];
-
-        clock = { format = "{:%A, %B %d}"; };
+        clock = {
+          format = "{:%A, %B %d}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            "mode" = "year";
+            "mode-mon-col" = 3;
+            "weeks-pos" = "right";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "weeks" = "<span color='#fa6122'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#fa6122'><b><u>{}</u></b></span>";
+            };
+          };
+        };
         
         "clock#clock2" = {
           interval = 60;
           format = "{:%I:%M %p}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            "mode" = "year";
+            "mode-mon-col" = 3;
+            "weeks-pos" = "right";
+            "format" = {
+              "months" = "<span color='#ffead3'><b>{}</b></span>";
+              "weeks" = "<span color='#fa6122'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+              "today" = "<span color='#fa6122'><b><u>{}</u></b></span>";
+            };
+          };
+        };
+
+        "privacy" = {
+          "icon-spacing" = 4;
+          "icon-size" = 32;
+          "transition-duration" = 250;
+          "modules" = [
+            {
+              "type" = "screenshare";
+              "tooltip" = true;
+              "tooltip-icon-size" = 24;
+            }
+            {
+              "type" = "audio-out";
+              "tooltip" = true;
+              "tooltip-icon-size" = 24;
+            }
+            {
+              "type" = "audio-in";
+              "tooltip" = true;
+              "tooltip-icon-size" = 24;
+            }
+          ];
+          "ignore-monitor" = true;
+          "ignore" = [
+            {
+              "type" = "audio-in";
+              "name" = "cava";
+            }
+            {
+              "type" = "screenshare";
+              "name" = "obs";
+            }
+          ];
         };
 
         network = {
@@ -144,45 +203,15 @@ in
           critical-threshold = 75;
           format-critical = "{icon}";
         };
-
-        "privacy" = {
-          "icon-spacing" = 4;
-          "icon-size" = 32;
-          "transition-duration" = 250;
-          "modules" = [
-            {
-              "type" = "screenshare";
-              "tooltip" = true;
-              "tooltip-icon-size" = 24;
-            }
-            {
-              "type" = "audio-out";
-              "tooltip" = true;
-              "tooltip-icon-size" = 24;
-            }
-            {
-              "type" = "audio-in";
-              "tooltip" = true;
-              "tooltip-icon-size" = 24;
-            }
-          ];
-          "ignore-monitor" = true;
-          "ignore" = [
-            {
-              "type" = "audio-in";
-              "name" = "cava";
-            }
-            {
-              "type" = "screenshare";
-              "name" = "obs";
-            }
-          ];
-        };
       };
     };
 
+    # Notes
+    # Old Text Color: 
+    # color: #d4be98;
+
     style = ''
-          * {
+      * {
         border: none;
         padding: 0px;
         margin: 0px;
@@ -198,10 +227,10 @@ in
       .modules-left,
       .modules-right,
       .modules-center {
+        padding: 2px 4px 2px 4px;
       }
 
       /* Backgrounds & Borders */
-
       #clock,
       #clock.clock2,
       #network,
@@ -214,28 +243,28 @@ in
       #memory,
       #disk,
       #temperature {
-        padding: 8px;
-        margin-left: 1px;
-        margin-right: 1px;
-        
+        padding: 4px;
         border-width: 2px;
         border-style: solid;
         border-color: #7e705a;
+        background-color: #3B3228;
       }
 
-      #clock { 
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+      /* Margins 4 Each Side */
+      #clock,
+      #clock.clock2 {
+        margin-right: 8px;
       }
-      
-      #clock.clock2 { 
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-      }
-      
-      #temperature { 
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
+
+      #network,
+      #bluetooth,
+      #pulseaudio,
+      #battery,
+      #cpu,
+      #memory,
+      #disk,
+      #temperature {
+        margin-left: 8px;
       }
 
       /* Details */
