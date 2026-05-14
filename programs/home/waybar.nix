@@ -4,72 +4,73 @@ let
   if hostname == "the-homie-laptop" then "/sys/class/hwmon/hwmon4/temp1_input"
   else if hostname == "the-homie-machine" then "/sys/class/hwmon/hwmon0/temp1_input"
   else abort "Unknown hostname ${hostname}. Set correct hostname!";
+
+  waybarOutput =
+  if hostname == "the-homie-laptop" then "eDP-1"
+  else if hostname == "the-homie-machine" then [ "DP-3" ]
+  else "";
 in  
 { 
   programs.waybar = {
     enable = true;
     settings = {
       topBar = {
-        layer = "bottom";
-        position = "bottom";
+        layer = "top";
+        position = "top";
+        output = waybarOutput;
         
-        modules-left = [ ];  
-        
-        modules-center = [ 
+        modules-left = [ 
           "clock"
-          "clock#clock2"
           
+          "custom/vpn"
           "network"
-          "network#network2"
           "bluetooth"
           "pulseaudio"
           "pulseaudio/slider"
           "battery"
           
+          "privacy"
+        ];  
+        
+        modules-center = [ 
+        ];
+
+        modules-right = [ 
           "cpu"
           "memory"
           "disk"
           "temperature"
-          
-          "privacy"
         ];
 
-        modules-right = [ ];
-
-        clock = { format = "{:%A, %B %d}"; };
-        
-        "clock#clock2" = {
+        clock = {
           interval = 60;
-          format = "{:%I:%M %p}";
+          format = "{:%B %d, %I:%M %p}";
+        };
+
+        "custom/vpn" = {
+          format = "";
+          exec = "echo '{\"class\": \"connected\"}'";
+          exec-if = "test -d /proc/sys/net/ipv4/conf/airvpn";
+          return-type = "json";
+          interval = 8;
         };
 
         network = {
           format-wifi = " {ipaddr}";
           format-ethernet = " {ipaddr}";
-          format-disconnected = "";
+          format-disconnected = "";
           on-click = "kitty sudo nmtui";
           tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
           tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
           tooltip-format-disconnected = "Disconnected";
         };
         
-        "network#network2" = {
-          interval = 4;
-          format-wifi = " {bandwidthUpBytes}  {bandwidthDownBytes}";
-          format-ethernet = " {bandwidthUpBytes}  {bandwidthDownBytes}";
-          format-disconnected = "";
-          on-click = "kitty sudo nmtui";
-          tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
-          tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
-          tooltip-format-disconnected = "Disconnected";
-        };
-
         bluetooth = {
           format =  "";
           on-click = "kitty bluetuith"; 
-          format-on = " {status}";
-          format-connected = " {device_battery_percentage}";
-          tooltip-format-connected = "Connected:\n{device_alias}";
+          format-on = "";
+          format-connected = "";
+          tooltip-format-connected = "Connected: {device_alias}";
           tooltip-format-disconnected = "Disconnected!";
         };
 
@@ -106,17 +107,31 @@ in
           tooltip-format = "Battery at {capacity}%";
         };
 
-        cpu = {
-          interval = 4;
-          format = " {usage}%";
-          tooltip-format = "CPU Usage: {usage}";
-          "states" = {
-            "good" = 55;
-            "warning" = 70;
-            "critical" = 85;
-          };
-        };
-
+        #cpu = {
+        #  interval = 4;
+        #  format = " {usage}%";
+        #  tooltip-format = "CPU Usage: {usage}";
+        #  "states" = {
+        #    "good" = 55;
+        #    "warning" = 70;
+        #    "critical" = 85;
+        #  };
+        #};
+      cpu = {
+        interval = 1;
+        format = " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
+        format-icons = [
+          "<span color='#69ff94'>▁</span>"
+          "<span color='#2aa9ff'>▂</span>"
+          "<span color='#f8f8f2'>▃</span>"
+          "<span color='#f8f8f2'>▄</span>"
+          "<span color='#ffffa5'>▅</span>"
+          "<span color='#ffffa5'>▆</span>"
+          "<span color='#ff9977'>▇</span>"
+          "<span color='#dd532e'>█</span>"
+        ];
+      };
+        
         memory = {
           interval = 4;
           format = " {percentage}%";
@@ -142,7 +157,7 @@ in
           hwmon-path = hwmonPath;
           format-icons = ["" "" "" "" ""];
           critical-threshold = 75;
-          format-critical = "{icon}";
+          format-critical = "{icon}";
         };
 
         "privacy" = {
@@ -198,14 +213,14 @@ in
       .modules-left,
       .modules-right,
       .modules-center {
+        background: black;
       }
 
       /* Backgrounds & Borders */
 
       #clock,
-      #clock.clock2,
+      #custom-vpn,
       #network,
-      #network.network2,
       #bluetooth,
       #pulseaudio,
       #pulseaudio-slider,
@@ -213,24 +228,20 @@ in
       #cpu,
       #memory,
       #disk,
-      #temperature {
+      #temperature,
+      #privacy {
         padding: 8px;
         margin-left: 1px;
         margin-right: 1px;
         
         border-width: 2px;
         border-style: solid;
-        border-color: #7e705a;
+        border-color: #505050;
       }
 
       #clock { 
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-      }
-      
-      #clock.clock2 { 
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
       }
       
       #temperature { 

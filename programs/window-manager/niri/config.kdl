@@ -71,7 +71,7 @@ output "HDMI-A-1" {
 //// LAYOUTS - How the windows are positioned ////
 
 layout {
-    gaps 4
+    gaps 8
     center-focused-column "never"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.

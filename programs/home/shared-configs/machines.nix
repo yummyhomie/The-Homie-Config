@@ -68,6 +68,7 @@ home.packages = with pkgs; [
     gnome-calendar
     gvfs                   # This helps with connecting to remote folders via nautilus
     htop
+    jq                     # For waybar VPN module
     libreoffice-qt6-fresh
     metadata-cleaner       # For my projects!
     nautilus
