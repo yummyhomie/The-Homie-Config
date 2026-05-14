@@ -25,6 +25,9 @@
         "WebUI\\Port" = "8080";
         "Connection\\PortRangeMin" = "21353";
         
+        "WebUI\\UseCustomTheme" = "false";
+        "WebUI\\Theme" = "dark";
+        
         # Fix that might have been causing seeding to stall
         "WebUI\\BanDuration" = "3600";
         "WebUI\\MaxAuthenticationFailCount" = "0";
@@ -34,6 +37,10 @@
         "Downloads\\SavePath" = "/Warehouse/Media/Downloads/";
         "Downloads\\TempPath" = "/Warehouse/Media/Downloads/Incomplete/";
         "Downloads\\TempPathEnabled" = "true";
+
+        # Persist login every time the server reboots
+        "WebUI\\Username" = "QBittorrentHomie";
+        "WebUI\\Password_PBKDF2" = "@ByteArray(VpjJ4KxQZyGwDS+kCZfQ8A==:qdrvU9n+Ndttl7d8IijLTIbgmVe1GmR6dX0v3VfhEax27HO0qbYsgXeznCRPYV/txZDOkjBJkSPm6Nf4sm6A/A==)";
       };
     };
   };
