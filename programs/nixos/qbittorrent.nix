@@ -1,15 +1,4 @@
 {
-  vpnNamespaces.AirVPN = {
-    enable = true;
-    wireguardConfigFile = "/etc/vpn/AirVPN_AllServers.conf";
-
-    accessibleFrom = [ "192.168.1.0/24" ];
-
-    portMappings = [{ from = 2283; to = 8080; }];
-
-    openVPNPorts = [{ port = 21353; protocol = "both"; }];
-  };
-
   systemd.services.qbittorrent.vpnConfinement = {
     enable = true;
     vpnNamespace = "AirVPN";
@@ -20,6 +9,15 @@
     webuiPort = 8080;
     torrentingPort = 21353;
     serverConfig = {
+      "BitTorrent" = {
+        # Disable Torrent Queueing Limits
+        "Session\\QueueingSystemEnabled" = "false";
+        
+        # Exclude downloading files with the following file types
+        "Session\\ExcludedFileNames" = "*.bat, *.bin, *.bmp, *.cmd, *.com, *.db, *.diz, *.dll, *.dmg, *.etc, *.exe, *.gif, *.ico, *.ini, *.iso, *.jar, *.js, *.link, *.lnk, *.msi, *.perl, *.php, *.pl, *.ps1, *.psc1, *.psd1, *.psm1, *.py, *.pyd, *.rb, *.reg, *.run, *.scr, *.sh, *.sql, *.text, *.thumb, *.torrent, *.url, *.vbs, *.wsf, *.xml, *.zipx, *.arj";
+        "ExcludedFileNamesEnabled" = "true";
+      };
+
       "Preferences" = {
         "WebUI\\Address" = "192.168.15.1";
         "WebUI\\Port" = "8080";

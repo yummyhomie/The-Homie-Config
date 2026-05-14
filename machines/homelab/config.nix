@@ -2,12 +2,16 @@
 
 {
   imports = [
+    ../../programs/nixos/airvpn.nix
+    ../../programs/nixos/autobrr.nix
     ../../programs/nixos/filebrowser.nix
+    ../../programs/nixos/flaresolver.nix
     ../../programs/nixos/i2p.nix
     ../../programs/nixos/immich.nix
     ../../programs/nixos/jellyfin.nix
-    ../../programs/nixos/seerr.nix
+    ../../programs/nixos/prowlarr.nix
     ../../programs/nixos/radicale.nix
+    ../../programs/nixos/seerr.nix
     ../../programs/nixos/samba.nix
     ../../programs/nixos/syncthing.nix
     ../../programs/nixos/qbittorrent.nix
