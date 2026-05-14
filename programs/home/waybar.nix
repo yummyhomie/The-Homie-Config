@@ -6,7 +6,7 @@ let
   else abort "Unknown hostname ${hostname}. Set correct hostname!";
 
   waybarOutput =
-  if hostname == "the-homie-laptop" then "eDP-1"
+  if hostname == "the-homie-laptop" then ""
   else if hostname == "the-homie-machine" then [ "DP-3" ]
   else "";
 in  
@@ -22,47 +22,45 @@ in
         modules-left = [ 
           "clock"
           
-          "custom/vpn"
           "network"
+          "custom/vpn"
           "bluetooth"
           "pulseaudio"
           "pulseaudio/slider"
-          "battery"
-          
           "privacy"
         ];  
         
-        modules-center = [ 
-        ];
+        modules-center = [ ];
 
         modules-right = [ 
           "cpu"
           "memory"
           "disk"
           "temperature"
+          "battery"
         ];
 
         clock = {
           interval = 60;
-          format = "{:%B %d, %I:%M %p}";
+          format = "{:%B %d, %I:%M}";
         };
 
+        network = {
+          format-wifi = "";
+          format-ethernet = "";
+          format-disconnected = "";
+          on-click = "kitty sudo nmtui";
+          tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
+          tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
+          tooltip-format-disconnected = "Disconnected";
+        };
+        
         "custom/vpn" = {
           format = "";
           exec = "echo '{\"class\": \"connected\"}'";
           exec-if = "test -d /proc/sys/net/ipv4/conf/airvpn";
           return-type = "json";
           interval = 8;
-        };
-
-        network = {
-          format-wifi = " {ipaddr}";
-          format-ethernet = " {ipaddr}";
-          format-disconnected = "";
-          on-click = "kitty sudo nmtui";
-          tooltip-format = "Connected to {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%";
-          tooltip-format-ethernet = "IP: {ipaddr}\nInterface: {ifname}";
-          tooltip-format-disconnected = "Disconnected";
         };
         
         bluetooth = {
@@ -78,8 +76,8 @@ in
           format = "{icon}";
           format-muted = "{icon}";
           format-icons = {
-            default = ["" "" "" ""];
-            headphone = ["" "" "" ""];
+            default = ["" "" "" ""];
+            headphone = ["" "" "" ""];
           };
           tooltip-format = "{desc}\nVolume: {volume}%";
           on-click = "kitty pulsemixer";
@@ -89,75 +87,6 @@ in
           "min" = 0;
           "max" = 100;
           "orientation" = "horizontal";
-        };
-
-        battery = {
-          "states" = {
-            "good" = 100;
-            "normal" = 98;
-            "warning" = 40;
-            "critical" = 15;  
-          };
-          format = "{icon}";
-          format-charging = "";
-          #"format-plugged" = " {capacity}%";
-          #"format-discharging" = " {capacity}%";
-          format-alt = "{icon} {time}";
-          format-icons = ["" "" "" "" ""];
-          tooltip-format = "Battery at {capacity}%";
-        };
-
-        #cpu = {
-        #  interval = 4;
-        #  format = " {usage}%";
-        #  tooltip-format = "CPU Usage: {usage}";
-        #  "states" = {
-        #    "good" = 55;
-        #    "warning" = 70;
-        #    "critical" = 85;
-        #  };
-        #};
-      cpu = {
-        interval = 1;
-        format = " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
-        format-icons = [
-          "<span color='#69ff94'>▁</span>"
-          "<span color='#2aa9ff'>▂</span>"
-          "<span color='#f8f8f2'>▃</span>"
-          "<span color='#f8f8f2'>▄</span>"
-          "<span color='#ffffa5'>▅</span>"
-          "<span color='#ffffa5'>▆</span>"
-          "<span color='#ff9977'>▇</span>"
-          "<span color='#dd532e'>█</span>"
-        ];
-      };
-        
-        memory = {
-          interval = 4;
-          format = " {percentage}%";
-          tooltip-format = "Memory Usage: {used:0.1f}GiB used";
-          "states" = {
-            "warning" = 70;
-            "critical" = 85;
-          };
-        };
-
-        disk = {
-          interval = 80;
-          format = " {free}";
-          tooltip-format = " Disk Free: {free}";
-          path = "/";
-        };
-
-        temperature = {
-          interval = 4;
-          format = "{icon} {temperatureC}°C";
-          tooltip = true;
-          tooltip-format = "Temp: {temperatureC}°C";
-          hwmon-path = hwmonPath;
-          format-icons = ["" "" "" "" ""];
-          critical-threshold = 75;
-          format-critical = "{icon}";
         };
 
         "privacy" = {
@@ -193,119 +122,179 @@ in
             }
           ];
         };
+
+        cpu = {
+          interval = 1;
+          format = "";
+          tooltip-format = "CPU Usage: {usage}%";
+          "states" = {
+            "good" = 55;
+            "warning" = 70;
+            "critical" = 85;
+          };
+        };
+        
+        memory = {
+          interval = 1;
+          format = "";
+          tooltip-format = "Memory Usage: {percentage}%";
+          "states" = {
+            "warning" = 70;
+            "critical" = 85;
+          };
+        };
+
+        disk = {
+          interval = 120;
+          format = "";
+          tooltip-format = " Disk Free: {free}";
+          path = "/";
+        };
+
+        temperature = {
+          interval = 1;
+          format = "{icon}";
+          tooltip = true;
+          tooltip-format = "Temp: {temperatureC}°C";
+          hwmon-path = hwmonPath;
+          format-icons = ["" "" "" "" ""];
+          critical-threshold = 75;
+          format-critical = "{icon}";
+        };
+
+        battery = {
+          "states" = {
+            "good" = 100;
+            "normal" = 98;
+            "warning" = 40;
+            "critical" = 15;  
+          };
+          format = "{icon}";
+          format-charging = "";
+          #"format-plugged" = " {capacity}%";
+          #"format-discharging" = " {capacity}%";
+          format-alt = "{icon} {time}";
+          format-icons = ["" "" "" "" ""];
+          tooltip-format = "Battery at {capacity}%";
+        };
       };
     };
 
     style = ''
-          * {
-        border: none;
-        padding: 0px;
-        margin: 0px;
 
-        font-family: Trebuchet;
-        font-size: 16px;
-        font-weight: bold;
+    * {
+      border: none;
+      padding: 0px;
+      margin: 0px;
 
-        color: #d0c8c6;
-        background-color: transparent;
-      }
+      font-family: Trebuchet;
+      font-size: 16px;
+      font-weight: bold;
 
-      .modules-left,
-      .modules-right,
-      .modules-center {
-        background: black;
-      }
+      color: #d0c8c6;
+      background-color: transparent;
+    }
+                                                                                  
+/*  ▄█████ ▄▄▄▄   ▄▄▄   ▄▄▄▄ ▄▄ ▄▄  ▄▄  ▄▄▄▄ 
+    ▀▀▀▄▄▄ ██▄█▀ ██▀██ ██▀▀▀ ██ ███▄██ ██ ▄▄ 
+    █████▀ ██    ██▀██ ▀████ ██ ██ ▀██ ▀███▀  */
+                                        
+    #clock,
+    #custom-vpn,
+    #network,
+    #bluetooth,
+    #pulseaudio,
+    #privacy,
 
-      /* Backgrounds & Borders */
+    #cpu,
+    #memory,
+    #disk,
+    #temperature,
+    #battery {
+      padding: 8px;
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+                                                                                                                     
+/*  ▄████▄ ▄▄  ▄▄ ▄▄ ▄▄   ▄▄  ▄▄▄ ▄▄▄▄▄▄ ▄▄  ▄▄▄  ▄▄  ▄▄  ▄▄▄▄ 
+    ██▄▄██ ███▄██ ██ ██▀▄▀██ ██▀██  ██   ██ ██▀██ ███▄██ ███▄▄ 
+    ██  ██ ██ ▀██ ██ ██   ██ ██▀██  ██   ██ ▀███▀ ██ ▀██ ▄▄██▀  */                                                      
 
-      #clock,
-      #custom-vpn,
-      #network,
-      #bluetooth,
-      #pulseaudio,
-      #pulseaudio-slider,
-      #battery,
-      #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #privacy {
-        padding: 8px;
-        margin-left: 1px;
-        margin-right: 1px;
-        
-        border-width: 2px;
-        border-style: solid;
-        border-color: #505050;
-      }
 
-      #clock { 
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-      }
+                                     
+/*  ▄█████  ▄▄▄  ▄▄     ▄▄▄  ▄▄▄▄   ▄▄▄▄ 
+    ██     ██▀██ ██    ██▀██ ██▄█▄ ███▄▄ 
+    ▀█████ ▀███▀ ██▄▄▄ ▀███▀ ██ ██ ▄▄██▀  */                             
       
-      #temperature { 
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
+    #bluetooth.connected { color: #00bfff; }
 
-      /* Details */
+    #battery.good { color: #D0C8C6; }
+    #battery.normal { color: #A9B665; }
+    #battery.warning { color: #D8A657; }
+    #battery.critical { color: #EA6962; }
+    
+    #cpu.good { color: #A9B665; }
+    #cpu.warning { color: #D8A657; }
+    #cpu.critical { color: #EA6962; }
+    
+    #memory.warning { color: #D8A657; }
+    #memory.critical { color: #EA6962; }
+    
+    #temperature.critical { color: #EA6962; }
+                                                           
+/*  ██▄  ▄██  ▄▄▄  ▄▄▄▄  ▄▄ ▄▄ ▄▄    ▄▄▄▄▄  ▄▄▄▄ 
+    ██ ▀▀ ██ ██▀██ ██▀██ ██ ██ ██    ██▄▄  ███▄▄ 
+    ██    ██ ▀███▀ ████▀ ▀███▀ ██▄▄▄ ██▄▄▄ ▄▄██▀  */
       
-      #bluetooth.connected {
-        color: #00bfff;
-      }
+    #pulseaudio {
+      border-right: 0px hidden;
+      padding-right: 0;
+    }
 
-      #pulseaudio {
-        border-right: 0px hidden;
-      }
+    #pulseaudio-slider {
+      opacity: 0;
+      min-width: 0;
+      padding: 0;
+      margin: 0;
+      transition: opacity 0.3s ease, min-width 0.3s ease;
+    }
 
-      #pulseaudio-slider {
-        border-left: 0px hidden;
-      }
+    #pulseaudio-slider:hover {
+      opacity: 1;
+      min-width: 80px;
+      padding: 0 8px;
+    }
 
-      #pulseaudio-slider {
-        margin: 0;
-      }
+    #pulseaudio-slider trough {
+      min-height: 10px;
+      min-width: 0;
+      border-radius: 5px;
+      background: black;
+      transition: min-width 0.3s ease;
+    }
 
-      #pulseaudio-slider slider {
-        min-height: 0px;
-        min-width: 0px;
-        opacity: 0;
-        background-image: none;
-        border: none;
-        box-shadow: none;
-      }
+    #pulseaudio-slider:hover trough {
+      min-width: 80px;
+    }
 
-      #pulseaudio-slider trough {
-        min-height: 10px;
-        min-width: 80px;
-        border-radius: 5px;
-        background: black;
-      }
+    #pulseaudio-slider slider {
+      min-height: 0px;
+      min-width: 0px;
+      opacity: 0;
+      background-image: none;
+      border: none;
+      box-shadow: none;
+    }
 
-      #pulseaudio-slider highlight {
-        min-width: 10px;
-        border-radius: 4px;
-        background: #d0c8c6;
-      }
-      
-      #battery.good { color: #A9B665; }
-      #battery.normal { color: #D4BE98; }
-      #battery.warning { color: #D8A657; }
-      #battery.critical { color: #EA6962; }
-      
-      #cpu.good { color: #A9B665; }
-      #cpu.warning { color: #D8A657; }
-      #cpu.critical { color: #EA6962; }
-      
-      #memory.warning { color: #D8A657; }
-      #memory.critical { color: #EA6962; }
-      
-      #temperature.critical { color: #EA6962; }
+    #pulseaudio-slider highlight {
+      min-width: 10px;
+      border-radius: 4px;
+      background: #d0c8c6;
+    }
+
     '';        
   };
 
   # OG font color: #e2daae; Also cool dark color -> #322d28;
   # Background that matches Foot terminal background/opacity rgba(40, 40, 40, 0.9); 
 }
-
