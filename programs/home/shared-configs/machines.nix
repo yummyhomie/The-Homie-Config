@@ -5,6 +5,7 @@
     ../foot.nix
     ../kitty.nix
     ../librewolf.nix
+    ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
@@ -91,6 +92,7 @@ home.packages = with pkgs; [
     tree
     thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
+    vesktop
     vlc
     vscodium
     waybar

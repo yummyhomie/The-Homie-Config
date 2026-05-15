@@ -4,11 +4,6 @@ let
   if hostname == "the-homie-laptop" then "/sys/class/hwmon/hwmon4/temp1_input"
   else if hostname == "the-homie-machine" then "/sys/class/hwmon/hwmon0/temp1_input"
   else abort "Unknown hostname ${hostname}. Set correct hostname!";
-
-  waybarOutput =
-  if hostname == "the-homie-laptop" then ""
-  else if hostname == "the-homie-machine" then [ "DP-3" ]
-  else "";
 in  
 { 
   programs.waybar = {
@@ -17,7 +12,6 @@ in
       topBar = {
         layer = "top";
         position = "top";
-        output = waybarOutput;
         
         modules-left = [ 
           "clock"

@@ -2,6 +2,6 @@
 {
   programs.nixcord = {
     enable = true;
-    config = { useQuickCss = true; };
+    discord.vencord.enable = true;
   };
 }
