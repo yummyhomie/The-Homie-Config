@@ -26,7 +26,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-server";   # Change per system!
+    hostname = "the-homie-machine";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -51,8 +51,8 @@
 
     # NixOS Modules
     nixModules = {
-      desktop = [ stylix.nixosModules.stylix ];
-      laptop = [ stylix.nixosModules.stylix ];
+      desktop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default ];
+      laptop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default ];
       homelab = [ vpn-confinement.nixosModules.default ];
       hacking = [];
       dell = [ nix-minecraft.nixosModules.minecraft-servers ];
