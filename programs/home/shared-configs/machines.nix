@@ -5,7 +5,6 @@
     ../foot.nix
     ../kitty.nix
     ../librewolf.nix
-    ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
