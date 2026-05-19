@@ -16,6 +16,10 @@
         # Exclude downloading files with the following file types
         "Session\\ExcludedFileNames" = "*.bat, *.bin, *.bmp, *.cmd, *.com, *.db, *.diz, *.dll, *.dmg, *.etc, *.exe, *.gif, *.ico, *.ini, *.iso, *.jar, *.js, *.link, *.lnk, *.msi, *.perl, *.php, *.pl, *.ps1, *.psc1, *.psd1, *.psm1, *.py, *.pyd, *.rb, *.reg, *.run, *.scr, *.sh, *.sql, *.text, *.thumb, *.torrent, *.url, *.vbs, *.wsf, *.xml, *.zipx, *.arj";
         "ExcludedFileNamesEnabled" = "true";
+
+        # Automatically stop torrents after 10 days of seeding
+        "Session\\MaxRatioAction" = "0";
+        "Session\\GlobalMaxSeedingMinutes" = "14400";
       };
 
       "Preferences" = {

@@ -47,6 +47,7 @@
   # by declaring the root dir first
   systemd.tmpfiles.rules = [
     # /Warehouse
+    "d /Warehouse                            0755 root          root         -"
     "d /Warehouse/Media                      0755 root          root         -"
     
     # Arr Stack
