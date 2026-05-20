@@ -1,32 +1,28 @@
 { pkgs, lib, ... }:
 {
-  # Steam
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
+
+  hardware.cpu.amd.updateMicrocode = true;
   
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [ rocmPackages.clr.icd ];  # OpenCL support
   };
   
-  services.xserver.videoDrivers = ["amdgpu"];
-  programs.gamemode.enable = true;
-
-  programs.gpu-screen-recorder.enable = true;
-  
   environment.systemPackages = with pkgs; [
-    # Common gaming dependencies
+    mesa
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers
-    mesa
-    gpu-screen-recorder-gtk
+    nvtopPackages.amd    # GPU usage monitor for AMD
   ];
   
   programs.xwayland.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  programs.gamemode.enable = true;
 }
