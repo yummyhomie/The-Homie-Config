@@ -3,7 +3,6 @@
 {
   imports = [
     ../../programs/nixos/airvpn.nix
-    ../../programs/nixos/autobrr.nix
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/flaresolver.nix
     ../../programs/nixos/i2p.nix
