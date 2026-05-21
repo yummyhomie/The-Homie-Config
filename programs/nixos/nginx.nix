@@ -19,22 +19,6 @@
       };
     };
     
-    # AUTOBRR
-    virtualHosts."autobrr.eleedee.net" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://192.168.1.2:7474";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
-      };
-    };
-    
     # FILEBROWSER
     virtualHosts."file.eleedee.net" = {
       enableACME = true;
@@ -175,7 +159,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://192.168.1.2:8080";
+        proxyPass = "http://192.168.1.2:21352";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
