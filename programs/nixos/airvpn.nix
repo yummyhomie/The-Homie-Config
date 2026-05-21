@@ -12,9 +12,8 @@ in
     wireguardConfigFile = vpnConfig;
     accessibleFrom = [ "192.168.1.0/24" ];
     portMappings = [
-      { from = 2283; to = 8080; } # For Qbittorrent
+      { from = 21352; to = 21352; } # For Qbittorrent
       { from = 9696; to = 9696; } # For Prowlarr
-      { from = 7474; to = 7474; } # For Autobrr
     ];
     openVPNPorts = [{ port = 21353; protocol = "both"; }];
   };

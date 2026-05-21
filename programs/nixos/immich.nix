@@ -20,4 +20,6 @@
   hardware.graphics.enable = true;
 
   users.users.immich.extraGroups = [ "video" "render" ];
+
+  networking.firewall.allowedTCPPorts = [ 2283 ]; 
 }

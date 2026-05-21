@@ -6,7 +6,7 @@
 
   services.qbittorrent = {
     enable = true;
-    webuiPort = 8080;
+    webuiPort = 21352;
     torrentingPort = 21353;
     serverConfig = {
       "BitTorrent" = {
@@ -24,7 +24,7 @@
 
       "Preferences" = {
         "WebUI\\Address" = "192.168.15.1";
-        "WebUI\\Port" = "8080";
+        "WebUI\\Port" = "21352";
         "Connection\\PortRangeMin" = "21353";
         
         "WebUI\\UseCustomTheme" = "false";
