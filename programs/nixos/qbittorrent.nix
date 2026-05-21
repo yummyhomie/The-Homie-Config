@@ -1,3 +1,7 @@
+{ pkgs, inputs, ... }:
+let
+  nixpkgs-stable = import inputs.nixpkgs-stable { inherit (pkgs) system; };
+in
 {
   systemd.services.qbittorrent.vpnConfinement = {
     enable = true;
@@ -8,6 +12,7 @@
     enable = true;
     webuiPort = 21352;
     torrentingPort = 21353;
+    package = nixpkgs-stable.qbittorrent-nox;
     serverConfig = {
       "BitTorrent" = {
         # Disable Torrent Queueing Limits
@@ -20,6 +25,10 @@
         # Automatically stop torrents after 10 days of seeding
         "Session\\MaxRatioAction" = "0";
         "Session\\GlobalMaxSeedingMinutes" = "14400";
+
+        # Look for matching torrent hashes in other trackers (speeds up downloads)
+        "Session\\AdditionalTrackersEnabled" = "true";
+        "Session\\AdditionalTrackersURL" = "https://raw.githubusercontent.com/ngosang/trackerslist/refs/heads/master/trackers_best.txt";
       };
 
       "Preferences" = {
