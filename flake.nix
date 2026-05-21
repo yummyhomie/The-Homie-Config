@@ -13,14 +13,14 @@
 
     nix-minecraft = { url = "github:Infinidoge/nix-minecraft"; };
     
-    # nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
+    nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs-stable"; inputs.nixpkgs-nixcord.follows = "nixpkgs-stable"; };
 
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    vpn-confinement = { url = "github:Maroka-chan/VPN-Confinement"; inputs.nixpkgs.follows = "nixpkgs"; };
+    vpn-confinement = { url = "github:Maroka-chan/VPN-Confinement"; };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, spicetify-nix, vpn-confinement, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, nixcord, spicetify-nix, vpn-confinement, ... }@inputs:
 
   let
 
@@ -28,7 +28,7 @@
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
     
-    hostname = "the-homie-machine";   # Change per system!
+    hostname = "the-homie-laptop";   # Change per system!
 
     # Determine the type and host based on the hostname.
     type =
@@ -64,12 +64,12 @@
     homeModules = {
       desktop = [ 
         stylix.homeModules.stylix 
-        # nixcord.homeModules.nixcord 
+        nixcord.homeModules.nixcord 
         spicetify-nix.homeManagerModules.spicetify
       ];
       laptop = [ 
         stylix.homeModules.stylix 
-        # nixcord.homeModules.nixcord 
+        nixcord.homeModules.nixcord 
         spicetify-nix.homeManagerModules.spicetify 
       ];
       homelab = []; 
