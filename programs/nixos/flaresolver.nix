@@ -1,7 +1,12 @@
 {
-  systemd.services.flaresolverr.vpnConfinement = {
-    enable = true;
-    vpnNamespace = "AirVPN";
+  systemd.services.flaresolverr = {
+    vpnConfinement = {
+      enable = true;
+      vpnNamespace = "AirVPN";
+    };
+    
+    bindsTo = [ "AirVPN.service" ];
+    after = [ "AirVPN.service" ];
   };
 
   services.flaresolverr = {
