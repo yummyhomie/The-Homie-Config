@@ -1,7 +1,12 @@
 {
-  systemd.services.prowlarr.vpnConfinement = {
-    enable = true;
-    vpnNamespace = "AirVPN";
+  systemd.services.prowlarr = {
+    vpnConfinement = {
+      enable = true;
+      vpnNamespace = "AirVPN";
+    };
+    
+    bindsTo = [ "AirVPN.service" ];
+    after = [ "AirVPN.service" ];
   };
 
   services.prowlarr = {

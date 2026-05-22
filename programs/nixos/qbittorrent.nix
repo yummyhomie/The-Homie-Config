@@ -3,9 +3,14 @@ let
   nixpkgs-stable = import inputs.nixpkgs-stable { inherit (pkgs) system; };
 in
 {
-  systemd.services.qbittorrent.vpnConfinement = {
-    enable = true;
-    vpnNamespace = "AirVPN";
+  systemd.services.qbittorrent = {
+    vpnConfinement = {
+      enable = true;
+      vpnNamespace = "AirVPN";
+    };
+    
+    bindsTo = [ "AirVPN.service" ];
+    after = [ "AirVPN.service" ];
   };
 
   services.qbittorrent = {
