@@ -28,7 +28,7 @@ in
         "ExcludedFileNamesEnabled" = "true";
 
         # Automatically stop torrents after 10 days of seeding
-        "Session\\MaxRatioAction" = "0";
+        "Session\\MaxRatioAction" = "0"; # 0: Stop torrent, 3: Remove torrent and its files
         "Session\\GlobalMaxSeedingMinutes" = "14400";
 
         # Look for matching torrent hashes in other trackers (speeds up downloads)
