@@ -90,7 +90,6 @@ home.packages = with pkgs; [
     tailwindcss_4
     texlivePackages.tex-gyre
     tree
-    thunderbird
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vesktop
     vlc
