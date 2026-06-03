@@ -2,7 +2,7 @@
   # Jellyfin
   services.jellyfin = {
     enable = true;
-    group = "users";
+    group = "media";
     openFirewall = true;
     hardwareAcceleration = {
       enable = true;

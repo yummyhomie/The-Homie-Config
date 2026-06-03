@@ -64,7 +64,7 @@
   };
 
   # Packages & Programs Installed onto ALL Systems
-  environment.systemPackages = with pkgs; [ btop ];
+  environment.systemPackages = with pkgs; [ btop tree ];
 
   # CPU & GPU 
   hardware.cpu.amd.updateMicrocode = 

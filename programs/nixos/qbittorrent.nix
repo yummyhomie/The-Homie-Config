@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 let
   nixpkgs-stable = import inputs.nixpkgs-stable { inherit (pkgs) system; };
 in
@@ -11,6 +11,25 @@ in
     
     bindsTo = [ "AirVPN.service" ];
     after = [ "AirVPN.service" ];
+
+    serviceConfig = {
+      UMask = lib.mkForce "0002";  # files created as 664, dirs as 775
+    };
+
+    preStart = ''
+      categoriesFile="/var/lib/qBittorrent/qBittorrent/config/categories.json"
+      mkdir -p "$(dirname $categoriesFile)"
+      cat > "$categoriesFile" <<'EOF'
+      {
+          "radarr": {
+              "save_path": "/Warehouse/Media/Downloads/radarr"
+          },
+          "sonarr": {
+              "save_path": "/Warehouse/Media/Downloads/sonarr"
+          }
+      }
+      EOF
+    '';
   };
 
   services.qbittorrent = {
@@ -22,6 +41,9 @@ in
       "BitTorrent" = {
         # Disable Torrent Queueing Limits
         "Session\\QueueingSystemEnabled" = "false";
+
+        # Disale Manual Torrent Management Mode (This changes it to automatic)
+        "Session\\DisableAutoTMMByDefault" = "false";
         
         # Exclude downloading files with the following file types
         "Session\\ExcludedFileNames" = "*.bat, *.bin, *.bmp, *.cmd, *.com, *.db, *.diz, *.dll, *.dmg, *.etc, *.exe, *.gif, *.ico, *.ini, *.iso, *.jar, *.js, *.link, *.lnk, *.msi, *.perl, *.php, *.pl, *.ps1, *.psc1, *.psd1, *.psm1, *.py, *.pyd, *.rb, *.reg, *.run, *.scr, *.sh, *.sql, *.text, *.thumb, *.torrent, *.url, *.vbs, *.wsf, *.xml, *.zipx, *.arj";
