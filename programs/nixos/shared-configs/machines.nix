@@ -55,9 +55,10 @@
   hardware.bluetooth.enable = true;
 
   # Packages On This System
-  environment.systemPackages = with pkgs; [ eddie ];
+  environment.systemPackages = with pkgs; [ ];
 
   # Programs & Services On This System
+  virtualisation.docker.enable = true; # For Exegol to work
 
   services.gvfs.enable = true;  # Virtual File System (For connecting to network folders)
 }

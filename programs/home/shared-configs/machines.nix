@@ -55,14 +55,15 @@
   
 # Packages 
 home.packages = with pkgs; [
+    beyond-all-reason
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
-    chromium
+    burpsuite
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
+    exegol                 # HACKTHEPLANET
     fastfetch
-    freerdp
     font-awesome           # For icon functionality. Peep the waybar!
     gimp
     gnome-calendar
@@ -70,7 +71,6 @@ home.packages = with pkgs; [
     htop
     jq                     # For waybar VPN module
     libreoffice-qt6-fresh
-    metadata-cleaner       # For my projects!
     nautilus
     networkmanager
     nmap
@@ -88,7 +88,6 @@ home.packages = with pkgs; [
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     sqlitebrowser
     tailwindcss_4
-    texlivePackages.tex-gyre
     tree
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vesktop
