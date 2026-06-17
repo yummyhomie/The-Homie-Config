@@ -52,13 +52,20 @@ output "DP-1" {
   position x=0 y=0
 }
 
-// the-homie-monitor "4:3 BTW"
 output "DP-2" {
-    mode "1280x1024@60.020"
+    mode "2560x1440@164.956"
     scale 1
-    transform "normal"
-    position x=2560 y=400
+    transform "90"
+    position x=0 y=-834
 }
+
+// the-homie-monitor "4:3 BTW"
+//output "DP-2" {
+//    mode "1280x1024@60.020"
+//    scale 1
+//    transform "normal"
+//    position x=2560 y=400
+//}
 
 // HDMI Output
 output "HDMI-A-1" {
