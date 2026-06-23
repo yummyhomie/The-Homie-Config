@@ -3,13 +3,13 @@
   stylix = {
     targets = {
       btop.enable = true;
-      foot.enable = true;
-      librewolf = {
+      firefox = {
         enable = true;
         colorTheme.enable = true;
         firefoxGnomeTheme.enable = true;
         profileNames = [ "Default" "I2P" ];
       };
+      foot.enable = true;
       nixcord.enable = true;
       vscode = {
         enable = true; 
