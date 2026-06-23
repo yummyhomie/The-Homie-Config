@@ -2,11 +2,17 @@
   programs.firefox = {
     enable = true;
     profiles = {
-      Default = {
+      default = {
         id = 0;
         extensions.force = true;
+      search = {
+        force = true;
+        default = "ddg";
+        privateDefault = "ddg";
+      };
         settings = {
-          "ui.key.menuAccessKeyFocuses" = false;
+          "ui.key.menuAccessKey" = 0;
+          "extensions.activeThemeID" = "default-theme@mozilla.org";
         };
       };
       

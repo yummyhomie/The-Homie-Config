@@ -7,9 +7,8 @@
         enable = true;
         colorTheme.enable = true;
         firefoxGnomeTheme.enable = true;
-        profileNames = [ "Default" "I2P" ];
+        profileNames = [ "default" "I2P" ];
       };
-      foot.enable = true;
       nixcord.enable = true;
       vscode = {
         enable = true; 

@@ -2,6 +2,7 @@
   programs.rofi = {
     enable = true;
     cycle = false;
+    theme.window.width = 400;
 
     extraConfig = {
       modi = "drun,filebrowser";
@@ -9,11 +10,9 @@
       show-icons = true;
       disable-history = true;
       hover-select = true;
-      bw = 0;
       display-drun = "";
       display-window = "";
       display-combi = "";
-      terminal = "foot";
       drun-match-fields = "name";
       drun-display-format = "{name}";
       me-select-entry = "";

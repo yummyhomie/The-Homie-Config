@@ -103,5 +103,6 @@ home.packages = with pkgs; [
   fonts.fontconfig.enable = true;
 
   # System StateVersion Fixes for Home Manager (Since my build is older than 25.05)
-  # gtk.gtk4.theme = null;
+  gtk.gtk4.theme = null;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 }

@@ -232,7 +232,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; } // shows a list of important hotkeys.
 
     Mod+Q { spawn "kitty"; }
-    Mod+L { spawn "librewolf"; }
+    Mod+L { spawn "firefox"; }
     Mod+R { spawn "rofi" "-show" "drun"; }
     Mod+E { spawn "nautilus"; }
     Mod+W { spawn-sh "pkill waybar || waybar"; }
