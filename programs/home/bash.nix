@@ -13,8 +13,9 @@
       alias edit='vim ~/The-Homie-Config/programs/home/shared-configs/${type}.nix'
       alias nixos='sudo vim ~/The-Homie-Config/programs/nixos/shared-configs/${type}.nix'
       alias flake='vim ~/The-Homie-Config/flake.nix'
-      alias rebuild='sudo nixos-rebuild switch --flake ~/The-Homie-Config#${hostname}'
-      alias switch='home-manager switch --flake ~/The-Homie-Config#${hostname}'
+      
+      alias rebuild='nh os switch ~/The-Homie-Config -H ${hostname}'
+      alias switch='nh home switch ~/The-Homie-Config -c ${hostname}'
       alias config='vim ~/The-Homie-Config/machines/${host}/config.nix'
       alias home='vim ~/The-Homie-Config/machines/${host}/home.nix'
 

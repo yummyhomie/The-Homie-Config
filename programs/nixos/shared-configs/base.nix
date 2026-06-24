@@ -1,7 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   # Import nixos modules & configs for all systems here!
-  imports = [ ];
+  imports = [ 
+    ../nh.nix
+  ];
 
 /*  ////////////////////////////////////////////////////////////////////////
     //                                                                    //
@@ -80,12 +82,6 @@
     
       experimental-features = [ "nix-command" "flakes" ]; # Enables flakes!
       warn-dirty = false;                                 # Blocks annoying flake warning
-    };
-
-    gc = {
-      automatic = true; # Automatically run nix-garbage-collect at a specific time
-      dates = "weekly";
-      options = "--delete-older-than 14d"; # Deletes nixos generations older than 14 days
     };
   };
 
