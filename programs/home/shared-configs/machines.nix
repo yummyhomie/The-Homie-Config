@@ -103,6 +103,5 @@ home.packages = with pkgs; [
   fonts.fontconfig.enable = true;
 
   # System StateVersion Fixes for Home Manager (Since my build is older than 25.05)
-  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   wayland.windowManager.hyprland.configType = "hyprlang";
 }

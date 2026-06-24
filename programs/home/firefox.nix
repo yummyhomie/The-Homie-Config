@@ -4,12 +4,13 @@
     profiles = {
       default = {
         id = 0;
+        isDefault = true;
         extensions.force = true;
-      search = {
-        force = true;
-        default = "ddg";
-        privateDefault = "ddg";
-      };
+        search = {
+          force = true;
+          default = "DuckDuckGo";
+          privateDefault = "DuckDuckGo";
+        };
         settings = {
           "ui.key.menuAccessKey" = 0;
           "extensions.activeThemeID" = "default-theme@mozilla.org";
