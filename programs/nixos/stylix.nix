@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tender.yaml";
 
     icons = {
       enable = true;
@@ -12,9 +12,9 @@
     };
 
     opacity = {
-      desktop = 0.40;
-      terminal = 0.40;
-      popups = 0.40;
+      desktop = 1.00;
+      terminal = 0.70;
+      popups = 1.00;
     };
 
     #cursor = {
