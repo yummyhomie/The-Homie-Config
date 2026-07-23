@@ -1,7 +1,7 @@
 { hostname, ... }:
 let
   vpnConfig =
-    if hostname == "the-homie-laptop" then "/etc/vpn/AirVPN_AllServers.conf"
+    if hostname == "the-homie-laptop" then "/etc/vpn/AirVPN_Brazil.conf"
     else if hostname == "the-homie-machine" then "/etc/vpn/AirVPN_AllServers.conf"
     else "/etc/vpn/AirVPN_Netherlands.conf";
 in

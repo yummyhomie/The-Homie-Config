@@ -4,7 +4,6 @@
   imports = [
     ../firefox.nix
     ../foot.nix
-    ../ghostty.nix
     ../kitty.nix
     #../nixcord.nix
     ../rofi.nix
@@ -60,12 +59,11 @@ home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     burpsuite 
-    cool-retro-term
     discord
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
-    exegol                 # HACKTHEPLANET
+    # exegol                 # HACKTHEPLANET
     fastfetch
     font-awesome           # For icon functionality. Peep the waybar!
     gimp

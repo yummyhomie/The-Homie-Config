@@ -76,11 +76,19 @@ output "HDMI-A-1" {
   transform "normal" 
 }
 
+
 //// LAYOUTS - How the windows are positioned ////
 
 layout {
     gaps 8
     center-focused-column "never"
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -122,20 +130,22 @@ layout {
         offset x=16 y=16
         color "#0008"
     }
-    
-    struts {
-        left 0
-        right 0
-        top 0
-        bottom 0
-        // Used to add a little extra gap around the outer edges of the workspace
-    }
+}
+
+/// DECORATION ///
+
+blur {
+    on
+    passes 3
+    offset 3
+    noise 0.08
+    saturation 1.5
 }
 
 //// STARTUP ////
 
 // spawn-at-startup "waybar"
-spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/trail.jpg"
+// spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/trail.jpg"
 
 prefer-no-csd // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -203,6 +213,14 @@ window-rule {
     match app-id="spotify"
     match app-id="steam"
     default-column-width { proportion 0.3; }
+}
+
+window-rule {
+    match app-id="kitty"
+    background-effect { // Blur Effect
+        blur true
+        xray false
+    }
 }
 
 window-rule {
