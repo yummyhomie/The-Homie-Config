@@ -26,6 +26,8 @@
 
       alias up='sudo systemctl start wg-quick-airvpn'
       alias down='sudo systemctl stop wg-quick-airvpn'
+
+      alias disk='df -h /'
     '';
   };
 }

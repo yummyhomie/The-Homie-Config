@@ -134,7 +134,7 @@ layout {
 
 //// STARTUP ////
 
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/trail.jpg"
 
 prefer-no-csd // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -234,7 +234,7 @@ binds {
     Mod+Q { spawn "kitty"; }
     Mod+L { spawn "firefox"; }
     Mod+R { spawn "rofi" "-show" "drun"; }
-    Mod+E { spawn "nautilus"; }
+    Mod+E { spawn "thunar"; }
     Mod+W { spawn-sh "pkill waybar || waybar"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }

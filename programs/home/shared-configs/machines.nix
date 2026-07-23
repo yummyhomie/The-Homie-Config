@@ -4,8 +4,9 @@
   imports = [
     ../firefox.nix
     ../foot.nix
+    ../ghostty.nix
     ../kitty.nix
-    ../nixcord.nix
+    #../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
@@ -58,7 +59,9 @@ home.packages = with pkgs; [
     beyond-all-reason
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
-    burpsuite
+    burpsuite 
+    cool-retro-term
+    discord
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
@@ -71,7 +74,6 @@ home.packages = with pkgs; [
     htop
     jq                     # For waybar VPN module
     libreoffice-qt6-fresh
-    nautilus
     networkmanager
     nmap
     obs-studio
@@ -88,6 +90,7 @@ home.packages = with pkgs; [
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
     sqlitebrowser
     tailwindcss_4
+    thunar
     tree
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vesktop
