@@ -5,22 +5,22 @@
     polarity = "dark";
     base16Scheme = {
       palette = {
-        base00 = "0a0e14"; # main bg — near-black navy
-        base01 = "0f1620"; # panel/status bg
-        base02 = "16202c"; # selection bg
-        base03 = "3a5068"; # comments / muted grid lines
-        base04 = "6b8ba3"; # dim foreground
-        base05 = "b8d4e3"; # default text — pale cyan-white
-        base06 = "d9ecf5"; # light fg
-        base07 = "eaf6fb"; # brightest — trajectory/highlight white
-        base08 = "ff4d4d"; # red — crosshairs, alerts
-        base09 = "ff8c3a"; # amber — CRT readout orange
-        base0A = "ffcc33"; # gold/yellow accent text
-        base0B = "39ff6a"; # phosphor green — radar sweep
-        base0C = "29e6e6"; # cyan — grid lines, primary glow
-        base0D = "3aa0ff"; # blue accent
-        base0E = "cc66ff"; # magenta — vector/plot lines
-        base0F = "995522"; # rust brown — muted/deprecated
+        base00 = "1a1210";
+        base01 = "241a15";
+        base02 = "3d2b22";
+        base03 = "6b5346";
+        base04 = "9c8474";
+        base05 = "e8d6c3";
+        base06 = "f0e2d0";
+        base07 = "f7ece0";
+        base08 = "c1443c";
+        base09 = "d97b3f";
+        base0A = "d9a441";
+        base0B = "8a9a4a";
+        base0C = "6f9e93";
+        base0D = "7088ab";
+        base0E = "a2617a";
+        base0F = "8b5a3c";
       };
     };
 
@@ -31,9 +31,9 @@
     };
 
     opacity = {
-      desktop = 0.80;
-      terminal = 0.80;
-      popups = 0.80;
+      desktop = 1.00;
+      terminal = 1.00;
+      popups = 1.00;
     };
 
     fonts = {
