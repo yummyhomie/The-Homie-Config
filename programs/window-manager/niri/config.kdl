@@ -57,7 +57,7 @@ output "DP-2" {
     mode "2560x1440@164.956"
     scale 1
     transform "90"
-    position x=0 y=-834
+    position x=2560 y=-834
 }
 
 // the-homie-monitor "4:3 BTW"
@@ -145,7 +145,7 @@ blur {
 //// STARTUP ////
 
 // spawn-at-startup "waybar"
-spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/circut.png"
+spawn-sh-at-startup "wbg -s ~/The-Homie-Config/programs/window-manager/wallpapers/plump.png"
 
 prefer-no-csd // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
