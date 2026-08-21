@@ -9,7 +9,7 @@
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
-    ../waybar.nix
+    ../yambar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
   ];
 
