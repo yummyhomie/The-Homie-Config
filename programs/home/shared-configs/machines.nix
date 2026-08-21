@@ -99,6 +99,8 @@ home.packages = with pkgs; [
     wireguard-tools
     xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
+
+    protontricks
   ];
 
   fonts.fontconfig.enable = true;

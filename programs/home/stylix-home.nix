@@ -10,9 +10,9 @@
         profileNames = [ "default" "I2P" ];
       };
       nixcord.enable = true;
-      vscode = {
+      vscodium = {
         enable = true; 
-        profileNames = [ "Default" ];
+        profileNames = [ "default" ];
       };
       waybar.enable = false;    
     };
