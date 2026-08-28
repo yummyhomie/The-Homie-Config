@@ -3,17 +3,23 @@
   stylix = {
     targets = {
       btop.enable = true;
+      
       firefox = {
         enable = true;
         colorTheme.enable = true;
         firefoxGnomeTheme.enable = true;
         profileNames = [ "default" "I2P" ];
       };
+      
       nixcord.enable = true;
+      
       vscodium = {
         enable = true; 
+        colors.enable = true;
+        fonts.enable = true;
         profileNames = [ "default" ];
       };
+      
       waybar.enable = false;    
     };
   };

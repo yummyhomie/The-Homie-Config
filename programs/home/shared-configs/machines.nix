@@ -9,6 +9,7 @@
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
+    ../vscodium.nix
     ../yambar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
   ];
@@ -65,7 +66,7 @@ home.packages = with pkgs; [
     evolution              # For Gnome-Calendar to work with CalDav Servers
     # exegol                 # HACKTHEPLANET
     fastfetch
-    font-awesome           # For icon functionality. Peep the waybar!
+    # font-awesome           # For icon functionality. Peep the waybar!
     gimp
     gnome-calendar
     gvfs                   # This helps with connecting to remote folders via nautilus
@@ -73,6 +74,7 @@ home.packages = with pkgs; [
     jq                     # For waybar VPN module
     libreoffice-qt6-fresh
     networkmanager
+    nerd-fonts.symbols-only
     nmap
     obs-studio
     obsidian
@@ -93,7 +95,6 @@ home.packages = with pkgs; [
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vesktop
     vlc
-    vscodium
     waybar
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     wireguard-tools
