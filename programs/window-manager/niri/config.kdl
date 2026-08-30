@@ -253,7 +253,7 @@ binds {
     Mod+L { spawn "firefox"; }
     Mod+R { spawn "rofi" "-show" "drun"; }
     Mod+E { spawn "thunar"; }
-    Mod+W { spawn-sh "pkill waybar || waybar"; }
+    Mod+W { spawn-sh "pkill yambar || yambar"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
