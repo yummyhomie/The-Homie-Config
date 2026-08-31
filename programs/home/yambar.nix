@@ -28,7 +28,7 @@
                       map = { 
                         default = { 
                           string = { 
-                            text = "󰈀 {ipv4} | "; 
+                            text = " 󰈀 {ipv4} | "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };

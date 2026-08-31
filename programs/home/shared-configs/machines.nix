@@ -102,6 +102,8 @@ home.packages = with pkgs; [
     zip
 
     protontricks
+    binutils
+    gcc
   ];
 
   fonts.fontconfig.enable = true;
