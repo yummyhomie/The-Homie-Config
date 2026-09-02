@@ -7,7 +7,7 @@
         location = "top";
         background = "1a121000";
         foreground = "9c8474ff";
-        layer = "overlay";
+        layer = "bottom";
         font = "IoskeleyMonoTerm Nerd Font Heavy:style=Heavy:pixelsize=14";
 
         left = [
