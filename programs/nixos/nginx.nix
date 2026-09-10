@@ -169,6 +169,18 @@
         '';
       };
     };
+    
+    # TEMPORARY FOR INVITATIONS 
+    virtualHosts."invitation.eleedee.net" = {
+      enableACME = true;
+      forceSSL = true;
+      serverAliases = [ "invitation.eleedee.net" ];
+      root = "/var/www/thou-holy-invitation";
+       locations."/" = {
+        index = "index.html";
+        tryFiles = "$uri $uri/ =404";
+      };
+    };
   };
 
   # SSL/TLS
