@@ -11,7 +11,11 @@
         profileNames = [ "default" "I2P" ];
       };
       
-      nixcord.enable = true;
+      vesktop = {
+        enable = true;
+        colors.enable = true;
+        fonts.enable = true;
+      };
       
       vscodium = {
         enable = true; 
