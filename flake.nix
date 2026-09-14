@@ -1,11 +1,11 @@
 {
-  description = "The-Homie-Flake! For use across all my homie machines.";
+  description = "The-Homie-Flake! For use across all my beloved machines.";
 
   inputs = {
     
     nixpkgs = { url = "nixpkgs/nixos-unstable"; };
 
-    nixpkgs-stable = { url = "nixpkgs/nixos-25.11"; };
+    nixpkgs-stable = { url = "nixpkgs/nixos-26.05"; };
     
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     
@@ -13,14 +13,14 @@
 
     nix-minecraft = { url = "github:Infinidoge/nix-minecraft"; };
     
-    # nixcord = { url = "github:kaylorben/nixcord"; inputs.nixpkgs.follows = "nixpkgs-stable"; inputs.nixpkgs-nixcord.follows = "nixpkgs-stable"; };
-
     spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     vpn-confinement = { url = "github:Maroka-chan/VPN-Confinement"; };
+
+    chaotic = { url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; };
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, spicetify-nix, vpn-confinement, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, spicetify-nix, vpn-confinement, chaotic, ... }@inputs:
 
   let
 
@@ -53,8 +53,8 @@
 
     # NixOS Modules
     nixModules = {
-      desktop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default ];
-      laptop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default ];
+      desktop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default chaotic.nixosModules.default ];
+      laptop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default chaotic.nixosModules.default ];
       homelab = [ vpn-confinement.nixosModules.default ];
       hacking = [];
       dell = [ nix-minecraft.nixosModules.minecraft-servers ];
