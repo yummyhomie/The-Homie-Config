@@ -20,6 +20,7 @@
     vulkan-loader
     vulkan-validation-layers
     nvtopPackages.amd    # GPU usage monitor for AMD
+    gamescope
   ];
   
   programs.xwayland.enable = true;
