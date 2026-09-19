@@ -1,7 +1,5 @@
 { pkgs, lib, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
@@ -31,12 +29,6 @@
   ];
 
   security.polkit.enable = true;
-
   programs.xwayland.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-
-  services.scx = {
-    enable = true;
-    scheduler = "scx_lavd";
-  };
 }

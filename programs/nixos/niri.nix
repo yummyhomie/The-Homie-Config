@@ -7,7 +7,7 @@
 
   # Environment Variables (To help various programs to use the correct WM Protocol)
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1"; # Let Electron Apps know to use Wayland
+    NIXOS_OZONE_WL = "1";  # Let Electron Apps know to use Wayland
   };
 
   xdg.portal = {

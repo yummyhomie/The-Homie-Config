@@ -5,11 +5,10 @@
     ../firefox.nix
     ../foot.nix
     ../kitty.nix
-    #../nixcord.nix
+    ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
     ../stylix-home.nix
-    ../vesktop.nix
     ../vscodium.nix
     ../yambar.nix
     ../../nixos/stylix.nix # Connects home-managed programs to be styled by stylix
@@ -71,8 +70,8 @@ home.packages = with pkgs; [
     gnome-calendar
     gvfs                   # This helps with connecting to remote folders via nautilus
     htop
-    jq                     # For waybar VPN module
-    libreoffice-qt6-fresh
+    # jq                     # For waybar VPN module
+    libreoffice
     networkmanager
     nerd-fonts.symbols-only
     nmap
@@ -84,14 +83,14 @@ home.packages = with pkgs; [
     prismlauncher
     pulsemixer
     r2modman
-    remmina
     screen                 # For interfacing with mgmt ports
     signal-desktop
     # spotify              # Just as a note, if spotify won't start -> rm -rf $HOME/.cache/spotify/
-    sqlitebrowser
+    # sqlitebrowser
     tailwindcss_4
     thunar
     tree
+    tutanota-desktop
     unzip                  # To unzip files in the command line (Use "unzip!")     
     vlc
     waybar
@@ -100,9 +99,12 @@ home.packages = with pkgs; [
     # xwayland               # Ensures compatability with older applications that use X11 (Makes wayland able to display properly)
     zip
 
-    protontricks
     binutils
+    docker-compose
     gcc
+    clonehero
+    openshot-qt
+    kdePackages.kdenlive
   ];
 
   fonts.fontconfig.enable = true;

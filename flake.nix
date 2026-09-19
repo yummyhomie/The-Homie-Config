@@ -3,24 +3,24 @@
 
   inputs = {
     
-    nixpkgs = { url = "nixpkgs/nixos-unstable"; };
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    nixpkgs-stable = { url = "nixpkgs/nixos-26.05"; };
+    nixpkgs-stable.url = "nixpkgs/nixos-26.05";
     
-    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager.url = "github:nix-community/home-manager";
     
-    stylix = { url = "github:nix-community/stylix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    stylix.url = "github:nix-community/stylix";
 
-    nix-minecraft = { url = "github:Infinidoge/nix-minecraft"; };
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     
-    spicetify-nix = { url = "github:Gerg-L/spicetify-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    vpn-confinement = { url = "github:Maroka-chan/VPN-Confinement"; };
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
 
-    chaotic = { url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; };
+    nixcord.url = "github:4evy/nixcord";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, spicetify-nix, vpn-confinement, chaotic, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, nix-minecraft, spicetify-nix, vpn-confinement, nixcord, ... }@inputs:
 
   let
 
@@ -53,28 +53,38 @@
 
     # NixOS Modules
     nixModules = {
-      desktop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default chaotic.nixosModules.default ];
-      laptop = [ stylix.nixosModules.stylix vpn-confinement.nixosModules.default chaotic.nixosModules.default ];
+      desktop = [ stylix.nixosModules.stylix ];
+      
+      laptop = [ stylix.nixosModules.stylix ];
+
       homelab = [ vpn-confinement.nixosModules.default ];
+      
       hacking = [];
+      
       dell = [ nix-minecraft.nixosModules.minecraft-servers ];
+      
       wyse = [];
     };
 
     homeModules = {
       desktop = [ 
         stylix.homeModules.stylix 
-        # nixcord.homeModules.nixcord 
+        nixcord.homeModules.nixcord 
         spicetify-nix.homeManagerModules.spicetify
       ];
+      
       laptop = [ 
         stylix.homeModules.stylix 
-        # nixcord.homeModules.nixcord 
+        nixcord.homeModules.nixcord 
         spicetify-nix.homeManagerModules.spicetify
       ];
+      
       homelab = []; 
+      
       hacking = [];
+      
       dell = [];
+      
       wyse = [];
     };
  

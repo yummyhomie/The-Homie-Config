@@ -23,3 +23,5 @@ in
     autostart = false;
   };
 }
+
+# GOtta update this L8R. Laptop & Desktop are no longer added.

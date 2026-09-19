@@ -7,10 +7,7 @@
   networking.hostName = "the-wyse-homie";
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [
-    80        # NginX
-    443       # NginX
-  ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   # Version
   system.stateVersion = "24.05";

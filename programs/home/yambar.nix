@@ -122,7 +122,23 @@
             battery = {
               name = "BAT0";
               poll-interval = 30000;
-              content = { string.text = "󰂁{capacity}% "; };
+              content = {
+                map = {
+                  default = { string.text = "󰂁{capacity}% "; };
+                  conditions = {
+                    "capacity == 0" = { string.text = ""; };
+                  };
+                };
+              };
+            };
+          }
+          {
+            script = {
+              path = "${./custom-scripts/gpu.sh}";
+              poll-interval = 2500;
+              content = {
+                string.text = "󰾲 {gpu}% ";
+              };
             };
           }
         ];
