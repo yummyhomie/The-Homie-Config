@@ -3,6 +3,8 @@
   # Niri
   programs.niri.enable = true;
 
+  environment.etc."niri/config.kdl".source = ../wm-niri/config.kdl;
+
   environment.systemPackages = with pkgs; [ xwayland-satellite ];
 
   # Environment Variables (To help various programs to use the correct WM Protocol)
