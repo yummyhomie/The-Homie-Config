@@ -1,9 +1,17 @@
+{ hostname, ... }:
+let
+  monitor =
+    if hostname == "the-homie-machine"
+    then "DP-2"
+    else "eDP-1";
+in
 {
   programs.yambar = {
     enable = true;
     settings = {
       bar = {
         height = 26;
+        monitor = monitor;
         location = "top";
         background = "1a121000";
         foreground = "9c8474ff";
