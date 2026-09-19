@@ -175,7 +175,7 @@
       enableACME = true;
       forceSSL = true;
       serverAliases = [ "invitation.eleedee.net" ];
-      root = "/var/www/thou-holy-invitation";
+      root = "/var/www/Thou-Holy-Invitation";
        locations."/" = {
         index = "index.html";
         tryFiles = "$uri $uri/ =404";
