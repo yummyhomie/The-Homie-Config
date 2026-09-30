@@ -57,8 +57,6 @@
   environment.systemPackages = with pkgs; [ ];
 
   # Programs & Services On This System
-  virtualisation.docker.enable = true; # For Exegol to work
-
   services.gvfs.enable = true;  # Virtual File System (For connecting to network folders)
 }
 

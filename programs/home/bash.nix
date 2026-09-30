@@ -22,7 +22,7 @@
       alias bash='vim ~/The-Homie-Config/programs/home/bash.nix'
       alias ni='vim ~/The-Homie-Config/programs/wm-niri/config.kdl'
       alias stylix='vim ~/The-Homie-Config/programs/home/stylix-home.nix'
-      alias way='vim ~/The-Homie-Config/programs/home/waybar.nix'
+      alias yam='vim ~/The-Homie-Config/programs/home/yambar.nix'
 
       alias up='sudo systemctl start wg-quick-airvpn'
       alias down='sudo systemctl stop wg-quick-airvpn'

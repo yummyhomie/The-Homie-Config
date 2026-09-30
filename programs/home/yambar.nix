@@ -2,7 +2,7 @@
 let
   monitor =
     if hostname == "the-homie-machine"
-    then "DP-2"
+    then "DP-3"
     else "eDP-1";
 in
 {

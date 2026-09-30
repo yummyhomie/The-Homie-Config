@@ -2,17 +2,9 @@
 {
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
     protontricks.enable = true;
   };
-
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
-
-  programs.gamemode.enable = true;
 
   hardware.cpu.amd.updateMicrocode = true;
 
