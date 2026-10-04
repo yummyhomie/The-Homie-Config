@@ -1,10 +1,12 @@
 {
   programs.rofi = {
     enable = true;
-    cycle = false;
-    theme.window.width = 400;
+    theme.window.width = 400; 
+    theme.window.height = 200; 
 
-    extraConfig = {
+    settings = {
+      cycle = false;
+      location = 6; # Bottom
       modi = "drun,filebrowser";
       font = "monospace 14";
       show-icons = true;
