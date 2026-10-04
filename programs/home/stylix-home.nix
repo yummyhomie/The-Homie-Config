@@ -4,7 +4,7 @@
     targets = {
       btop.enable = true;
       
-      firefox = {
+      librewolf = {
         enable = true;
         colorTheme.enable = true;
         firefoxGnomeTheme.enable = true;

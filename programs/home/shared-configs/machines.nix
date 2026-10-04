@@ -2,9 +2,9 @@
   # Import home-manager modules & configs for all machines here!
 {
   imports = [
-    ../firefox.nix
     ../foot.nix
     ../kitty.nix
+    ../librewolf.nix
     ../nixcord.nix
     ../rofi.nix
     ../spicetify.nix
@@ -56,6 +56,7 @@
   
 # Packages 
 home.packages = with pkgs; [
+    aircrack-ng
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     easyeffects
