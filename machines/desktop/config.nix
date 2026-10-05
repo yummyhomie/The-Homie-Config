@@ -1,5 +1,5 @@
 {
-  imports = [ ../../program/nixos/gaming.nix ];
+  imports = [ ../../programs/nixos/gaming.nix ];
 
   networking.hostName = "the-homie-machine";
 

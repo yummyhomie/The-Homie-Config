@@ -1,9 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   programs.steam = {
     enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
     protontricks.enable = true;
+  };
+
+  programs.gamemode.enable = true; # Remember to use "gamemoderun %command%" as startup options for steam games
+  
+  programs.gamescope = {
+    enable = true;
+    capSysNice = false;
   };
 
   hardware.cpu.amd.updateMicrocode = true;
@@ -12,15 +19,11 @@
     enable = true;
     enable32Bit = true;
   };
+  
+  programs.corectrl.enable = true;
 
   environment.systemPackages = with pkgs; [
     mangohud
     nvtopPackages.amd
-    corectrl
-    gamescope
   ];
-
-  security.polkit.enable = true;
-  programs.xwayland.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
 }
