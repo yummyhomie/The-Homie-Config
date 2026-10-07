@@ -5,9 +5,10 @@
     ../../programs/nixos/airvpn.nix
     ../../programs/nixos/filebrowser.nix
     ../../programs/nixos/flaresolver.nix
-    ../../programs/nixos/i2p.nix
+    #../../programs/nixos/i2p.nix
     ../../programs/nixos/immich.nix
     ../../programs/nixos/jellyfin.nix
+    ../../programs/nixos/jotty.nix
     ../../programs/nixos/nixarr.nix
     ../../programs/nixos/radicale.nix
     ../../programs/nixos/samba.nix

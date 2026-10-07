@@ -27,7 +27,7 @@
   };
 
   # Load GuC/HuC firmware for hardware encoding
-  boot.kernelParams = [ "i915.enable_guc=2" ];
+  boot.kernelParams = [ "i915.enable_guc=3" ];
 
   # For Hardware Decoding
   users.users.jellyfin.extraGroups = [ "render" "video" ];

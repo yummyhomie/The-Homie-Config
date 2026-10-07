@@ -10,10 +10,7 @@
   systemd.services.radarr = {
     after = [ "qbittorrent.service" "network-online.target" ];
     wants = [ "qbittorrent.service" ];
-
-    serviceConfig = {
-      UMask = lib.mkForce "0002";
-    };
+    serviceConfig.UMask = lib.mkForce "0002";
   };
 
   # Seerr
@@ -31,6 +28,7 @@
   systemd.services.sonarr = {
     after = [ "qbittorrent.service" "network-online.target" ];
     wants = [ "qbittorrent.service" ];
+    serviceConfig.UMask = lib.mkForce "0002";
   };
 
   # Prowlarr
