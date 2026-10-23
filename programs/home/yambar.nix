@@ -10,20 +10,28 @@ in
     enable = true;
     settings = {
       bar = {
-        height = 26;
+        height = 25;
         monitor = monitor;
-        location = "top";
-        background = "1a121000";
+        location = "bottom";
+        background = "1a121080";
         foreground = "9c8474ff";
         layer = "bottom";
         font = "IoskeleyMonoTerm Nerd Font Heavy:style=Heavy:pixelsize=14";
+        margin = 4;
+        border = {
+          color = "ef350eff";
+          width = 2;
+          margin = 8;
+          top-margin = 0;
+          bottom-margin = 0;
+        };
 
         left = [
           {
             clock = {
               date-format = "%b %d";
               time-format = "%I:%M";
-              content = { string.text = "{date} {time} |"; };
+              content = { string.text = "{date} {time}  "; };
             };
           }
           {
@@ -36,7 +44,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " 󰈀 {ipv4} | "; 
+                            text = "󰈀 {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -49,7 +57,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " 󰖩 {ipv4} | "; 
+                            text = "󰖩 {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -62,7 +70,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " 󰖩 {ipv4} | "; 
+                            text = "󰖩 {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -86,11 +94,12 @@ in
                         conditions = {
                           "type == \"sink\"" = {
                             ramp = {
-                              tag = "linear_volume";
+                              tag = "cubic_volume";
                               items = [
-                                { string.text = "󰕿 {linear_volume}% "; }
-                                { string.text = "󰖀 {linear_volume}% "; }
-                                { string.text = "󰕾 {linear_volume}% "; }
+                                { string.text = "  "; }
+                                { string.text = " {cubic_volume}  "; }
+                                { string.text = " {cubic_volume}  "; }
+                                { string.text = " {cubic_volume}  "; }
                               ];
                               on-click = {
                                 left = "kitty pulsemixer";
@@ -109,33 +118,65 @@ in
             };
           }
           {
-            cpu = {
-              poll-interval = 2500;
-              content = {
-                map.conditions = {
-                  "id < 0" = {
-                    string.text = " {cpu}% ";
+            removables = {
+              content.map.conditions = {
+                "label == \"EFI\"" = {
+                  string.text = "";
+                };
+                
+                "~mounted" = {
+                  string = {
+                    on-click = "udisksctl mount -b {device}";
+                    text = "󱇰";
+                  };
+                };
+
+                "mounted" = {
+                  string = {
+                    on-click = "udisksctl unmount -b {device}";
+                    text = "󱇰 {label}";
+                    deco = {
+                      underline = {
+                        size = 2;
+                        color = "8a9a4aff";
+                      };
+                    };
                   };
                 };
               };
-            }; 
+            };
+          }
+        ];
+
+        center = [
+          {
+            foreign-toplevel = {
+              "all-monitors" = true;
+              content.map.conditions = {
+                "activated" = { string.text = "{app-id}: {title}"; };
+              };
+            };
+          }
+        ];
+
+        right = [
+          {
+            cpu = {
+              poll-interval = 2500;
+              content.map.conditions = {
+                "id < 0" = {
+                  string.text = " {cpu} ";
+                };
+              };
+            };
           }
           {
             mem = {
               poll-interval = 2500;
-              content = { string.text = " {percent_used}% "; };
-            };
-          }
-          {
-            battery = {
-              name = "BAT0";
-              poll-interval = 30000;
-              content = {
-                map = {
-                  default = { string.text = "󰂁{capacity}% "; };
-                  conditions = {
-                    "capacity == 0" = { string.text = ""; };
-                  };
+              content.map = { 
+                default = { string.text = " {percent_used} "; };
+                conditions = {
+                  "percent_used == 0" = { string.text = "  "; };
                 };
               };
             };
@@ -144,8 +185,27 @@ in
             script = {
               path = "${./custom-scripts/gpu.sh}";
               poll-interval = 2500;
+              content.map = {
+                default = { string.text = "󰭴 {gpu} "; };
+                conditions = {
+                  "gpu == 0" = { string.text = "󰭴 "; };
+                };
+              };
+            };
+          }
+          {
+            battery = {
+              name = "BAT0";
+              poll-interval = 30000;
               content = {
-                string.text = "󰾲 {gpu}% ";
+                map = {
+                  default = { string.text = "󰂁{capacity}%"; };
+                  conditions = {
+                    "capacity == 0" = { string.text = ""; };
+                    "capacity == 100" = { string.text = "󰁹"; };
+                    "state == charging" = { string.text = "󰂄{capacity}%"; };
+                  };
+                };
               };
             };
           }

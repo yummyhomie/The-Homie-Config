@@ -56,7 +56,6 @@
   
 # Packages 
 home.packages = with pkgs; [
-    aircrack-ng
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     easyeffects
@@ -84,6 +83,7 @@ home.packages = with pkgs; [
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     wireguard-tools
     zip
+    wine
   ];
 
   fonts.fontconfig.enable = true;

@@ -71,17 +71,18 @@ output "LG Electronics LG ULTRAGEAR 305MXKD9Y189" {
 
 // HDMI Output
 output "HDMI-A-1" {
-  mode "3840x2160@60.000" // TV
-  // mode "1920x1080@60.000"
+  // mode "3840x2160@60.000" // TV
+  mode "1920x1080@60.000"
   scale 1 
-  transform "normal" 
+  transform "90"
+  position x=-1920 y=-110
 }
 
 
 //// LAYOUTS - How the windows are positioned ////
 
 layout {
-    gaps 16
+    gaps 8
     center-focused-column "never"
 
     struts {
@@ -207,7 +208,7 @@ animations {
 //// WINDOW RULES ////
 
 window-rule { // Rounded Corners for all Windows
-    geometry-corner-radius 8
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -229,6 +230,14 @@ window-rule {
 window-rule {
     match app-id="kitty"
     background-effect { // Blur Effect
+        blur true
+        xray false
+    }
+}
+
+layer-rule {
+    match namespace="^panel$"
+    background-effect {
         blur true
         xray false
     }
