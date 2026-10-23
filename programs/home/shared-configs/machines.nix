@@ -83,7 +83,6 @@ home.packages = with pkgs; [
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     wireguard-tools
     zip
-    wine
   ];
 
   fonts.fontconfig.enable = true;
