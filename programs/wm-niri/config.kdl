@@ -71,10 +71,10 @@ output "LG Electronics LG ULTRAGEAR 305MXKD9Y189" {
 
 // HDMI Output
 output "HDMI-A-1" {
-  // mode "3840x2160@60.000" // TV
-  mode "1920x1080@60.000"
+  mode "3840x2160@60.000" // TV
+  // mode "1920x1080@60.000"
   scale 1 
-  transform "90"
+  // transform "90"
   position x=-1920 y=-110
 }
 

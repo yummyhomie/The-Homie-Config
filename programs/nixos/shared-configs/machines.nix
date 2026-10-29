@@ -4,6 +4,7 @@
   imports = [
     ../gaming.nix
     ../niri.nix
+    ../sleep.nix
     ../stylix.nix
     ../syncthing-clients.nix
     ../virtual-machines.nix
