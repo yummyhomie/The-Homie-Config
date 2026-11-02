@@ -11,9 +11,12 @@ in
     
     bindsTo = [ "AirVPN.service" ];
     after = [ "AirVPN.service" ];
+    wantedBy = [ "AirVPN.service" ];
 
     serviceConfig = {
       UMask = lib.mkForce "0002";  # files created as 664, dirs as 775
+      Restart = "on-failure";
+      RestartSec = "10s";
     };
 
     preStart = ''
@@ -50,7 +53,7 @@ in
         "ExcludedFileNamesEnabled" = "true";
 
         # Automatically stop torrents after 10 days of seeding
-        "Session\\MaxRatioAction" = "0"; # 0: Stop torrent, 3: Remove torrent and its files
+        "Session\\MaxRatioAction" = "3"; # 0: Stop torrent, 3: Remove torrent and its files
         "Session\\GlobalMaxSeedingMinutes" = "14400";
 
         # Look for matching torrent hashes in other trackers (speeds up downloads)
@@ -68,7 +71,7 @@ in
         
         # Fix that might have been causing seeding to stall
         "WebUI\\BanDuration" = "3600";
-        "WebUI\\MaxAuthenticationFailCount" = "0";
+        "WebUI\\MaxAuthenticationFailCount" = "4";
         
         # This prevents my downloads from saving to the main drive
         # & instead download directly to the big drive
