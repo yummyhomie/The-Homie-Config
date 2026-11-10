@@ -59,13 +59,18 @@ home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     burpsuite
+    clonehero
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
     fastfetch
     gimp
     htop
+    joplin-desktop
+    jq
     libreoffice
+    metasploit
+    nautilus
     networkmanager
     nerd-fonts.symbols-only
     nmap
@@ -84,6 +89,7 @@ home.packages = with pkgs; [
     waybar
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
     wireguard-tools
+    zap
     zip
   ];
 

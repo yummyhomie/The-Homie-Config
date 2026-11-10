@@ -264,6 +264,13 @@ window-rule {
     // block-out-from "screencast"
 }
 
+//// ENVIRONMENT VARIABLES ////
+
+// Fix for Java applications not rendering very well with Niri. Specifically ZAP & BurpSuite.
+environment {
+    _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
 //// KEYBINDS ////
 
 binds {
@@ -272,7 +279,7 @@ binds {
     Mod+Q { spawn "kitty"; }
     Mod+L { spawn "firefox"; }
     Mod+R { spawn "rofi" "-show" "drun"; }
-    Mod+E { spawn "thunar"; }
+    Mod+E { spawn "nautilus"; }
     Mod+W { spawn-sh "pkill yambar || yambar"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
