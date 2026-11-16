@@ -16,7 +16,7 @@ in
         background = "1a121080";
         foreground = "9c8474ff";
         layer = "bottom";
-        font = "IoskeleyMonoTerm Nerd Font Heavy:style=Heavy:pixelsize=14";
+        font = "Ioskeley Mono Extrabold:pixelsize=14, Symbols Nerd Font:pixelsize=14";
         margin = 4;
         border = {
           color = "ef350eff";
@@ -44,7 +44,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = "󰈀 {ipv4}  "; 
+                            text = " {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -57,7 +57,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = "󰖩 {ipv4}  "; 
+                            text = " {ipv4}  ";
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -70,7 +70,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = "󰖩 {ipv4}  "; 
+                            text = " {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };

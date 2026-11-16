@@ -59,6 +59,7 @@ home.packages = with pkgs; [
     bluetuith              # For Bluetooth functionality. Click the icon on the top-right!
     brightnessctl
     burpsuite
+    chromium
     clonehero
     easyeffects
     eog                    # Gnome image viewer
@@ -71,8 +72,8 @@ home.packages = with pkgs; [
     libreoffice
     metasploit
     nautilus
-    networkmanager
     nerd-fonts.symbols-only
+    networkmanager
     nmap
     obsidian
     openvpn
@@ -88,6 +89,7 @@ home.packages = with pkgs; [
     vlc
     waybar
     wbg                    # Ultra light wallpaper application. Ran on autostart with Niri.
+    whois
     wireguard-tools
     zap
     zip

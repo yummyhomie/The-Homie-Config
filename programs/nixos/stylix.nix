@@ -24,6 +24,19 @@
       };
     };
 
+    # Holy this took forever to find. To see what name to use when adding a font, run:
+    # fc-scan --format '%{family}\n' $(nix build nixpkgs#FONT/ICON_PACKAGE_NAME --no-link --print-out-paths)/share/fonts/*/* | sort -u
+    fonts = {
+      monospace = {
+        package = pkgs.ioskeley-mono.standard;
+        name    = "Ioskeley Mono Medium";
+      };
+      sizes = {
+        terminal = 12;
+        applications = 12;
+      };
+    };
+
     icons = {
       enable = true;
       package = pkgs.chicago95;
@@ -35,32 +48,5 @@
       terminal = 0.50;
       popups = 1.00;
     };
-
-    fonts = {
-      monospace = {
-        package = pkgs.ioskeley-mono.normal-term-NF;
-        name = "IoskeleyMonoTerm Nerd Font Medium";
-      };
-      sizes = {
-        terminal = 12;
-        applications = 12;
-      };
-    };
-
-    #cursor = {
-    #  name = "Hackneyed";
-    #  package = pkgs.hackneyed;
-    #  size = 16;
-    #};
-    
-    # Stylix has an issue where it rebuilds the entire cursor package from source
-    # every single time your rebuild/switch. I am letting home-manager 
-    # handle this until a fix get's implemented.My rebuild times are way too long.
   };
 }
-
-# From old GTK config notes:
-# To find the name of the theme/icon, run this command:
-# cd $(nix build nixpkgs#PACKAGE-NAME --print-out-paths --no-link)
-# It'll put you in it's directory and you can ls for the correct name.
-# In case it has multiple options! YOU GOT THIS.
