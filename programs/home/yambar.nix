@@ -31,7 +31,7 @@ in
             clock = {
               date-format = "%b %d";
               time-format = "%I:%M";
-              content = { string.text = "{date} {time}  "; };
+              content = { string.text = " {date} {time}  "; };
             };
           }
           {
@@ -57,7 +57,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " {ipv4}  ";
+                            text = " {ipv4} 󱘖 {quality}  ";
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -70,7 +70,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " {ipv4}  "; 
+                            text = " {ipv4} 󱘖 {quality}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -96,7 +96,7 @@ in
                             ramp = {
                               tag = "cubic_volume";
                               items = [
-                                { string.text = "  "; }
+                                { string.text = " "; }
                                 { string.text = " {cubic_volume}  "; }
                                 { string.text = " {cubic_volume}  "; }
                                 { string.text = " {cubic_volume}  "; }
@@ -176,7 +176,21 @@ in
               content.map = { 
                 default = { string.text = " {percent_used} "; };
                 conditions = {
-                  "percent_used == 0" = { string.text = "  "; };
+                  "percent_used == 0" = { string.text = " "; };
+                };
+              };
+            };
+          }
+          {
+            script = {
+              path = "${./custom-scripts/sto.sh}";
+              poll-interval = 2500;
+              content.map = {
+                default = { string.text = " "; };
+                conditions = {
+                  "sto >= 95" = { string = { text = " {free}  "; foreground = "c1443cff"; }; };
+                  "sto >= 90 && sto < 95" = { string = { text = " {free} "; foreground = "d97b3fff"; }; };
+                  "sto >= 85 && sto < 90" = { string = { text = " {free} "; foreground = "d9a441ff"; }; };
                 };
               };
             };
@@ -199,11 +213,11 @@ in
               poll-interval = 30000;
               content = {
                 map = {
-                  default = { string.text = "󰂁{capacity}%"; };
+                  default = { string.text = "󰂁 {capacity}"; };
                   conditions = {
                     "capacity == 0" = { string.text = ""; };
                     "capacity == 100" = { string.text = "󰁹"; };
-                    "state == charging" = { string.text = "󰂄{capacity}%"; };
+                    "state == charging" = { string.text = "󰂄 {capacity}%"; };
                   };
                 };
               };
