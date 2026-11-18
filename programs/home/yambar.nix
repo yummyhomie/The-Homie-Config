@@ -57,7 +57,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " {ipv4} 󱘖 {quality}  ";
+                            text = " {ipv4}  ";
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -70,7 +70,7 @@ in
                       map = { 
                         default = { 
                           string = { 
-                            text = " {ipv4} 󱘖 {quality}  "; 
+                            text = " {ipv4}  "; 
                             on-click = "kitty sudo nmtui";    
                           };
                         };
@@ -184,13 +184,16 @@ in
           {
             script = {
               path = "${./custom-scripts/sto.sh}";
-              poll-interval = 2500;
               content.map = {
-                default = { string.text = " "; };
+                default = { 
+                  string = {
+                    text = " ";
+                    on-click = "kitty --hold df -BG /";
+                  };
+                };
                 conditions = {
-                  "sto >= 95" = { string = { text = " {free}  "; foreground = "c1443cff"; }; };
-                  "sto >= 90 && sto < 95" = { string = { text = " {free} "; foreground = "d97b3fff"; }; };
-                  "sto >= 85 && sto < 90" = { string = { text = " {free} "; foreground = "d9a441ff"; }; };
+                  "sto <= 5" = { string = { text = " {sto}G "; foreground = "c1443cff"; }; };
+                  "sto > 5 && sto <= 15" = { string = { text = " {sto}G "; foreground = "d97b3fff"; }; };
                 };
               };
             };
@@ -198,9 +201,8 @@ in
           {
             script = {
               path = "${./custom-scripts/gpu.sh}";
-              poll-interval = 2500;
               content.map = {
-                default = { string.text = "󰭴 {gpu} "; };
+                default = { string.text =  "󰭴 {gpu} "; };
                 conditions = {
                   "gpu == 0" = { string.text = "󰭴 "; };
                 };
@@ -213,11 +215,11 @@ in
               poll-interval = 30000;
               content = {
                 map = {
-                  default = { string.text = "󰂁 {capacity}"; };
+                  default = { string.text = "󰂁{capacity}"; };
                   conditions = {
                     "capacity == 0" = { string.text = ""; };
                     "capacity == 100" = { string.text = "󰁹"; };
-                    "state == charging" = { string.text = "󰂄 {capacity}%"; };
+                    "state == charging" = { string.text = "󰂄{capacity}%"; };
                   };
                 };
               };
