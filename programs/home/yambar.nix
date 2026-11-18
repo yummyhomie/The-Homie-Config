@@ -174,7 +174,7 @@ in
             mem = {
               poll-interval = 2500;
               content.map = { 
-                default = { string.text = " {percent_used} "; };
+                default = { string.text = " {used:gb} "; };
                 conditions = {
                   "percent_used == 0" = { string.text = " "; };
                 };
