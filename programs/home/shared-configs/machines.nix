@@ -60,12 +60,14 @@ home.packages = with pkgs; [
     brightnessctl
     burpsuite
     chromium
-    clonehero
+    dig
+    dnsenum
     easyeffects
     eog                    # Gnome image viewer
     evolution              # For Gnome-Calendar to work with CalDav Servers
     fastfetch
     gimp
+    gnome-calendar
     htop
     joplin-desktop
     jq
@@ -75,6 +77,7 @@ home.packages = with pkgs; [
     nerd-fonts.symbols-only
     networkmanager
     nmap
+    nodejs_26              # For HTB reader
     obsidian
     openvpn
     p7zip

@@ -39,8 +39,8 @@
 
     icons = {
       enable = true;
-      package = pkgs.chicago95;
-      dark = "Chicago95";
+      dark = "menta";
+      package = pkgs.mate-icon-theme;
     };
 
     opacity = {
